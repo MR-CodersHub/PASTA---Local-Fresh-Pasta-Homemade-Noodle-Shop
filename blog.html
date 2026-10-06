@@ -319,7 +319,13 @@
       .recipes-grid { grid-template-columns: 1fr; }
       .newsletter-form-inner { flex-direction: column; }
       .newsletter-form-inner button { width: 100%; justify-content: center; }
-      .newsletter-card { padding: 2.5rem 1.5rem; }
+      .newsletter-card { padding: 2rem 1.4rem; }
+    }
+    @media (max-width: 576px) {
+      .featured-article-img { min-height: 160px !important; max-height: 175px !important; }
+      .featured-article-body { padding: 1.3rem 1.1rem !important; }
+      .blog-card .card-img-wrap, .recipe-card img { height: 140px !important; }
+      .newsletter-card { padding: 1.4rem 1.05rem !important; }
     }
     @media (max-width: 480px) {
       .bts-grid { grid-template-columns: 1fr; }
