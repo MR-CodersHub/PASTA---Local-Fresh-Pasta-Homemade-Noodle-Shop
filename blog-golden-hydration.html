@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Master fresh pasta dough hydration science: why pure egg yolks create an elastic gluten network instead of water, and how to calibrate flour by ambient humidity.">
+  <title>The Golden Hydration Rule: Why Egg Yolks Matter More Than Water — PASTA</title>
+  <link rel="icon" type="image/jpeg" href="images/logo.jpg">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/blog-detail.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script>
+    (function() {
+      const t = localStorage.getItem('pasta_theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      const d = localStorage.getItem('pasta_dir') || 'ltr';
+      document.documentElement.setAttribute('data-theme', t);
+      document.documentElement.setAttribute('dir', d);
+      if (d === 'rtl') document.documentElement.setAttribute('lang', 'ar');
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="index.html" class="nav-logo" aria-label="PASTA Home">
+          <img src="images/logo.jpg" alt="PASTA Artisan & Fresh Logo">
+          <div class="nav-logo-text">
+            <span class="brand">PASTA</span>
+            <span class="tagline">Artisan &amp; Fresh</span>
+          </div>
+        </a>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="home2.html">Home 2</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="wholesale.html">Wholesale</a></li>
+          <li><a href="blog.html" class="active">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="nav-actions">
+          <div class="header-toggle-group">
+            <button class="theme-toggle-btn" id="theme-toggle" type="button" aria-label="Toggle dark/light mode" title="Switch Theme">
+              <i class="fa-solid fa-moon"></i>
+            </button>
+            <button class="rtl-toggle-btn" id="rtl-toggle" type="button" aria-label="Toggle RTL/LTR direction" title="Switch RTL/LTR">
+              <span class="rtl-label">RTL</span>
+            </button>
+          </div>
+          <a href="contact.html" class="btn btn-primary btn-sm">Enquire Now</a>
+          <button class="hamburger" id="hamburger-btn" aria-label="Open navigation menu">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Drawer -->
+  <div class="nav-overlay" id="nav-overlay"></div>
+  <nav class="nav-drawer" id="nav-drawer">
+    <button class="nav-drawer-close" id="drawer-close" aria-label="Close menu">✕</button>
+    <a href="index.html">Home</a>
+    <a href="home2.html">Home 2</a>
+    <a href="about.html">About</a>
+    <a href="products.html">Products</a>
+    <a href="wholesale.html">Wholesale</a>
+    <a href="blog.html" class="active">Blog</a>
+    <a href="contact.html">Contact</a>
+    <a href="contact.html" class="btn btn-primary">Enquire Now</a>
+    <div class="drawer-toggles">
+      <button class="drawer-toggle theme-toggle-btn" id="drawer-theme-toggle" type="button" aria-label="Toggle dark/light mode">
+        <i class="fa-solid fa-moon"></i> <span class="theme-text">Dark Mode</span>
+      </button>
+      <button class="drawer-toggle rtl-toggle-btn" id="drawer-rtl-toggle" type="button" aria-label="Toggle RTL/LTR">
+        <span class="rtl-label">RTL</span> <span class="rtl-text">Right-to-Left</span>
+      </button>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Breadcrumb -->
+    <nav class="article-breadcrumb" aria-label="Breadcrumb">
+      <div class="container">
+        <ol class="breadcrumb-list">
+          <li><a href="index.html">Home</a></li>
+          <li class="separator"><i class="fa-solid fa-chevron-right"></i></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li class="separator"><i class="fa-solid fa-chevron-right"></i></li>
+          <li><span>Dough Chemistry</span></li>
+          <li class="separator"><i class="fa-solid fa-chevron-right"></i></li>
+          <li class="current" aria-current="page">The Golden Hydration Rule</li>
+        </ol>
+      </div>
+    </nav>
+
+    <!-- Article Header -->
+    <header class="article-header-section">
+      <div class="container">
+        <div class="article-header-inner">
+          <span class="article-category-badge">
+            <i class="fa-solid fa-award"></i> Dough Chemistry &amp; Technique
+          </span>
+          <h1 class="article-title">The Golden Hydration Rule: Why Egg Yolks Matter More Than Water</h1>
+          <p class="article-deck">Most home cooks make the fatal error of adding cold tap water when their pasta dough feels dry. Here is why pure egg yolk fats create an elastic gluten network that produces gossamer silk ribbons instead of rubbery noodles.</p>
+
+          <div class="article-meta-bar">
+            <div class="author-chip">
+              <img src="images/chef_rolling.jpg" alt="Chef Domenico Rossi" class="author-avatar">
+              <div class="author-info">
+                <strong>Chef Domenico Rossi</strong>
+                <span>Master Pastaiolo · Melbourne Kitchen</span>
+              </div>
+            </div>
+            <div class="meta-item"><i class="fa-regular fa-calendar"></i> October 2, 2026</div>
+            <div class="meta-item"><i class="fa-regular fa-clock"></i> 8 Min Read</div>
+            <div class="meta-item"><i class="fa-solid fa-shield-halved"></i> Tested in Production</div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Media -->
+    <div class="article-hero-media">
+      <div class="article-hero-img-wrap">
+        <img src="images/flour_mound.jpg" alt="Flour well with vibrant golden egg yolks ready for mixing">
+        <div class="article-hero-caption">
+          <span>Figure 1: Stone-ground Italian Tipo 00 flour well filled with pasture-raised egg yolks at 21°C room temperature.</span>
+          <span>Photo: PASTA Melbourne Archive</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Article Layout -->
+    <div class="article-layout">
+
+      <!-- Main Column -->
+      <article class="article-content">
+        <p class="lead-paragraph">
+          If you have ever stood over a cutting board, watching your pasta dough tear, crack, and refuse to bind together, your instinct was almost certainly to wet your fingers under the cold tap and sprinkle droplets onto the bench. Stop right there. In classical Italian pasta making, water is the enemy of rich egg dough.
+        </p>
+
+        <p>
+          At our Melbourne pasta kitchen, we produce over 180 kilograms of fresh tagliatelle, pappardelle, and stuffed agnolotti every single morning. The secret to our pasta's springy bite (what Romans call <em>nervetto</em>) is not elbow grease—it is the biological composition of egg yolk lipids versus free water molecules.
+        </p>
+
+        <div class="editorial-quote">
+          <i class="fa-solid fa-quote-left"></i>
+          Water activates gluten violently and indiscriminately, creating toughness. Egg yolk fats lubricate gluten strands as they form, allowing them to stretch paper-thin without breaking.
+        </div>
+
+        <h2 id="science-of-fat">1. The Molecular Difference: Water vs. Lipids</h2>
+        <p>
+          Wheat flour contains two primary gluten-forming proteins: <strong>gliadin</strong>, which gives extensibility (stretch), and <strong>glutenin</strong>, which gives elasticity (snap back). When you add pure water, these proteins cross-link with extreme tightness. The result is dough that resembles pizza crust or bread dough: resilient, chewy, and resistant to rolling down to the 1mm thickness required for delicate stuffed shapes.
+        </p>
+
+        <p>
+          An egg white is roughly 88% water and 10% protein with zero fat. An egg yolk, however, is approximately 50% water, 30% emulsified fats (primarily lecithin and triglycerides), and 16% protein. Those yolk fats coat the developing protein chains like silk velvet, preventing hyper-dense bonding while conferring an unmistakable deep amber hue and rich umami mouthfeel.
+        </p>
+
+        <div class="callout-box science">
+          <div class="callout-icon"><i class="fa-solid fa-flask"></i></div>
+          <div class="callout-content">
+            <h4>The Science of Lecithin Emulsification</h4>
+            <p>Lecithin is nature's most effective culinary surfactant. In egg dough, it forces the moisture and starches to hold together in a tightly bonded emulsion that does not weep water during rolling or rupture in boiling water.</p>
+          </div>
+        </div>
+
+        <h2 id="hydration-table">2. The Master Hydration Ratios</h2>
+        <p>
+          Different pasta shapes require calibrated moisture levels. Below is the standardized formula we use in our kitchen based on 100g flour increments:
+        </p>
+
+        <div class="article-table-wrap">
+          <table class="article-table">
+            <thead>
+              <tr>
+                <th>Pasta Shape</th>
+                <th>Flour Base (100g)</th>
+                <th>Hydration Source</th>
+                <th>Target Hydration</th>
+                <th>Resting Time</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Tagliatelle &amp; Pappardelle</strong></td>
+                <td>100g Tipo 00 + Semolina blend</td>
+                <td>1 Whole Egg + 1 Yolk</td>
+                <td>57% – 58%</td>
+                <td>45 Minutes</td>
+              </tr>
+              <tr>
+                <td><strong>Agnolotti del Plin</strong></td>
+                <td>100g High-Protein Tipo 00</td>
+                <td>3 Pure Egg Yolks</td>
+                <td>52% – 54%</td>
+                <td>60 Minutes</td>
+              </tr>
+              <tr>
+                <td><strong>Orecchiette &amp; Cavatelli</strong></td>
+                <td>100g Durum Semola Rimacinata</td>
+                <td>Warm Water (48°C) + Sea Salt</td>
+                <td>50%</td>
+                <td>30 Minutes</td>
+              </tr>
+              <tr>
+                <td><strong>Lasagne Sheets</strong></td>
+                <td>100g Stoneground Tipo 00</td>
+                <td>1 Whole Large Egg</td>
+                <td>55%</td>
+                <td>40 Minutes</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 id="step-by-step">3. How to Calibrate by Room Humidity</h2>
+        <p>
+          Flour behaves like a sponge. On a rain-swept Melbourne winter day with 85% relative humidity, your semolina already holds up to 3% additional moisture from the air. In dry mid-summer heating, the exact same batch will be thirsty.
+        </p>
+
+        <div class="step-cards-container">
+          <div class="step-card">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <h4>Weigh by Grams, Never by Egg Count</h4>
+              <p>Supermarket egg cartons labeled "large" vary between 50g and 65g per egg. For foolproof consistency, place a bowl on your digital scale and aim for 56g to 58g of liquid per 100g of flour.</p>
+            </div>
+          </div>
+          <div class="step-card">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <h4>Hold Back 10% of Your Flour</h4>
+              <p>Always build your flour volcano with only 90% of the calculated flour. Incorporate the yolks slowly with a fork until a shaggy mass forms. Only drag in the remaining 10% if the dough clings to your fingers.</p>
+            </div>
+          </div>
+          <div class="step-card">
+            <div class="step-number">3</div>
+            <div class="step-content">
+              <h4>If Dry: Add a Yolk, Never Tap Water</h4>
+              <p>If your dough feels like dry beach sand after 5 minutes of kneading, crack a cold egg yolk onto your bench and work it into the center. The fat immediately relaxes the gluten structure.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="callout-box tip">
+          <div class="callout-icon"><i class="fa-solid fa-lightbulb"></i></div>
+          <div class="callout-content">
+            <h4>Chef's Secret: The Wine Bottle Rest Technique</h4>
+            <p>Wrap your dough ball airtight in cling film and place a clean, heavy wine bottle across it for the first 15 minutes of resting. The gentle downward pressure accelerates starch hydration and eliminates internal dry pockets.</p>
+          </div>
+        </div>
+
+        <h2 id="mistakes-to-avoid">4. Three Critical Mistakes to Avoid</h2>
+        <ul>
+          <li><strong>Using cold refrigerator eggs:</strong> Cold yolk fats coagulate, making gluten binding stiff and clumpy. Always temper eggs at room temperature (20–22°C) for at least one hour before kneading.</li>
+          <li><strong>Rushing the rest period:</strong> Gluten needs at least 30 minutes in an airtight environment for starches to fully swell and hydrate. Rolling un-rested dough produces curled, snapped edges.</li>
+          <li><strong>Over-flouring the rolling surface:</strong> Once your hydration is dialed in, dusting with too much dry flour will absorb into the surface and create dry white blisters on the pasta.</li>
+        </ul>
+
+        <!-- Article Footer Meta -->
+        <div class="article-footer-meta">
+          <div class="article-tags-wrap">
+            <span class="tag-label">Topics:</span>
+            <a href="blog.html" class="article-tag">#DoughChemistry</a>
+            <a href="blog.html" class="article-tag">#EggYolkPasta</a>
+            <a href="blog.html" class="article-tag">#ArtisanTechnique</a>
+            <a href="blog.html" class="article-tag">#MelbourneKitchen</a>
+          </div>
+
+          <!-- Post Navigation Grid -->
+          <div class="post-navigation-grid">
+            <a href="blog-ravioli-sealing.html" class="post-nav-card prev">
+              <span class="post-nav-dir"><i class="fa-solid fa-arrow-left"></i> Previous Masterclass</span>
+              <span class="post-nav-title">The Anatomy of Ravioli: Sealing Without Trapping Air</span>
+            </a>
+            <a href="blog-pasta-storage.html" class="post-nav-card next">
+              <span class="post-nav-dir">Next Masterclass <i class="fa-solid fa-arrow-right"></i></span>
+              <span class="post-nav-title">Fresh Pasta Storage: Refrigerator vs. Freezer</span>
+            </a>
+          </div>
+        </div>
+
+      </article>
+
+      <!-- Sidebar -->
+      <aside class="article-sidebar">
+        <!-- Table of Contents Card -->
+        <div class="sidebar-card">
+          <h3 class="sidebar-title"><i class="fa-solid fa-list-ul"></i> Quick Navigation</h3>
+          <ul class="toc-list">
+            <li><a href="#science-of-fat" class="toc-link"><i class="fa-solid fa-circle"></i> 1. Molecular Fat Science</a></li>
+            <li><a href="#hydration-table" class="toc-link"><i class="fa-solid fa-circle"></i> 2. Master Hydration Ratios</a></li>
+            <li><a href="#step-by-step" class="toc-link"><i class="fa-solid fa-circle"></i> 3. Calibrate by Humidity</a></li>
+            <li><a href="#mistakes-to-avoid" class="toc-link"><i class="fa-solid fa-circle"></i> 4. Critical Mistakes</a></li>
+          </ul>
+        </div>
+
+        <!-- Author Card -->
+        <div class="sidebar-card author-card-content">
+          <img src="images/chef_rolling.jpg" alt="Chef Domenico Rossi" class="author-card-avatar">
+          <h4 class="author-card-name">Domenico Rossi</h4>
+          <span class="author-card-role">Master Pastaiolo</span>
+          <p class="author-card-bio">Born in Emilia-Romagna and now leading pasta production in Melbourne, Domenico has rolled fresh sfoglia by hand for over 18 years.</p>
+          <a href="about.html" class="btn btn-outline btn-sm" style="width:100%">Read Our Story</a>
+        </div>
+
+        <!-- Featured Product Promo -->
+        <div class="sidebar-card text-center">
+          <h3 class="sidebar-title"><i class="fa-solid fa-basket-shopping"></i> Taste This Dough</h3>
+          <img src="images/prod_tagliatelle.jpg" alt="PASTA Fresh Tagliatelle Nests" class="promo-product-img">
+          <h4 class="promo-product-title">Egg Tagliatelle Nests</h4>
+          <p class="promo-product-desc">Crafted with our signature high-yolk golden hydration recipe daily. Ready in 3 minutes.</p>
+          <a href="products.html" class="btn btn-primary btn-sm" style="width:100%">Order Fresh Pasta</a>
+        </div>
+      </aside>
+
+    </div>
+
+    <!-- Related Articles Section -->
+    <section class="related-posts-section">
+      <div class="container">
+        <div class="related-header">
+          <span class="eyebrow" style="color:var(--red-primary)"><i class="fa-solid fa-wheat-awn"></i> Keep Learning</span>
+          <h2>Related Kitchen Masterclasses</h2>
+        </div>
+        <div class="related-grid">
+          <!-- Card 1 -->
+          <article class="featured-card">
+            <div class="featured-img-wrap" style="height:190px">
+              <img src="images/article_storage.jpg" alt="Fresh pasta storage techniques">
+              <span class="dish-tag gold">Storage</span>
+            </div>
+            <div class="featured-body">
+              <div class="featured-meta">
+                <h3 style="font-size:1rem"><a href="blog-pasta-storage.html" style="color:inherit; text-decoration:none">Fresh Pasta Storage Guide</a></h3>
+                <p>Fridge vs. freezer: tray freezing method</p>
+              </div>
+              <a href="blog-pasta-storage.html" class="featured-order-btn">Read</a>
+            </div>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="featured-card">
+            <div class="featured-img-wrap" style="height:190px">
+              <img src="images/article_bronze.jpg" alt="Bronze vs teflon dies">
+              <span class="dish-tag">Craft</span>
+            </div>
+            <div class="featured-body">
+              <div class="featured-meta">
+                <h3 style="font-size:1rem"><a href="blog-bronze-dies.html" style="color:inherit; text-decoration:none">Bronze vs. Teflon Dies</a></h3>
+                <p>Why micro-texture clings to sauce</p>
+              </div>
+              <a href="blog-bronze-dies.html" class="featured-order-btn">Read</a>
+            </div>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="featured-card">
+            <div class="featured-img-wrap" style="height:190px">
+              <img src="images/article_salt.jpg" alt="Salted boiling pasta water">
+              <span class="dish-tag">Science</span>
+            </div>
+            <div class="featured-body">
+              <div class="featured-meta">
+                <h3 style="font-size:1rem"><a href="blog-salt-water.html" style="color:inherit; text-decoration:none">Salting Pasta Water Science</a></h3>
+                <p>The 10g per litre golden formula</p>
+              </div>
+              <a href="blog-salt-water.html" class="featured-order-btn">Read</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="images/logo.jpg" alt="PASTA Logo">
+          <div class="brand-name">PASTA</div>
+          <p>Handcrafted fresh pasta and homemade noodles made daily in our local kitchen. From our family table to yours — with love, flour, and a little bit of magic.</p>
+        </div>
+        <div class="footer-col">
+          <h5>Quick Links</h5>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">Our Story</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="wholesale.html">Wholesale</a></li>
+            <li><a href="blog.html">Blog &amp; Recipes</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Our Products</h5>
+          <ul>
+            <li><a href="products.html">Fresh Spaghetti</a></li>
+            <li><a href="products.html">Tagliatelle</a></li>
+            <li><a href="products.html">Fettuccine</a></li>
+            <li><a href="products.html">Ricotta Ravioli</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Visit Us</h5>
+          <div class="contact-item"><i class="fa-solid fa-location-dot"></i><span>14 Pasta Lane, Artisan Quarter, Melbourne VIC</span></div>
+          <div class="contact-item"><i class="fa-solid fa-phone"></i><span>+61 3 9000 1234</span></div>
+          <div class="contact-item"><i class="fa-solid fa-clock"></i><span>Tue–Sat: 8am – 5pm</span></div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 PASTA Artisan &amp; Fresh. All rights reserved.</span>
+        <div><a href="blog.html">Back to All Guides</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <button id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-chevron-up"></i></button>
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="PASTA — From our kitchen to your table. Discover a different side of our fresh artisan pasta shop with an editorial-style experience.">
+  <title>PASTA — From Our Kitchen to Your Table</title>
+  <link rel="icon" type="image/jpeg" href="images/logo.jpg">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script>
+    (function() {
+      const t = localStorage.getItem('pasta_theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      const d = localStorage.getItem('pasta_dir') || 'ltr';
+      document.documentElement.setAttribute('data-theme', t);
+      document.documentElement.setAttribute('dir', d);
+      if (d === 'rtl') document.documentElement.setAttribute('lang', 'ar');
+    })();
+  </script>
+  <style>
+    /* ── HOME 2 PAGE SPECIFIC ── */
+
+    /* Hero — Editorial Split Style */
+    .hero2 {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero2-text-panel {
+      background: var(--cream);
+      display: flex; flex-direction: column; justify-content: center;
+      padding: clamp(80px,10vw,140px) clamp(2rem,5vw,5rem) clamp(60px,8vw,100px);
+      position: relative; z-index: 1;
+    }
+    .hero2-text-panel .overline {
+      font-family: var(--font-serif);
+      font-size: .82rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: .18em;
+      color: var(--red-primary);
+      margin-bottom: 1.2rem;
+      display: flex; align-items: center; gap: .6rem;
+    }
+    .hero2-text-panel .overline::before {
+      content:''; display:inline-block; width:32px; height:2px;
+      background: var(--red-primary);
+    }
+    .hero2-text-panel h1 { color: var(--brown); margin-bottom: 1.3rem; }
+    .hero2-text-panel h1 span { color: var(--red-primary); }
+    .hero2-text-panel .lead { color: var(--brown-mid); margin-bottom: 2.4rem; }
+    .hero2-actions { display:flex; gap:1rem; flex-wrap:wrap; }
+    .hero2-scroll-text {
+      position: absolute; bottom: 3rem; left: clamp(2rem,5vw,5rem);
+      font-size:.78rem; letter-spacing:.15em; text-transform:uppercase;
+      color: var(--brown-light); display:flex; align-items:center; gap:.6rem;
+    }
+    .hero2-scroll-text::after {
+      content:''; display:inline-block; width:40px; height:1px; background:var(--brown-light);
+    }
+
+    .hero2-image-panel {
+      position: relative; overflow: hidden;
+      background: var(--red-dark);
+    }
+    .hero2-image-panel img {
+      width: 100%; height: 100% !important;
+      object-fit: cover !important;
+      opacity: .8;
+      mix-blend-mode: luminosity;
+    }
+    .hero2-image-panel::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(192,57,43,.6), rgba(74,14,14,.7));
+    }
+    .hero2-image-panel .overlay-text {
+      position: absolute; z-index: 1;
+      bottom: 3rem; left: 2.5rem; right: 2.5rem;
+      color: #fff;
+    }
+    .hero2-image-panel .overlay-text .tag {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--brown);
+      padding: .3em 1em;
+      border-radius: var(--radius-pill);
+      font-size: .78rem; font-weight: 700; text-transform:uppercase; letter-spacing:.1em;
+      margin-bottom: 1rem;
+    }
+    .hero2-image-panel .overlay-text h2 { font-size:1.8rem; margin-bottom:.5rem; }
+    .hero2-image-panel .overlay-text p  { font-size:.9rem; opacity:.82; }
+
+    /* Today's Fresh Picks */
+    .fresh-picks {
+      background: var(--red-primary);
+      color: #fff;
+      padding: var(--section-pad) 0;
+    }
+    .picks-header { display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:2.5rem; flex-wrap:wrap; gap:1rem; }
+    .picks-header h2 { color:#fff; }
+    .picks-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
+    .pick-card {
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: var(--radius-md);
+      padding: 1.8rem 1.5rem;
+      transition: all var(--t-mid) var(--ease);
+      display:flex; gap:1.2rem; align-items:flex-start;
+    }
+    .pick-card:hover { background: rgba(255,255,255,.18); transform:translateY(-4px); }
+    .pick-icon {
+      width: 64px; height: 64px;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      flex-shrink: 0;
+      border: 2px solid rgba(212,165,67,0.4);
+    }
+    .pick-icon img {
+      width: 100%;
+      height: 100% !important;
+      object-fit: cover !important;
+      display: block;
+    }
+    .pick-card h4 { color:#fff; margin-bottom:.35rem; font-size:1rem; }
+    .pick-card p  { font-size:.85rem; opacity:.8; line-height:1.6; }
+    .pick-card .avail { margin-top:.6rem; font-size:.78rem; color:var(--gold-light); font-weight:600; }
+
+    /* Pasta by Shape — Horizontal Scroll Cards */
+    .shapes-section { background: var(--cream-dark); }
+    .shapes-row {
+      display:grid;
+      grid-template-columns:repeat(6,1fr);
+      gap:1rem;
+    }
+    .shape-pill {
+      border-radius: var(--radius-xl);
+      overflow:hidden;
+      position:relative;
+      aspect-ratio:1/2.2;
+      cursor:pointer;
+    }
+    .shape-pill img { width:100%; height:100%; object-fit:cover; transition: transform var(--t-slow) var(--ease); }
+    .shape-pill:hover img { transform: scale(1.07); }
+    .shape-pill-label {
+      position:absolute; bottom:0; left:0; right:0;
+      background: linear-gradient(to top, rgba(74,14,14,.9), transparent);
+      color:#fff;
+      padding: 1.3rem .8rem .8rem;
+      text-align:center;
+    }
+    .shape-pill-label strong { display:block; font-family:var(--font-display); font-size:.95rem; }
+    .shape-pill-label span   { font-size:.72rem; opacity:.8; }
+
+    /* Traditional Process */
+    .process-section {
+      background: var(--cream);
+    }
+    .process-layout { display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center; }
+    .process-steps  { display:flex; flex-direction:column; gap:2rem; }
+    .process-img img { width:100%; border-radius:var(--radius-lg); box-shadow:var(--shadow-lg); }
+
+    /* Pairing Guide */
+    .pairing-section { background: var(--burgundy-deep); color:var(--cream); }
+    .pairing-table { width:100%; border-collapse:collapse; }
+    .pairing-table th,
+    .pairing-table td { padding:.95rem 1.2rem; border-bottom:1px solid rgba(237,217,187,.12); font-size:.93rem; text-align:left; }
+    .pairing-table th { color:var(--gold); font-family:var(--font-display); font-size:.85rem; text-transform:uppercase; letter-spacing:.1em; background:rgba(255,255,255,.04); }
+    .pairing-table tr:hover td { background:rgba(255,255,255,.04); }
+    .pairing-table td:first-child { color:var(--cream); font-weight:600; }
+    .pair-match { color:var(--gold-light); }
+
+    /* Order Options */
+    .order-section { background: var(--cream-dark); }
+    .order-cards   { display:grid; grid-template-columns:1fr 1fr; gap:2rem; }
+    .order-card {
+      border-radius:var(--radius-lg);
+      overflow:hidden;
+      position:relative;
+      min-height:380px;
+      display:flex; align-items:flex-end;
+    }
+    .order-card img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+    .order-card-body {
+      position:relative; z-index:1;
+      background: linear-gradient(to top, rgba(74,14,14,.95) 0%, transparent 70%);
+      padding:2.5rem 2rem;
+      color:#fff;
+      width:100%;
+    }
+    .order-card-body h3 { color:#fff; margin-bottom:.7rem; }
+    .order-card-body p  { opacity:.82; margin-bottom:1.3rem; font-size:.92rem; }
+
+    /* Testimonials */
+    .testimonials-section { background: var(--burgundy-deep); }
+    .testimonials-grid  { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
+    .section-dark .section-header h2 { color:#fff; }
+
+    /* Promo Final */
+    .promo-section {
+      background: linear-gradient(135deg, var(--terracotta), var(--red-primary) 50%, var(--red-dark));
+      color:#fff;
+      text-align:center;
+      padding: var(--section-pad) 0;
+      position:relative; overflow:hidden;
+    }
+    .promo-section::before {
+      content:''; position:absolute;
+      width:500px; height:500px;
+      border-radius:50%;
+      background: rgba(255,255,255,.04);
+      top:-200px; left:-100px;
+    }
+    .promo-section::after {
+      content:''; position:absolute;
+      width:400px; height:400px;
+      border-radius:50%;
+      background: rgba(255,255,255,.04);
+      bottom:-150px; right:-80px;
+    }
+    .promo-section h2 { color:#fff; margin-bottom:1rem; }
+    .promo-section p  { opacity:.85; max-width:560px; margin:0 auto 2rem; font-family:var(--font-serif); font-size:1.05rem; }
+
+    /* Responsive */
+    @media(max-width:1024px) {
+      .shapes-row { grid-template-columns:repeat(3,1fr); }
+      .picks-grid { grid-template-columns:repeat(2,1fr); }
+    }
+    @media(max-width:768px) {
+      .hero2 { grid-template-columns:1fr; }
+      .hero2-image-panel { min-height:300px; }
+      .hero2-text-panel  { padding:100px 1.5rem 3rem; }
+      .shapes-row  { grid-template-columns:repeat(2,1fr); }
+      .process-layout { grid-template-columns:1fr; }
+      .order-cards { grid-template-columns:1fr; }
+      .testimonials-grid { grid-template-columns:1fr; }
+      .picks-grid { grid-template-columns:1fr; }
+    }
+    @media(max-width:576px) {
+      .shapes-row { grid-template-columns:1fr; }
+      .picks-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+      .picks-header .btn { width: 100%; justify-content: center; }
+      .pick-card { padding: 1.4rem 1.2rem; }
+    }
+
+    /* ── Dark Theme Overrides for Home 2 ── */
+    [data-theme="dark"] .pairing-section {
+      background: #1a0604 !important;
+      color: #fdfaf5 !important;
+    }
+    [data-theme="dark"] .pairing-table th {
+      color: var(--gold) !important;
+      background: rgba(255, 255, 255, 0.05) !important;
+    }
+    [data-theme="dark"] .pairing-table td {
+      color: rgba(255, 255, 255, 0.88) !important;
+      border-bottom-color: rgba(212, 165, 67, 0.15) !important;
+    }
+    [data-theme="dark"] .pairing-table td:first-child {
+      color: #ffffff !important;
+      font-weight: 700 !important;
+    }
+    [data-theme="dark"] .testimonials-section {
+      background: #140503 !important;
+    }
+    [data-theme="dark"] .testimonial-card {
+      background: #1f0b07 !important;
+      border-color: rgba(212, 165, 67, 0.25) !important;
+      color: #fdfaf5 !important;
+    }
+    [data-theme="dark"] .testimonial-card p {
+      color: rgba(255, 255, 255, 0.9) !important;
+    }
+    [data-theme="dark"] .testimonial-author .name {
+      color: #ffffff !important;
+    }
+    [data-theme="dark"] .testimonial-author .role {
+      color: rgba(255, 255, 255, 0.7) !important;
+    }
+    [data-theme="dark"] .process-section,
+    [data-theme="dark"] section#process {
+      background: #140703 !important;
+    }
+    [data-theme="dark"] .process-section h2 {
+      color: #ffffff !important;
+    }
+    [data-theme="dark"] .process-section p,
+    [data-theme="dark"] .process-steps p {
+      color: rgba(255, 255, 255, 0.85) !important;
+    }
+    [data-theme="dark"] .process-steps h3,
+    [data-theme="dark"] .process-steps h4 {
+      color: #ffffff !important;
+    }
+    [data-theme="dark"] .shapes-section {
+      background: #180904 !important;
+    }
+    [data-theme="dark"] .order-section {
+      background: #140703 !important;
+    }
+  </style>
+</head>
+<body>
+  <div id="progress-bar"></div>
+
+  <!-- NAV (same as index) -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="index.html" class="nav-logo">
+          <img src="images/logo.jpg" alt="PASTA Logo">
+          <div class="nav-logo-text">
+            <span class="brand">PASTA</span>
+            <span class="tagline">Artisan &amp; Fresh</span>
+          </div>
+        </a>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="home2.html">Home 2</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="wholesale.html">Wholesale</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li class="nav-item-dropdown">
+            <a href="#" class="dropdown-trigger">Pages <i class="fa-solid fa-chevron-down dropdown-arrow"></i></a>
+            <ul class="nav-dropdown-menu">
+              <li><a href="coming-soon.html"><i class="fa-solid fa-sparkles"></i> Coming Soon</a></li>
+              <li><a href="maintenance.html"><i class="fa-solid fa-wrench"></i> Maintenance</a></li>
+              <li><a href="404.html"><i class="fa-solid fa-triangle-exclamation"></i> 404 Error</a></li>
+            </ul>
+          </li>
+        </ul>
+        <div class="nav-actions">
+          <div class="header-toggle-group">
+            <button class="theme-toggle-btn" id="theme-toggle" type="button" aria-label="Toggle dark/light mode" title="Switch Theme">
+              <i class="fa-solid fa-moon"></i>
+            </button>
+            <button class="rtl-toggle-btn" id="rtl-toggle" type="button" aria-label="Toggle RTL/LTR direction" title="Switch RTL/LTR">
+              <span class="rtl-label">RTL</span>
+            </button>
+          </div>
+          <a href="contact.html" class="btn btn-primary btn-sm">Enquire Now</a>
+          <button class="hamburger" id="hamburger-btn" aria-label="Open menu">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div class="nav-overlay" id="nav-overlay"></div>
+  <nav class="nav-drawer" id="nav-drawer">
+    <button class="nav-drawer-close" id="drawer-close">✕</button>
+    <a href="index.html">Home</a>
+    <a href="home2.html">Home 2</a>
+    <a href="about.html">About</a>
+    <a href="products.html">Products</a>
+    <a href="wholesale.html">Wholesale</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html">Contact</a>
+    <div style="height:1px; background:var(--beige); margin:0.5rem 0; opacity:0.6"></div>
+    <span style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--terracotta); padding:0.4rem 1rem;">Pages</span>
+    <a href="coming-soon.html"><i class="fa-solid fa-sparkles" style="color:var(--gold); margin-right:8px"></i> Coming Soon</a>
+    <a href="maintenance.html"><i class="fa-solid fa-wrench" style="color:var(--gold); margin-right:8px"></i> Maintenance</a>
+    <a href="404.html"><i class="fa-solid fa-triangle-exclamation" style="color:var(--gold); margin-right:8px"></i> 404 Error</a>
+    <a href="contact.html" class="btn btn-primary">Enquire Now</a>
+    <div class="drawer-toggles">
+      <button class="drawer-toggle theme-toggle-btn" id="drawer-theme-toggle" type="button" aria-label="Toggle dark/light mode">
+        <i class="fa-solid fa-moon"></i> <span class="theme-text">Dark Mode</span>
+      </button>
+      <button class="drawer-toggle rtl-toggle-btn" id="drawer-rtl-toggle" type="button" aria-label="Toggle RTL/LTR">
+        <span class="rtl-label">RTL</span> <span class="rtl-text">Right-to-Left</span>
+      </button>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- ════════════ S1 — EDITORIAL HERO (UNIFIED 520PX HEIGHT) ════════════ -->
+    <section class="page-hero hero" id="hero" aria-label="Hero">
+      <div class="hero-bg-overlay" style="background-image: url('images/hero_home2.jpg');"></div>
+      <div class="hero-bg-pattern"></div>
+      <div class="container hero-container">
+        <div class="hero-grid-split">
+          <div class="hero-text-col" data-aos="fade-right">
+            <span class="badge badge-gold uppercase mb-2">
+              <i class="fa-solid fa-seedling"></i> Fresh · Handmade · Daily
+            </span>
+            <h1>From Our Kitchen<br><em>to Your Table.</em></h1>
+            <p class="hero-desc">The craft of authentic pasta-making is not a shortcut — it is a promise. We make every single batch with patience, artisan touch, and wholesome farm ingredients that speak for themselves.</p>
+            <div class="hero-actions-wrap">
+              <a href="products.html" class="btn btn-gold">
+                Shop Fresh Pasta <i class="fa-solid fa-arrow-right"></i>
+              </a>
+              <a href="wholesale.html" class="btn btn-outline-white">Wholesale Supply</a>
+              <a href="about.html" class="btn btn-white">Our Methods</a>
+            </div>
+          </div>
+          <div class="hero-media-col" data-aos="fade-left" data-aos-delay="150">
+            <div class="hero-image-card">
+              <img src="images/ravioli.jpg" alt="Handcrafted fresh ricotta ravioli parcels">
+              <div class="hero-floating-pill">
+                <i class="fa-solid fa-sparkles"></i>
+                <span>Today's Special: Pomodoro Fresco</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════ S2 — TODAY'S FRESH PICKS ════════════ -->
+    <section class="fresh-picks" id="fresh-picks" aria-label="Today's Fresh Picks">
+      <div class="container">
+        <div class="picks-header">
+          <div>
+            <span class="eyebrow" style="color:var(--gold-light); margin-bottom:.5rem; display:flex; align-items:center; gap:.5rem">
+              <i class="fa-solid fa-star"></i> Ready Today
+            </span>
+            <h2>Today's Fresh Picks</h2>
+          </div>
+          <a href="products.html" class="btn btn-white">See All Products</a>
+        </div>
+        <div class="picks-grid">
+          <div class="pick-card" data-aos="fade-up">
+            <div class="pick-icon"><img src="images/prod_spaghetti.jpg" alt="Classic Spaghetti"></div>
+            <div>
+              <h4>Classic Spaghetti</h4>
+              <p>Hand-extruded durum semolina strands with perfect al dente texture.</p>
+              <div class="avail"><i class="fa-solid fa-check"></i> Available Today &middot; 250g &amp; 500g</div>
+            </div>
+          </div>
+          <div class="pick-card" data-aos="fade-up" data-aos-delay="80">
+            <div class="pick-icon"><img src="images/prod_ravioli.jpg" alt="Spinach Ravioli"></div>
+            <div>
+              <h4>Spinach &amp; Ricotta Ravioli</h4>
+              <p>Generous pillows of fresh filling, hand-crimped to seal in every flavour.</p>
+              <div class="avail"><i class="fa-solid fa-check"></i> Available Today &middot; 12 pieces / tray</div>
+            </div>
+          </div>
+          <div class="pick-card" data-aos="fade-up" data-aos-delay="160">
+            <div class="pick-icon"><img src="images/sauce_pesto.jpg" alt="Fresh Basil Pesto"></div>
+            <div>
+              <h4>Fresh Basil Pesto</h4>
+              <p>Stone-ground with Ligurian basil, pine nuts and aged Pecorino.</p>
+              <div class="avail"><i class="fa-solid fa-check"></i> Available Today &middot; 200ml jar</div>
+            </div>
+          </div>
+          <div class="pick-card" data-aos="fade-up" data-aos-delay="240">
+            <div class="pick-icon"><img src="images/prod_gnocchi.jpg" alt="Potato Gnocchi"></div>
+            <div>
+              <h4>Potato Gnocchi</h4>
+              <p>Pillowy soft, made with roasted Dutch cream potatoes and a touch of nutmeg.</p>
+              <div class="avail"><i class="fa-solid fa-check"></i> Available Today &middot; 400g pack</div>
+            </div>
+          </div>
+          <div class="pick-card" data-aos="fade-up" data-aos-delay="320">
+            <div class="pick-icon"><img src="images/prod_pappardelle.jpg" alt="Pappardelle"></div>
+            <div>
+              <h4>Pappardelle</h4>
+              <p>Wide rustic ribbons &mdash; perfect with rich braised meats and slow ragùs.</p>
+              <div class="avail"><i class="fa-solid fa-check"></i> Available Today &middot; 250g &amp; 500g</div>
+            </div>
+          </div>
+          <div class="pick-card" data-aos="fade-up" data-aos-delay="400">
+            <div class="pick-icon"><img src="images/sauce_arrabbiata.jpg" alt="Arrabbiata Sauce"></div>
+            <div>
+              <h4>Arrabbiata Sauce</h4>
+              <p>Bold, fiery and slow-simmered with San Marzano tomatoes and Calabrian chilli.</p>
+              <div class="avail"><i class="fa-solid fa-check"></i> Available Today &middot; 300ml jar</div>
+            </div>
+          </div>
+      </div>
+    </section>
+
+    <!-- ════════════ S3 — PASTA BY SHAPE ════════════ -->
+    <section class="section shapes-section" id="pasta-shapes" aria-label="Pasta Varieties by Shape">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <span class="eyebrow">Shape Matters</span>
+          <h2>Pasta Varieties by Shape</h2>
+          <p>Each pasta shape is engineered by Italian tradition to catch, hold and complement a specific style of sauce.</p>
+        </div>
+        <div class="shapes-row">
+          <div class="shape-pill" data-aos="fade-up" data-aos-delay="0">
+            <img src="images/prod_tagliatelle.jpg" alt="Tagliatelle">
+            <div class="shape-pill-label">
+              <strong>Tagliatelle</strong>
+              <span>Long &amp; Flat</span>
+            </div>
+          </div>
+          <div class="shape-pill" data-aos="fade-up" data-aos-delay="80">
+            <img src="images/prod_ravioli.jpg" alt="Ravioli">
+            <div class="shape-pill-label">
+              <strong>Ravioli</strong>
+              <span>Stuffed Square</span>
+            </div>
+          </div>
+          <div class="shape-pill" data-aos="fade-up" data-aos-delay="160">
+            <img src="images/prod_spaghetti.jpg" alt="Spaghetti">
+            <div class="shape-pill-label">
+              <strong>Spaghetti</strong>
+              <span>Long Round</span>
+            </div>
+          </div>
+          <div class="shape-pill" data-aos="fade-up" data-aos-delay="240">
+            <img src="images/prod_pappardelle.jpg" alt="Fettuccine">
+            <div class="shape-pill-label">
+              <strong>Fettuccine</strong>
+              <span>Wide Ribbon</span>
+            </div>
+          </div>
+          <div class="shape-pill" data-aos="fade-up" data-aos-delay="320">
+            <img src="images/prod_agnolotti.jpg" alt="Pappardelle">
+            <div class="shape-pill-label">
+              <strong>Pappardelle</strong>
+              <span>Extra-Wide</span>
+            </div>
+          </div>
+          <div class="shape-pill" data-aos="fade-up" data-aos-delay="400">
+            <img src="images/prod_gnocchi.jpg" alt="Gnocchi">
+            <div class="shape-pill-label">
+              <strong>Gnocchi</strong>
+              <span>Potato Dumpling</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════ S4 — TRADITIONAL PROCESS ════════════ -->
+    <section class="section process-section" id="process" aria-label="Our Preparation Process">
+      <div class="container">
+        <div class="process-layout">
+          <div class="process-img" data-aos="fade-right">
+            <img src="images/pasta_machine.jpg" alt="Artisan pasta preparation with machine">
+          </div>
+          <div data-aos="fade-left" data-aos-delay="100">
+            <span class="eyebrow" style="justify-content:flex-start; margin-bottom:1rem">Our Process</span>
+            <h2>The Traditional Preparation Process</h2>
+            <p class="font-serif mb-3" style="color:var(--brown-mid)">Five deliberate steps. No automation. No compromise.</p>
+            <div class="process-steps">
+              <div class="process-step">
+                <div class="process-step-num">1</div>
+                <div class="process-step-line"></div>
+                <div>
+                  <h4>Select &amp; Measure Ingredients</h4>
+                  <p style="font-size:.9rem; color:var(--brown-mid)">Heritage flour, farm-fresh eggs and pure water — precisely weighed each morning.</p>
+                </div>
+              </div>
+              <div class="process-step">
+                <div class="process-step-num">2</div>
+                <div class="process-step-line"></div>
+                <div>
+                  <h4>Mix &amp; Knead the Dough</h4>
+                  <p style="font-size:.9rem; color:var(--brown-mid)">Hand-kneaded for at least 10 minutes until silky smooth and elastic.</p>
+                </div>
+              </div>
+              <div class="process-step">
+                <div class="process-step-num">3</div>
+                <div class="process-step-line"></div>
+                <div>
+                  <h4>Rest &amp; Relax the Dough</h4>
+                  <p style="font-size:.9rem; color:var(--brown-mid)">Wrapped in linen and rested for 30 minutes — patience builds better gluten.</p>
+                </div>
+              </div>
+              <div class="process-step">
+                <div class="process-step-num">4</div>
+                <div class="process-step-line"></div>
+                <div>
+                  <h4>Roll &amp; Shape by Hand</h4>
+                  <p style="font-size:.9rem; color:var(--brown-mid)">Thin-rolled and hand-cut into each specific shape — never pre-shaped by machine.</p>
+                </div>
+              </div>
+              <div class="process-step">
+                <div class="process-step-num">5</div>
+                <div>
+                  <h4>Pack Fresh &amp; Deliver</h4>
+                  <p style="font-size:.9rem; color:var(--brown-mid)">Nestled into biodegradable trays and dispatched within hours of making.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════ S5 — PAIRING GUIDE ════════════ -->
+    <section class="section pairing-section section-dark" id="pairing" aria-label="Pasta and Sauce Pairing">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <span class="eyebrow">Perfect Matches</span>
+          <h2 style="color:#fff">Pasta &amp; Sauce Pairing Guide</h2>
+          <p style="color:rgba(255,255,255,.7)">Not all sauces suit all shapes. Here is our chef's guide to perfect pairings.</p>
+        </div>
+        <div data-aos="fade-up" data-aos-delay="100" style="overflow-x:auto">
+          <table class="pairing-table">
+            <thead>
+              <tr>
+                <th>Pasta Shape</th>
+                <th>Best Sauce Match</th>
+                <th>Why It Works</th>
+                <th>Difficulty</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Spaghetti</td><td class="pair-match">Tomato Basil · Carbonara</td><td>Round strands coat evenly with lighter sauces</td><td>Beginner</td></tr>
+              <tr><td>Tagliatelle</td><td class="pair-match">Beef Ragù · Mushroom</td><td>Wide ribbons carry chunky sauces beautifully</td><td>Beginner</td></tr>
+              <tr><td>Fettuccine</td><td class="pair-match">Alfredo · Truffle Butter</td><td>Broad surface perfect for creamy coatings</td><td>Easy</td></tr>
+              <tr><td>Ravioli</td><td class="pair-match">Brown Butter &amp; Sage · Pesto</td><td>Stuffed pasta needs a light sauce to shine</td><td>Easy</td></tr>
+              <tr><td>Pappardelle</td><td class="pair-match">Wild Boar · Braised Duck</td><td>Extra-wide ribbons absorb rich braising juices</td><td>Intermediate</td></tr>
+              <tr><td>Gnocchi</td><td class="pair-match">Gorgonzola · Arrabbiata</td><td>Pillow-soft dumpling pairs with bold flavours</td><td>Easy</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="text-center mt-4" data-aos="fade-up">
+          <a href="products.html" class="btn btn-gold btn-lg">Shop Pasta &amp; Sauces</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════ S6 — ORDER OPTIONS ════════════ -->
+    <section class="section order-section" id="order-options" aria-label="Ordering Options">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <span class="eyebrow">How to Order</span>
+          <h2>For Home &amp; For Business</h2>
+          <p>Whether you want a weekend dinner pack or a weekly restaurant supply — we make it simple.</p>
+        </div>
+        <div class="order-cards">
+          <div class="order-card" data-aos="fade-right">
+            <img src="images/italian_dining.jpg" alt="Home orders">
+            <div class="order-card-body">
+              <h3>Home &amp; Family Orders</h3>
+              <p>Order your favourite fresh pasta shapes and sauces for collection or local delivery. Minimum order of 250g per variety applies.</p>
+              <a href="contact.html" class="btn btn-white">Place a Home Order</a>
+            </div>
+          </div>
+          <div class="order-card" data-aos="fade-left" data-aos-delay="100">
+            <img src="images/hero_wholesale.jpg" alt="Wholesale orders">
+            <div class="order-card-body">
+              <h3>Business &amp; Wholesale Orders</h3>
+              <p>Serving restaurants, cafés, hotels and caterers with reliable weekly supply of bulk fresh pasta and signature sauces.</p>
+              <a href="wholesale.html" class="btn btn-gold">Wholesale Enquiry</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════ S7 — TESTIMONIALS ════════════ -->
+    <section class="section testimonials-section section-dark" id="testimonials" aria-label="Customer Testimonials">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <span class="eyebrow">What People Say</span>
+          <h2>Loved by Pasta Enthusiasts</h2>
+          <p style="color:rgba(255,255,255,.7)">Our customers' words mean everything to us — here is what they have to say.</p>
+        </div>
+        <div class="testimonials-grid">
+          <div class="testimonial-card" data-aos="fade-up" data-aos-delay="0">
+            <div class="stars">★★★★★</div>
+            <p>"The ravioli from PASTA is hands-down the best I've ever tasted outside of Italy. The filling is generous, the pasta silky. We order every Friday."</p>
+            <div class="testimonial-author">
+              <div style="width:44px;height:44px;border-radius:50%;background:var(--red-primary);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700">S</div>
+              <div>
+                <div class="name">Sophie L.</div>
+                <div class="role">Home Cook, Melbourne</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="stars">★★★★★</div>
+            <p>"As a restaurant owner, consistency is everything. PASTA has never missed a delivery in two years. Their tagliatelle sells out every night."</p>
+            <div class="testimonial-author">
+              <div style="width:44px;height:44px;border-radius:50%;background:var(--terracotta);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700">M</div>
+              <div>
+                <div class="name">Marco V.</div>
+                <div class="role">Executive Chef, Trattoria Marco</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="stars">★★★★★</div>
+            <p>"I bought their gnocchi for a dinner party and my guests thought I'd spent all day cooking. It was effortless luxury — and completely fresh."</p>
+            <div class="testimonial-author">
+              <div style="width:44px;height:44px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;color:var(--brown);font-weight:700">A</div>
+              <div>
+                <div class="name">Amelia K.</div>
+                <div class="role">Food Blogger &amp; Home Chef</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════ S8 — PROMO / NEWSLETTER ════════════ -->
+    <section class="promo-section" id="newsletter" aria-label="Newsletter subscription">
+      <div class="container" style="position:relative; z-index:1">
+        <div data-aos="fade-up">
+          <span class="badge badge-gold mb-3 uppercase small">Stay Connected</span>
+          <h2>Get Recipes, Tips &amp; First Pick of Seasonal Specials</h2>
+          <p>Join our pasta family — subscribe and get our free "5 Sauces in 30 Minutes" recipe guide.</p>
+          <form class="newsletter-form" style="max-width:480px; margin:0 auto; display:flex; gap:.8rem; flex-wrap:wrap; justify-content:center" aria-label="Newsletter form">
+            <input type="email" class="form-control" placeholder="Your email address" required style="flex:1; min-width:220px">
+            <button type="submit" class="btn btn-gold btn-lg">Subscribe</button>
+            <div class="form-msg" style="width:100%"></div>
+          </form>
+          <p class="small mt-3" style="opacity:.65">We respect your privacy. Unsubscribe any time.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="images/logo.jpg" alt="PASTA Logo">
+          <div class="brand-name">PASTA</div>
+          <p>Handcrafted fresh pasta and homemade noodles made daily in our local kitchen. From our family table to yours — with love, flour, and a little bit of magic.</p>
+          <div class="social-links">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5>Quick Links</h5>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">Our Story</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="wholesale.html">Wholesale</a></li>
+            <li><a href="blog.html">Blog &amp; Recipes</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Our Products</h5>
+          <ul>
+            <li><a href="products.html">Fresh Spaghetti</a></li>
+            <li><a href="products.html">Tagliatelle</a></li>
+            <li><a href="products.html">Fettuccine</a></li>
+            <li><a href="products.html">Ricotta Ravioli</a></li>
+            <li><a href="products.html">Potato Gnocchi</a></li>
+            <li><a href="products.html">Artisan Sauces</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Visit Us</h5>
+          <div class="contact-item"><i class="fa-solid fa-location-dot"></i><span>14 Pasta Lane, Artisan Quarter,<br>Melbourne VIC 3000</span></div>
+          <div class="contact-item"><i class="fa-solid fa-phone"></i><span>+61 3 9000 1234</span></div>
+          <div class="contact-item"><i class="fa-solid fa-envelope"></i><span>hello@pasta.com.au</span></div>
+          <div class="contact-item"><i class="fa-solid fa-clock"></i><span>Tue–Sat: 8am – 5pm<br>Sun: 9am – 2pm</span></div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 PASTA Artisan &amp; Fresh. All rights reserved.</span>
+        <div style="display:flex; gap:1.2rem; flex-wrap:wrap">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Wholesale T&amp;Cs</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-chevron-up"></i></button>
+  <script src="js/main.js"></script>
+</body>
+</html>

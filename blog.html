@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Discover artisan pasta recipes, fresh dough techniques, pasta storage tips, sauce pairing secrets, and behind-the-scenes stories from PASTA's Melbourne kitchen.">
+  <title>Blog, Recipes &amp; Kitchen Stories — PASTA</title>
+  <link rel="icon" type="image/jpeg" href="images/logo.jpg">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script>
+    (function() {
+      const t = localStorage.getItem('pasta_theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      const d = localStorage.getItem('pasta_dir') || 'ltr';
+      document.documentElement.setAttribute('data-theme', t);
+      document.documentElement.setAttribute('dir', d);
+      if (d === 'rtl') document.documentElement.setAttribute('lang', 'ar');
+    })();
+  </script>
+  <style>
+    /* ─── BLOG PAGE SPECIFIC STYLES ─── */
+
+    /* Featured Article Hero */
+    .featured-article-card {
+      background: #fff;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--beige);
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      align-items: stretch;
+      margin-bottom: 3.5rem;
+      transition: transform var(--t-mid) var(--ease), box-shadow var(--t-mid) var(--ease);
+    }
+    .featured-article-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+    }
+    .featured-article-img {
+      position: relative;
+      min-height: 380px;
+    }
+    .featured-article-img img {
+      width: 100%;
+      height: 100% !important;
+      object-fit: cover !important;
+    }
+    .featured-article-content {
+      padding: 3rem 2.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .article-meta-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 0.8rem;
+      color: var(--brown-mid);
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+    .article-meta-row i {
+      color: var(--red-primary);
+    }
+    .featured-article-content h2 {
+      font-size: 2rem;
+      line-height: 1.25;
+      margin-bottom: 1rem;
+    }
+    .featured-article-content p {
+      font-size: 0.95rem;
+      color: var(--brown-mid);
+      line-height: 1.7;
+      margin-bottom: 1.8rem;
+    }
+
+    /* Blog Articles Grid */
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+    .blog-card {
+      background: #fff;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--beige);
+      display: flex;
+      flex-direction: column;
+      transition: all var(--t-mid) var(--ease);
+    }
+    .blog-card:hover {
+      transform: translateY(-7px);
+      box-shadow: var(--shadow-lg);
+    }
+    .blog-card-img {
+      position: relative;
+      height: 220px;
+      overflow: hidden;
+    }
+    .blog-card-img img {
+      width: 100%;
+      height: 100% !important;
+      object-fit: cover !important;
+      transition: transform 0.6s var(--ease);
+    }
+    .blog-card:hover .blog-card-img img {
+      transform: scale(1.08);
+    }
+    .blog-card-body {
+      padding: 1.8rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+    .blog-card-title {
+      font-size: 1.22rem;
+      margin-bottom: 0.8rem;
+      line-height: 1.35;
+    }
+    .blog-card-desc {
+      font-size: 0.88rem;
+      color: var(--brown-mid);
+      line-height: 1.65;
+      margin-bottom: 1.4rem;
+      flex-grow: 1;
+    }
+    .blog-card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 1rem;
+      border-top: 1px solid var(--beige);
+      font-size: 0.84rem;
+      color: var(--brown-mid);
+    }
+    .read-more-link {
+      color: var(--red-primary);
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: gap var(--t-fast) var(--ease);
+    }
+    .blog-card:hover .read-more-link {
+      gap: 0.6rem;
+    }
+
+    /* Recipes Section */
+    .recipes-section {
+      background: var(--cream-dark);
+    }
+    .recipes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+    .recipe-card {
+      background: #fff;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--beige-dark);
+      display: flex;
+      flex-direction: column;
+      transition: all var(--t-mid) var(--ease);
+    }
+    .recipe-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+    }
+    .recipe-header {
+      padding: 1.8rem 1.6rem 1.2rem;
+      border-bottom: 1px solid var(--beige);
+    }
+    .recipe-stats {
+      display: flex;
+      gap: 1.2rem;
+      margin-top: 0.8rem;
+      font-size: 0.82rem;
+      color: var(--brown-mid);
+    }
+    .recipe-stats span {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+    .recipe-body {
+      padding: 1.6rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+    .recipe-ingredients-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1.4rem;
+    }
+    .recipe-ingredients-list li {
+      font-size: 0.85rem;
+      color: var(--brown);
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      line-height: 1.5;
+    }
+    .recipe-ingredients-list li i {
+      color: var(--gold);
+      font-size: 0.8rem;
+      margin-top: 0.2rem;
+    }
+
+    /* Behind the Scenes */
+    .bts-section {
+      background: var(--burgundy-deep);
+      color: var(--cream);
+    }
+    .bts-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.6rem;
+    }
+    .bts-card {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(237, 217, 187, 0.15);
+      border-radius: var(--radius-lg);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      transition: all var(--t-mid) var(--ease);
+    }
+    .bts-card:hover {
+      background: rgba(255, 255, 255, 0.12);
+      transform: translateY(-5px);
+    }
+    .bts-icon {
+      font-size: 2.4rem;
+      color: var(--gold);
+      margin-bottom: 1.2rem;
+    }
+    .bts-card h4 {
+      color: var(--gold-light);
+      margin-bottom: 0.6rem;
+      font-size: 1.15rem;
+    }
+    .bts-card p {
+      font-size: 0.86rem;
+      opacity: 0.85;
+      line-height: 1.65;
+    }
+
+    /* Newsletter Subscribe */
+    .newsletter-card {
+      background: linear-gradient(135deg, var(--red-dark) 0%, var(--red-primary) 60%, var(--terracotta) 100%);
+      border-radius: var(--radius-xl);
+      padding: 4rem 3rem;
+      color: #fff;
+      text-align: center;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      overflow: hidden;
+    }
+    .newsletter-card h2 {
+      color: #fff;
+      font-size: 2.4rem;
+      margin-bottom: 0.8rem;
+    }
+    .newsletter-card p {
+      color: rgba(255, 255, 255, 0.88);
+      max-width: 580px;
+      margin: 0 auto 2rem;
+      font-size: 1.05rem;
+    }
+    .newsletter-form-inner {
+      display: flex;
+      max-width: 540px;
+      margin: 0 auto;
+      gap: 0.6rem;
+    }
+    .newsletter-form-inner input {
+      flex: 1;
+      padding: 0.9rem 1.4rem;
+      border-radius: var(--radius-full);
+      border: none;
+      font-size: 0.95rem;
+      outline: none;
+    }
+    .newsletter-form-inner button {
+      flex-shrink: 0;
+    }
+    .newsletter-perks {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+      font-size: 0.85rem;
+      color: var(--gold-light);
+    }
+    .newsletter-perks span {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .featured-article-card { grid-template-columns: 1fr; }
+      .featured-article-img { min-height: 280px; }
+      .blog-grid { grid-template-columns: repeat(2, 1fr); }
+      .recipes-grid { grid-template-columns: repeat(2, 1fr); }
+      .bts-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .blog-grid { grid-template-columns: 1fr; }
+      .recipes-grid { grid-template-columns: 1fr; }
+      .newsletter-form-inner { flex-direction: column; }
+      .newsletter-form-inner button { width: 100%; justify-content: center; }
+      .newsletter-card { padding: 2.5rem 1.5rem; }
+    }
+    @media (max-width: 480px) {
+      .bts-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── Dark Theme Overrides for Blog Page ── */
+    [data-theme="dark"] .recipes-section,
+    [data-theme="dark"] section#recipes {
+      background: #120502 !important;
+    }
+    [data-theme="dark"] .recipes-section h2 {
+      color: #ffffff !important;
+    }
+    [data-theme="dark"] .recipes-section .eyebrow {
+      color: var(--gold) !important;
+    }
+    [data-theme="dark"] .recipes-section .lead {
+      color: rgba(255, 255, 255, 0.85) !important;
+    }
+    [data-theme="dark"] .featured-article-card,
+    [data-theme="dark"] .blog-card,
+    [data-theme="dark"] .recipe-card,
+    [data-theme="dark"] .bts-card,
+    [data-theme="dark"] .sidebar-box {
+      background: #180803 !important;
+      border-color: rgba(212, 165, 67, 0.25) !important;
+      color: #fdfaf5 !important;
+    }
+    [data-theme="dark"] .featured-article-content h2 a,
+    [data-theme="dark"] .featured-article-body h3,
+    [data-theme="dark"] .blog-card-title a,
+    [data-theme="dark"] .blog-card h3,
+    [data-theme="dark"] .recipe-header h3,
+    [data-theme="dark"] .recipe-card h4,
+    [data-theme="dark"] .bts-card h4 {
+      color: #ffffff !important;
+    }
+    [data-theme="dark"] .featured-article-content p,
+    [data-theme="dark"] .featured-article-body p,
+    [data-theme="dark"] .blog-card-desc,
+    [data-theme="dark"] .blog-card p,
+    [data-theme="dark"] .recipe-card p,
+    [data-theme="dark"] .bts-card p {
+      color: rgba(255, 255, 255, 0.82) !important;
+    }
+    [data-theme="dark"] .recipe-header {
+      border-bottom-color: rgba(212, 165, 67, 0.18) !important;
+    }
+    [data-theme="dark"] .recipe-stats {
+      color: rgba(255, 255, 255, 0.75) !important;
+    }
+    [data-theme="dark"] .recipe-body h5 {
+      color: var(--gold) !important;
+    }
+    [data-theme="dark"] .recipe-ingredients-list li {
+      color: rgba(255, 255, 255, 0.88) !important;
+    }
+    [data-theme="dark"] .recipe-ingredients-list li i {
+      color: var(--gold) !important;
+    }
+    [data-theme="dark"] .blog-card-footer {
+      border-top-color: rgba(212, 165, 67, 0.18) !important;
+      color: rgba(255, 255, 255, 0.72) !important;
+    }
+    [data-theme="dark"] .read-more-link {
+      color: var(--gold) !important;
+    }
+    [data-theme="dark"] .article-meta-row {
+      color: rgba(255, 255, 255, 0.75) !important;
+    }
+  </style>
+</head>
+<body>
+  <div id="progress-bar"></div>
+
+  <!-- NAVIGATION -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="index.html" class="nav-logo">
+          <img src="images/logo.jpg" alt="PASTA Logo">
+          <div class="nav-logo-text">
+            <span class="brand">PASTA</span>
+            <span class="tagline">Artisan &amp; Fresh</span>
+          </div>
+        </a>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="home2.html">Home 2</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="wholesale.html">Wholesale</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li class="nav-item-dropdown">
+            <a href="#" class="dropdown-trigger">Pages <i class="fa-solid fa-chevron-down dropdown-arrow"></i></a>
+            <ul class="nav-dropdown-menu">
+              <li><a href="coming-soon.html"><i class="fa-solid fa-sparkles"></i> Coming Soon</a></li>
+              <li><a href="maintenance.html"><i class="fa-solid fa-wrench"></i> Maintenance</a></li>
+              <li><a href="404.html"><i class="fa-solid fa-triangle-exclamation"></i> 404 Error</a></li>
+            </ul>
+          </li>
+        </ul>
+        <div class="nav-actions">
+          <div class="header-toggle-group">
+            <button class="theme-toggle-btn" id="theme-toggle" type="button" aria-label="Toggle dark/light mode" title="Switch Theme">
+              <i class="fa-solid fa-moon"></i>
+            </button>
+            <button class="rtl-toggle-btn" id="rtl-toggle" type="button" aria-label="Toggle RTL/LTR direction" title="Switch RTL/LTR">
+              <span class="rtl-label">RTL</span>
+            </button>
+          </div>
+          <a href="#newsletter-section" class="btn btn-primary btn-sm">Join Club</a>
+          <button class="hamburger" id="hamburger-btn" aria-label="Open navigation menu">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="nav-overlay" id="nav-overlay"></div>
+  <nav class="nav-drawer" id="nav-drawer">
+    <button class="nav-drawer-close" id="drawer-close" aria-label="Close menu">✕</button>
+    <a href="index.html">Home</a>
+    <a href="home2.html">Home 2</a>
+    <a href="about.html">About</a>
+    <a href="products.html">Products</a>
+    <a href="wholesale.html">Wholesale</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html">Contact</a>
+    <div style="height:1px; background:var(--beige); margin:0.5rem 0; opacity:0.6"></div>
+    <span style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--terracotta); padding:0.4rem 1rem;">Pages</span>
+    <a href="coming-soon.html"><i class="fa-solid fa-sparkles" style="color:var(--gold); margin-right:8px"></i> Coming Soon</a>
+    <a href="maintenance.html"><i class="fa-solid fa-wrench" style="color:var(--gold); margin-right:8px"></i> Maintenance</a>
+    <a href="404.html"><i class="fa-solid fa-triangle-exclamation" style="color:var(--gold); margin-right:8px"></i> 404 Error</a>
+    <a href="#newsletter-section" class="btn btn-primary">Join Club</a>
+    <div class="drawer-toggles">
+      <button class="drawer-toggle theme-toggle-btn" id="drawer-theme-toggle" type="button" aria-label="Toggle dark/light mode">
+        <i class="fa-solid fa-moon"></i> <span class="theme-text">Dark Mode</span>
+      </button>
+      <button class="drawer-toggle rtl-toggle-btn" id="drawer-rtl-toggle" type="button" aria-label="Toggle RTL/LTR">
+        <span class="rtl-label">RTL</span> <span class="rtl-text">Right-to-Left</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ════════════════════════════════════════════════════════════
+       S1 — BLOG PAGE HERO (UNIFIED 520PX HEIGHT)
+       ════════════════════════════════════════════════════════════ -->
+  <section class="page-hero hero" aria-label="Blog page hero">
+    <div class="hero-bg-overlay" style="background-image: url('images/hero_blog.jpg');"></div>
+    <div class="hero-bg-pattern"></div>
+    <div class="container hero-container">
+      <div class="hero-grid-split">
+        <div class="hero-text-col" data-aos="fade-right">
+          <span class="badge badge-gold uppercase mb-2">
+            <i class="fa-solid fa-wheat-awn"></i> Flour, Water &amp; Heritage
+          </span>
+          <h1>Pasta Stories, Tested Recipes<br>&amp; <em>Artisan Kitchen Notes.</em></h1>
+          <p class="hero-desc">Step inside our flour-dusted Melbourne pasta shop. Master the physics of flour hydration, traditional dough kneading, nonna-tested cooking methods, and seasonal sauce emulsions.</p>
+          <div class="hero-actions-wrap">
+            <a href="#featured-story" class="btn btn-gold"><i class="fa-solid fa-star"></i> Featured Guide</a>
+            <a href="#articles-grid" class="btn btn-outline-white"><i class="fa-solid fa-newspaper"></i> Latest Articles</a>
+            <a href="#recipes" class="btn btn-white"><i class="fa-solid fa-utensils"></i> Home Recipes</a>
+          </div>
+        </div>
+        <div class="hero-media-col" data-aos="fade-left" data-aos-delay="150">
+          <div class="hero-image-card">
+            <img src="images/bowl_dish_3.jpg" alt="Beautiful pasta dish plated for editorial photography">
+            <div class="hero-floating-pill">
+              <i class="fa-solid fa-book-open"></i>
+              <span>Kitchen Notes · Weekly Dispatches</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main>
+
+    <!-- ════════════════════════════════════════════════════════════
+         S2 — FEATURED EDITORIAL ARTICLE
+         ════════════════════════════════════════════════════════════ -->
+    <section class="section section-cream" id="featured-story" aria-label="Featured Story">
+      <div class="container">
+        <div class="text-center mb-4" data-aos="fade-up">
+          <span class="eyebrow"><i class="fa-solid fa-award" style="color:var(--red-primary)"></i> Editor’s Masterclass</span>
+          <h2>The Deep Dive</h2>
+        </div>
+
+        <article class="featured-article-card" data-aos="fade-up">
+          <div class="featured-article-img">
+            <span class="badge badge-gold" style="position:absolute; top:1.2rem; left:1.2rem; z-index:2">Featured Masterclass</span>
+            <img src="images/flour_mound.jpg" alt="Flour well with golden egg yolks for fresh pasta dough">
+          </div>
+          <div class="featured-article-content">
+            <div class="article-meta-row">
+              <span><i class="fa-solid fa-folder-open"></i> Dough Chemistry</span>
+              <span><i class="fa-regular fa-calendar"></i> October 2026</span>
+              <span><i class="fa-regular fa-clock"></i> 8 Min Read</span>
+            </div>
+            <h2 style="font-size:2rem; line-height:1.25; margin-bottom:1rem"><a href="blog-golden-hydration.html" style="color:inherit; text-decoration:none">The Golden Hydration Rule: Why Egg Yolks Matter More Than Water</a></h2>
+            <p>Most home cooks make the fatal error of adding cold tap water when their pasta dough feels dry. Here is why pure egg yolk fats create an elastic gluten network that produces gossamer silk ribbons instead of rubbery noodles, and how to calibrate flour by ambient room humidity.</p>
+            <div class="flex gap-sm" style="align-items:center">
+              <a href="blog-golden-hydration.html" class="btn btn-primary">Read Full Masterclass <i class="fa-solid fa-arrow-right"></i></a>
+              <span style="font-size:0.86rem; color:var(--brown-mid); font-style:italic">By Chef Domenico Rossi</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════════
+         S3 — LATEST CULINARY ARTICLES (6 POSTS)
+         ════════════════════════════════════════════════════════════ -->
+    <section class="section section-beige" id="articles-grid" aria-label="Latest Articles">
+      <div class="container">
+        <div class="text-center mb-4" data-aos="fade-up">
+          <span class="eyebrow"><i class="fa-solid fa-book-open-reader" style="color:var(--red-primary)"></i> Kitchen Insights</span>
+          <h2>Latest Articles &amp; Practical Guides</h2>
+          <p class="lead" style="max-width:680px; margin:0.6rem auto 0">Technique, preservation science, sauce pairing chemistry, and pasta making secrets from our daily production runs.</p>
+        </div>
+
+        <div class="blog-grid">
+
+          <!-- Card 1: Storage -->
+          <article class="blog-card" data-aos="fade-up">
+            <div class="blog-card-img">
+              <a href="blog-pasta-storage.html">
+                <span class="badge badge-gold" style="position:absolute; top:1rem; left:1rem; z-index:2">Storage Tips</span>
+                <img src="images/article_storage.jpg" alt="Fresh pasta storage techniques">
+              </a>
+            </div>
+            <div class="blog-card-body">
+              <div class="article-meta-row">
+                <span><i class="fa-regular fa-calendar"></i> Oct 2, 2026</span>
+                <span><i class="fa-regular fa-clock"></i> 5 Min Read</span>
+              </div>
+              <h3 class="blog-card-title"><a href="blog-pasta-storage.html" style="color:inherit; text-decoration:none">Fresh Pasta Storage: Refrigerator vs. Freezer vs. Air-Drying</a></h3>
+              <p class="blog-card-desc">Can you freeze fresh ravioli without cracking the delicate seams? Learn the exact tray-freezing method that keeps pasta fresh for 90 days without defrosting required.</p>
+              <div class="blog-card-footer">
+                <span>Dough Care</span>
+                <a href="blog-pasta-storage.html" class="read-more-link">Read Guide <i class="fa-solid fa-arrow-right"></i></a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 2: Bronze vs Teflon -->
+          <article class="blog-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="blog-card-img">
+              <a href="blog-bronze-dies.html">
+                <span class="badge badge-red" style="position:absolute; top:1rem; left:1rem; z-index:2">Traditional Methods</span>
+                <img src="images/article_bronze.jpg" alt="Traditional bronze die extruded pasta surface">
+              </a>
+            </div>
+            <div class="blog-card-body">
+              <div class="article-meta-row">
+                <span><i class="fa-regular fa-calendar"></i> Sep 28, 2026</span>
+                <span><i class="fa-regular fa-clock"></i> 6 Min Read</span>
+              </div>
+              <h3 class="blog-card-title"><a href="blog-bronze-dies.html" style="color:inherit; text-decoration:none">Bronze Dies vs. Teflon Extrusion: Why Micro-Texture Is Everything</a></h3>
+              <p class="blog-card-desc">Commercial supermarket pasta uses slick teflon dies to speed production. We explain why bronze-drawn micro-abrasions are the scientific reason sauce clings instead of sliding off.</p>
+              <div class="blog-card-footer">
+                <span>Equipment Craft</span>
+                <a href="blog-bronze-dies.html" class="read-more-link">Read Guide <i class="fa-solid fa-arrow-right"></i></a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 3: Squid Ink -->
+          <article class="blog-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="blog-card-img">
+              <a href="blog-squid-ink.html">
+                <span class="badge badge-gold" style="position:absolute; top:1rem; left:1rem; z-index:2">Noodle Varieties</span>
+                <img src="images/article_squid.jpg" alt="Squid ink tagliolini handcrafted dough">
+              </a>
+            </div>
+            <div class="blog-card-body">
+              <div class="article-meta-row">
+                <span><i class="fa-regular fa-calendar"></i> Sep 20, 2026</span>
+                <span><i class="fa-regular fa-clock"></i> 7 Min Read</span>
+              </div>
+              <h3 class="blog-card-title"><a href="blog-squid-ink.html" style="color:inherit; text-decoration:none">Kneading with Squid Ink: Achieving Jet-Black Color &amp; Ocean Brine</a></h3>
+              <p class="blog-card-desc">A step-by-step masterclass on blending cuttlefish ink into durum semolina. How to manage moisture balance, prevent sticky dough, and pair with seared scallops.</p>
+              <div class="blog-card-footer">
+                <span>Specialty Dough</span>
+                <a href="blog-squid-ink.html" class="read-more-link">Read Guide <i class="fa-solid fa-arrow-right"></i></a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 4: Salting Water -->
+          <article class="blog-card" data-aos="fade-up">
+            <div class="blog-card-img">
+              <a href="blog-salt-water.html">
+                <span class="badge badge-gold" style="position:absolute; top:1rem; left:1rem; z-index:2">Cooking Methods</span>
+                <img src="images/article_salt.jpg" alt="Boiling salted pasta water in copper pot">
+              </a>
+            </div>
+            <div class="blog-card-body">
+              <div class="article-meta-row">
+                <span><i class="fa-regular fa-calendar"></i> Sep 14, 2026</span>
+                <span><i class="fa-regular fa-clock"></i> 4 Min Read</span>
+              </div>
+              <h3 class="blog-card-title"><a href="blog-salt-water.html" style="color:inherit; text-decoration:none">How to Salt Pasta Water: The 10g per Litre Science</a></h3>
+              <p class="blog-card-desc">'Salty like the Mediterranean sea' is actually a dangerous myth that will ruin your dish. We calculate the exact salinity curve and explain why adding salt before boiling affects temperature.</p>
+              <div class="blog-card-footer">
+                <span>Culinary Science</span>
+                <a href="blog-salt-water.html" class="read-more-link">Read Guide <i class="fa-solid fa-arrow-right"></i></a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 5: Emulsification -->
+          <article class="blog-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="blog-card-img">
+              <a href="blog-pasta-water-emulsion.html">
+                <span class="badge badge-red" style="position:absolute; top:1rem; left:1rem; z-index:2">Sauce Pairing</span>
+                <img src="images/article_emulsion.jpg" alt="Emulsified glossy pasta sauce in pan">
+              </a>
+            </div>
+            <div class="blog-card-body">
+              <div class="article-meta-row">
+                <span><i class="fa-regular fa-calendar"></i> Sep 8, 2026</span>
+                <span><i class="fa-regular fa-clock"></i> 6 Min Read</span>
+              </div>
+              <h3 class="blog-card-title"><a href="blog-pasta-water-emulsion.html" style="color:inherit; text-decoration:none">The Alchemy of 'Acqua di Cottura': Emulsifying Butter &amp; Cheese</a></h3>
+              <p class="blog-card-desc">Never drain pasta water down the sink! Starch-rich cloudy water is the emulsifying binding agent that turns separated oil and grated Parmigiano into a glossy restaurant glaze.</p>
+              <div class="blog-card-footer">
+                <span>Sauce Emulsion</span>
+                <a href="blog-pasta-water-emulsion.html" class="read-more-link">Read Guide <i class="fa-solid fa-arrow-right"></i></a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 6: Sealing Ravioli -->
+          <article class="blog-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="blog-card-img">
+              <a href="blog-ravioli-sealing.html">
+                <span class="badge badge-gold" style="position:absolute; top:1rem; left:1rem; z-index:2">Technique</span>
+                <img src="images/article_sealing.jpg" alt="Artisan thumb sealing fresh ravioli parcels">
+              </a>
+            </div>
+            <div class="blog-card-body">
+              <div class="article-meta-row">
+                <span><i class="fa-regular fa-calendar"></i> Aug 30, 2026</span>
+                <span><i class="fa-regular fa-clock"></i> 5 Min Read</span>
+              </div>
+              <h3 class="blog-card-title"><a href="blog-ravioli-sealing.html" style="color:inherit; text-decoration:none">The Anatomy of Ravioli: Sealing Without Trapping Destructive Air</a></h3>
+              <p class="blog-card-desc">Why do ravioli burst in boiling water? It's not thin dough — it's trapped air expanding like a balloon. Here is the gentle cup-and-press thumb technique used by Italian grandmothers.</p>
+              <div class="blog-card-footer">
+                <span>Stuffed Pasta</span>
+                <a href="blog-ravioli-sealing.html" class="read-more-link">Read Guide <i class="fa-solid fa-arrow-right"></i></a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════════
+         S4 — STEP-BY-STEP RECIPES FROM OUR KITCHEN
+         ════════════════════════════════════════════════════════════ -->
+    <section class="section recipes-section" id="recipes" aria-label="Kitchen Recipes">
+      <div class="container">
+        <div class="text-center mb-4" data-aos="fade-up">
+          <span class="eyebrow"><i class="fa-solid fa-kitchen-set" style="color:var(--red-primary)"></i> Authentic Kitchen Tests</span>
+          <h2>Cook Like a Master Pastaiolo at Home</h2>
+          <p class="lead" style="max-width:680px; margin:0.6rem auto 0">Three foolproof recipes formulated for home gas stoves and electric induction tops. Calibrated with our fresh shop pasta.</p>
+        </div>
+
+        <div class="recipes-grid">
+
+          <!-- Recipe 1 -->
+          <div class="recipe-card" data-aos="fade-up">
+            <div class="recipe-header">
+              <span class="badge badge-red mb-1">Classic Sunday Feast</span>
+              <h3 style="font-size:1.25rem; margin-bottom:0.3rem">Tagliatelle al Ragù Bolognese</h3>
+              <div class="recipe-stats">
+                <span><i class="fa-regular fa-clock"></i> Prep: 25m</span>
+                <span><i class="fa-solid fa-fire"></i> Cook: 3h (ragù)</span>
+                <span><i class="fa-solid fa-user-group"></i> Serves 4</span>
+              </div>
+            </div>
+            <div class="recipe-body">
+              <h5 style="margin-bottom:0.6rem; font-size:0.95rem">Key Ingredients:</h5>
+              <ul class="recipe-ingredients-list">
+                <li><i class="fa-solid fa-check"></i> 500g PASTA Egg Tagliatelle Nests</li>
+                <li><i class="fa-solid fa-check"></i> 400g minced beef chuck &amp; 200g pork belly</li>
+                <li><i class="fa-solid fa-check"></i> 1 finely diced carrot, celery stalk &amp; onion</li>
+                <li><i class="fa-solid fa-check"></i> 150ml whole milk + 150ml dry Sangiovese</li>
+                <li><i class="fa-solid fa-check"></i> 2 tbsp tomato paste &amp; 300ml light beef stock</li>
+              </ul>
+              <p style="font-size:0.84rem; color:var(--brown-mid); margin-top:auto"><em>Chef's Tip:</em> Add milk before wine to tenderize meat fibers and prevent tomato acidity from toughening the beef.</p>
+            </div>
+          </div>
+
+          <!-- Recipe 2 -->
+          <div class="recipe-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="recipe-header">
+              <span class="badge badge-gold mb-1">Vegetarian Elegance</span>
+              <h3 style="font-size:1.25rem; margin-bottom:0.3rem">Ricotta Ravioli in Burro e Salvia</h3>
+              <div class="recipe-stats">
+                <span><i class="fa-regular fa-clock"></i> Prep: 10m</span>
+                <span><i class="fa-solid fa-fire"></i> Cook: 6m total</span>
+                <span><i class="fa-solid fa-user-group"></i> Serves 2–3</span>
+              </div>
+            </div>
+            <div class="recipe-body">
+              <h5 style="margin-bottom:0.6rem; font-size:0.95rem">Key Ingredients:</h5>
+              <ul class="recipe-ingredients-list">
+                <li><i class="fa-solid fa-check"></i> 400g PASTA Spinach &amp; Ricotta Ravioli</li>
+                <li><i class="fa-solid fa-check"></i> 90g unsalted cultured butter</li>
+                <li><i class="fa-solid fa-check"></i> 14 fresh grey garden sage leaves</li>
+                <li><i class="fa-solid fa-check"></i> 40g freshly shaved Parmigiano Reggiano</li>
+                <li><i class="fa-solid fa-check"></i> 30g roasted Piedmont hazelnuts (coarsely chopped)</li>
+              </ul>
+              <p style="font-size:0.84rem; color:var(--brown-mid); margin-top:auto"><em>Chef's Tip:</em> Cook butter until milk solids turn hazelnut brown ('noisette') before tossing crisp sage leaves.</p>
+            </div>
+          </div>
+
+          <!-- Recipe 3 -->
+          <div class="recipe-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="recipe-header">
+              <span class="badge badge-red mb-1">Roman Purist</span>
+              <h3 style="font-size:1.25rem; margin-bottom:0.3rem">Authentic Carbonara Romana</h3>
+              <div class="recipe-stats">
+                <span><i class="fa-regular fa-clock"></i> Prep: 10m</span>
+                <span><i class="fa-solid fa-fire"></i> Cook: 10m total</span>
+                <span><i class="fa-solid fa-user-group"></i> Serves 2</span>
+              </div>
+            </div>
+            <div class="recipe-body">
+              <h5 style="margin-bottom:0.6rem; font-size:0.95rem">Key Ingredients:</h5>
+              <ul class="recipe-ingredients-list">
+                <li><i class="fa-solid fa-check"></i> 350g PASTA Bronze Spaghetti Chitarra</li>
+                <li><i class="fa-solid fa-check"></i> 140g cured Italian Guanciale (cured pork jowl)</li>
+                <li><i class="fa-solid fa-check"></i> 4 fresh egg yolks + 1 whole pasture egg</li>
+                <li><i class="fa-solid fa-check"></i> 60g Pecorino Romano DOP (finely grated)</li>
+                <li><i class="fa-solid fa-check"></i> Coarsely crushed whole black peppercorns (toasted)</li>
+              </ul>
+              <p style="font-size:0.84rem; color:var(--brown-mid); margin-top:auto"><em>Chef's Tip:</em> NEVER use cream or garlic. Mix egg &amp; pecorino paste in a warm bowl OFF the heat to avoid scrambling.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════════
+         S5 — BEHIND THE SCENES AT PASTA
+         ════════════════════════════════════════════════════════════ -->
+    <section class="section bts-section" id="behind-scenes" aria-label="Behind the Scenes">
+      <div class="container">
+        <div class="text-center mb-4" data-aos="fade-up">
+          <span class="badge badge-gold mb-2 uppercase">Kitchen Diary</span>
+          <h2 style="color:var(--cream)">Morning Rituals: Inside The 4:00 AM Dough Room</h2>
+          <p style="color:rgba(253,246,236,0.85); max-width:650px; margin:0.6rem auto 0">While the city sleeps, our kitchen is already humming with the smell of toasted flour, warm tomato reductions, and fresh egg crates.</p>
+        </div>
+
+        <div class="bts-grid">
+
+          <div class="bts-card" data-aos="fade-up">
+            <div class="bts-icon"><i class="fa-solid fa-temperature-arrow-up"></i></div>
+            <h4>Checking The Humidity</h4>
+            <p>Melbourne weather can swing 15°C in two hours. First task: reading ambient hygrometer levels to determine exact hydration milligram adjustments for the morning batch.</p>
+          </div>
+
+          <div class="bts-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="bts-icon"><i class="fa-solid fa-egg"></i></div>
+            <h4>Cracking Yarra Valley Eggs</h4>
+            <p>Over 800 pasture-raised eggs cracked by hand every sunrise. We check yolk viscosity and vibrant marigold color to ensure dough elasticity remains unmatched.</p>
+          </div>
+
+          <div class="bts-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="bts-icon"><i class="fa-solid fa-gears"></i></div>
+            <h4>Brass &amp; Bronze Extrusion</h4>
+            <p>Our heavy Italian cast-brass dies are warmed slowly. Bronze creates micro-grooves along every ribbon cut that capture your sauce rather than letting it slip away.</p>
+          </div>
+
+          <div class="bts-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="bts-icon"><i class="fa-solid fa-shield-heart"></i></div>
+            <h4>The Nonna Quality Taste</h4>
+            <p>Before any batch is sealed, a 100g test portion is dropped into salted water, timed to the second, and tasted plain with just a drop of olive oil. Perfection or restart.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════════
+         S6 — NEWSLETTER & PASTA CLUB SUBSCRIPTION
+         ════════════════════════════════════════════════════════════ -->
+    <section class="section section-cream" id="newsletter-section" aria-label="Join The Pasta Club">
+      <div class="container">
+        <div class="newsletter-card" data-aos="fade-up">
+          <span class="badge badge-gold mb-3 uppercase">Weekly Kitchen Dispatches</span>
+          <h2>Join The PASTA Recipe &amp; Tasting Club</h2>
+          <p>Subscribe for free to receive our Sunday recipe dispatches, secret nonna pasta hacks, and first invitation to our quarterly pasta making workshops.</p>
+
+          <form class="newsletter-form" novalidate>
+            <div class="newsletter-form-inner">
+              <input type="email" name="email" placeholder="Enter your email address..." required aria-label="Email Address">
+              <button type="submit" class="btn btn-gold">
+                <i class="fa-solid fa-envelope"></i> Subscribe Free
+              </button>
+            </div>
+            <div class="form-msg" style="margin-top:1.2rem; color:#fff"></div>
+          </form>
+
+          <div class="newsletter-perks">
+            <span><i class="fa-solid fa-check"></i> Free Masterclass PDF on signup</span>
+            <span><i class="fa-solid fa-check"></i> No spam ever — 1 email per week</span>
+            <span><i class="fa-solid fa-check"></i> 10% discount on your first kitchen reserve</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="images/logo.jpg" alt="PASTA Logo">
+          <div class="brand-name">PASTA</div>
+          <p>Handcrafted fresh pasta and homemade noodles made daily in our local kitchen. From our family table to yours — with love, flour, and a little bit of magic.</p>
+          <div class="social-links">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5>Quick Links</h5>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">Our Story</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="wholesale.html">Wholesale</a></li>
+            <li><a href="blog.html">Blog &amp; Recipes</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Our Products</h5>
+          <ul>
+            <li><a href="products.html">Fresh Spaghetti</a></li>
+            <li><a href="products.html">Tagliatelle</a></li>
+            <li><a href="products.html">Fettuccine</a></li>
+            <li><a href="products.html">Ricotta Ravioli</a></li>
+            <li><a href="products.html">Potato Gnocchi</a></li>
+            <li><a href="products.html">Artisan Sauces</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Visit Us</h5>
+          <div class="contact-item"><i class="fa-solid fa-location-dot"></i><span>14 Pasta Lane, Artisan Quarter,<br>Melbourne VIC 3000</span></div>
+          <div class="contact-item"><i class="fa-solid fa-phone"></i><span>+61 3 9000 1234</span></div>
+          <div class="contact-item"><i class="fa-solid fa-envelope"></i><span>hello@pasta.com.au</span></div>
+          <div class="contact-item"><i class="fa-solid fa-clock"></i><span>Tue–Sat: 8am – 5pm<br>Sun: 9am – 2pm</span></div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 PASTA Artisan &amp; Fresh. All rights reserved.</span>
+        <div style="display:flex; gap:1.2rem; flex-wrap:wrap">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Wholesale T&amp;Cs</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-chevron-up"></i></button>
+  <script src="js/main.js"></script>
+</body>
+</html>

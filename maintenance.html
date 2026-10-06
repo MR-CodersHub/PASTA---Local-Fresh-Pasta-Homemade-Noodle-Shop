@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="PASTA Melbourne Kitchen is currently under scheduled system maintenance and extruder calibration. Wholesale and emergency restaurant dispatches remain active.">
+  <title>Scheduled Maintenance — PASTA Melbourne Artisan</title>
+  <link rel="icon" type="image/jpeg" href="images/logo.jpg">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script>
+    (function() {
+      const t = localStorage.getItem('pasta_theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      const d = localStorage.getItem('pasta_dir') || 'ltr';
+      document.documentElement.setAttribute('data-theme', t);
+      document.documentElement.setAttribute('dir', d);
+      if (d === 'rtl') document.documentElement.setAttribute('lang', 'ar');
+    })();
+  </script>
+  <style>
+    /* ══════════════════════════════════════════════════════════════
+       MAINTENANCE PAGE SPECIFIC STYLES
+       ══════════════════════════════════════════════════════════════ */
+    .m-hero {
+      position: relative;
+      min-height: 88vh;
+      display: flex;
+      align-items: center;
+      padding: clamp(100px, 12vw, 140px) 0 clamp(60px, 8vw, 90px);
+      background: radial-gradient(circle at 50% 25%, rgba(192, 57, 43, 0.12) 0%, rgba(248, 240, 227, 0) 70%), var(--cream);
+      overflow: hidden;
+    }
+
+    .m-hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('images/pasta_machine.jpg');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.10;
+      filter: saturate(1.1);
+      pointer-events: none;
+    }
+
+    .m-container {
+      max-width: 860px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .m-pulse-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: rgba(192, 57, 43, 0.12);
+      border: 1px solid rgba(192, 57, 43, 0.3);
+      color: var(--red-primary);
+      padding: 0.4rem 1.15rem;
+      border-radius: var(--radius-pill);
+      font-size: 0.82rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 1.4rem;
+    }
+
+    .m-pulse-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--red-primary);
+      box-shadow: 0 0 0 0 rgba(192, 57, 43, 0.7);
+      animation: pulseAlert 2s infinite;
+    }
+
+    @keyframes pulseAlert {
+      0% { box-shadow: 0 0 0 0 rgba(192, 57, 43, 0.7); }
+      70% { box-shadow: 0 0 0 10px rgba(192, 57, 43, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(192, 57, 43, 0); }
+    }
+
+    .m-headline {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 4.4vw, 3.6rem);
+      font-weight: 800;
+      color: var(--brown);
+      margin-bottom: 1.1rem;
+      line-height: 1.18;
+    }
+
+    .m-headline em {
+      color: var(--red-primary);
+      font-style: italic;
+    }
+
+    .m-lead {
+      font-family: var(--font-serif);
+      font-size: clamp(1.05rem, 1.35vw, 1.22rem);
+      color: var(--brown-mid);
+      max-width: 680px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.75;
+    }
+
+    /* Main Live Status Box */
+    .m-status-box {
+      background: #ffffff;
+      border-radius: var(--radius-xl);
+      border: 2px solid var(--beige);
+      padding: clamp(2rem, 4vw, 3rem);
+      box-shadow: var(--shadow-md);
+      margin: 0 auto 2.8rem;
+      text-align: left;
+    }
+
+    .m-status-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1.2rem;
+      border-bottom: 1px dashed var(--beige);
+    }
+
+    .m-status-header h3 {
+      font-size: 1.4rem;
+      color: var(--brown);
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .m-eta-pill {
+      background: rgba(212, 165, 67, 0.15);
+      border: 1px solid var(--gold);
+      color: var(--brown);
+      padding: 0.35rem 0.95rem;
+      border-radius: var(--radius-pill);
+      font-size: 0.84rem;
+      font-weight: 700;
+    }
+
+    /* Task Checklist */
+    .m-checklist {
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+      margin-bottom: 2rem;
+    }
+
+    .m-check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.9rem;
+    }
+
+    .m-check-icon {
+      font-size: 1.15rem;
+      margin-top: 0.15rem;
+    }
+
+    .m-check-icon.done {
+      color: #2e7d32;
+    }
+
+    .m-check-icon.active {
+      color: var(--gold);
+      animation: spinGear 3s linear infinite;
+    }
+
+    .m-check-icon.pending {
+      color: var(--beige-warm);
+    }
+
+    @keyframes spinGear {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .m-check-content h5 {
+      font-size: 0.98rem;
+      color: var(--brown);
+      margin-bottom: 0.2rem;
+    }
+
+    .m-check-content p {
+      font-size: 0.85rem;
+      color: var(--brown-mid);
+      margin: 0;
+    }
+
+    /* Progress bar */
+    .m-progress-bar-wrap {
+      background: var(--cream);
+      border-radius: 999px;
+      height: 12px;
+      overflow: hidden;
+      margin-bottom: 2rem;
+    }
+
+    .m-progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--red-primary) 0%, var(--gold) 100%);
+      width: 82%;
+      border-radius: 999px;
+      position: relative;
+    }
+
+    /* Emergency Foodservice Hotline */
+    .emergency-card {
+      background: linear-gradient(135deg, rgba(61, 31, 14, 0.05), rgba(192, 57, 43, 0.06));
+      border: 1px solid var(--beige);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem 1.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+    }
+
+    .emergency-info h4 {
+      font-size: 1.1rem;
+      color: var(--brown);
+      margin-bottom: 0.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .emergency-info p {
+      font-size: 0.86rem;
+      color: var(--brown-mid);
+      margin: 0;
+    }
+
+    /* Physical Store Section */
+    .m-shop-notice {
+      background: #ffffff;
+      padding: clamp(50px, 6vw, 80px) 0;
+      border-top: 1px solid var(--beige);
+      border-bottom: 1px solid var(--beige);
+    }
+
+    .m-shop-split {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .m-shop-card {
+      background: var(--cream);
+      border: 1px solid var(--beige);
+      border-radius: var(--radius-lg);
+      padding: 2.2rem 2rem;
+      text-align: left;
+    }
+
+    .m-shop-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.8rem;
+      color: var(--brown);
+    }
+
+    .m-shop-card p {
+      color: var(--brown-mid);
+      font-size: 0.94rem;
+      line-height: 1.7;
+      margin-bottom: 1.4rem;
+    }
+
+    .m-shop-meta-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .m-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-size: 0.9rem;
+      color: var(--brown);
+    }
+
+    .m-meta-item i {
+      color: var(--terracotta);
+      width: 18px;
+    }
+
+    /* Dark Mode Overrides */
+    [data-theme="dark"] .m-hero {
+      background: radial-gradient(circle at 50% 25%, rgba(192, 57, 43, 0.15) 0%, rgba(18, 7, 3, 0) 70%), #120703;
+    }
+    [data-theme="dark"] .m-headline {
+      color: #ffffff;
+    }
+    [data-theme="dark"] .m-lead {
+      color: rgba(255, 255, 255, 0.82);
+    }
+    [data-theme="dark"] .m-status-box {
+      background: #190a04;
+      border-color: rgba(212, 165, 67, 0.25);
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.6);
+    }
+    [data-theme="dark"] .m-status-header {
+      border-bottom-color: rgba(212, 165, 67, 0.2);
+    }
+    [data-theme="dark"] .m-status-header h3 {
+      color: #ffffff;
+    }
+    [data-theme="dark"] .m-eta-pill {
+      background: rgba(212, 165, 67, 0.15);
+      color: var(--gold-light);
+    }
+    [data-theme="dark"] .m-check-content h5 {
+      color: #ffffff;
+    }
+    [data-theme="dark"] .m-check-content p {
+      color: rgba(255, 255, 255, 0.75);
+    }
+    [data-theme="dark"] .m-progress-bar-wrap {
+      background: #0f0502;
+    }
+    [data-theme="dark"] .emergency-card {
+      background: #220d06;
+      border-color: rgba(212, 165, 67, 0.3);
+    }
+    [data-theme="dark"] .emergency-info h4 {
+      color: #ffffff;
+    }
+    [data-theme="dark"] .emergency-info p {
+      color: rgba(255, 255, 255, 0.78);
+    }
+    [data-theme="dark"] .m-shop-notice {
+      background: #140703;
+      border-color: rgba(212, 165, 67, 0.2);
+    }
+    [data-theme="dark"] .m-shop-card {
+      background: #1d0b05;
+      border-color: rgba(212, 165, 67, 0.22);
+    }
+    [data-theme="dark"] .m-shop-card h3 {
+      color: #ffffff;
+    }
+    [data-theme="dark"] .m-shop-card p {
+      color: rgba(255, 255, 255, 0.78);
+    }
+    [data-theme="dark"] .m-meta-item {
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    /* RTL Support */
+    [dir="rtl"] .m-status-box,
+    [dir="rtl"] .m-shop-card {
+      text-align: right;
+    }
+    [dir="rtl"] .m-check-item {
+      flex-direction: row-reverse;
+      text-align: right;
+    }
+    [dir="rtl"] .emergency-card {
+      flex-direction: row-reverse;
+      text-align: right;
+    }
+    [dir="rtl"] .m-meta-item {
+      flex-direction: row-reverse;
+      text-align: right;
+    }
+
+    @media (max-width: 900px) {
+      .m-shop-split {
+        grid-template-columns: 1fr;
+      }
+      .emergency-card {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="progress-bar"></div>
+
+  <!-- ════════════════════════════════════════════════════════════
+       NAVIGATION BAR
+       ════════════════════════════════════════════════════════════ -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="index.html" class="nav-logo" aria-label="PASTA Melbourne homepage">
+          <img src="images/logo.jpg" alt="PASTA Melbourne artisan logo">
+          <div class="nav-logo-text">
+            <span class="brand">PASTA</span>
+            <span class="tagline">Artisan &amp; Fresh</span>
+          </div>
+        </a>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="home2.html">Home 2</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="wholesale.html">Wholesale</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li class="nav-item-dropdown">
+            <a href="#" class="dropdown-trigger">Pages <i class="fa-solid fa-chevron-down dropdown-arrow"></i></a>
+            <ul class="nav-dropdown-menu">
+              <li><a href="coming-soon.html"><i class="fa-solid fa-sparkles"></i> Coming Soon</a></li>
+              <li><a href="maintenance.html"><i class="fa-solid fa-wrench"></i> Maintenance</a></li>
+              <li><a href="404.html"><i class="fa-solid fa-triangle-exclamation"></i> 404 Error</a></li>
+            </ul>
+          </li>
+        </ul>
+        <div class="nav-actions">
+          <div class="header-toggle-group">
+            <button class="theme-toggle-btn" id="theme-toggle" type="button" aria-label="Toggle dark/light mode" title="Switch Theme">
+              <i class="fa-solid fa-moon"></i>
+            </button>
+            <button class="rtl-toggle-btn" id="rtl-toggle" type="button" aria-label="Toggle RTL/LTR direction" title="Switch RTL/LTR">
+              <span class="rtl-label">RTL</span>
+            </button>
+          </div>
+          <a href="contact.html" class="btn btn-primary btn-sm">Contact Kitchen</a>
+          <button class="hamburger" id="hamburger-btn" aria-label="Open navigation menu">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Drawer -->
+  <div class="nav-overlay" id="nav-overlay"></div>
+  <nav class="nav-drawer" id="nav-drawer" aria-label="Mobile navigation drawer">
+    <button class="nav-drawer-close" id="drawer-close" aria-label="Close menu">✕</button>
+    <a href="index.html">Home</a>
+    <a href="home2.html">Home 2</a>
+    <a href="about.html">About</a>
+    <a href="products.html">Products</a>
+    <a href="wholesale.html">Wholesale</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html">Contact</a>
+    <div style="height:1px; background:var(--beige); margin:0.5rem 0; opacity:0.6"></div>
+    <span style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--terracotta); padding:0.4rem 1rem;">Pages</span>
+    <a href="coming-soon.html"><i class="fa-solid fa-sparkles" style="color:var(--gold); margin-right:8px"></i> Coming Soon</a>
+    <a href="maintenance.html"><i class="fa-solid fa-wrench" style="color:var(--gold); margin-right:8px"></i> Maintenance</a>
+    <a href="404.html"><i class="fa-solid fa-triangle-exclamation" style="color:var(--gold); margin-right:8px"></i> 404 Error</a>
+    <a href="contact.html" class="btn btn-primary">Contact Kitchen</a>
+    <div class="drawer-toggles">
+      <button class="drawer-toggle theme-toggle-btn" id="drawer-theme-toggle" type="button" aria-label="Toggle dark/light mode">
+        <i class="fa-solid fa-moon"></i> <span class="theme-text">Dark Mode</span>
+      </button>
+      <button class="drawer-toggle rtl-toggle-btn" id="drawer-rtl-toggle" type="button" aria-label="Toggle RTL/LTR">
+        <span class="rtl-label">RTL</span> <span class="rtl-text">Right-to-Left</span>
+      </button>
+    </div>
+  </nav>
+
+  <main>
+    <!-- ════════════════════════════════════════════════════════════
+         S1 — SCHEDULED MAINTENANCE HERO
+         ════════════════════════════════════════════════════════════ -->
+    <section class="m-hero" aria-label="Maintenance Status Hero">
+      <div class="m-hero-bg"></div>
+
+      <div class="container">
+        <div class="m-container" data-aos="fade-up">
+
+          <!-- Alert Pulse Badge -->
+          <div class="m-pulse-badge">
+            <span class="m-pulse-dot"></span> Routine System Servicing Active
+          </div>
+
+          <h1 class="m-headline">Polishing the Bronze Dies &amp; <em>Tuning the Kitchen.</em></h1>
+          <p class="m-lead">
+            We are performing scheduled maintenance on our online ordering servers and calibrating our Italian bronze extrusion matrices. We will be back serving shortly.
+          </p>
+
+          <!-- Status & Task Monitor Box -->
+          <div class="m-status-box">
+            <div class="m-status-header">
+              <h3><i class="fa-solid fa-gauge-high" style="color:var(--red-primary)"></i> Current Maintenance Progress</h3>
+              <div class="m-eta-pill">
+                <i class="fa-solid fa-clock"></i> ETA: Today, 2:00 PM AEST
+              </div>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="m-progress-bar-wrap">
+              <div class="m-progress-bar-fill"></div>
+            </div>
+
+            <!-- Task Checklist -->
+            <div class="m-checklist">
+              <div class="m-check-item">
+                <i class="fa-solid fa-circle-check m-check-icon done"></i>
+                <div class="m-check-content">
+                  <h5>Extrusion Dies Ultrasonic Cleaning &amp; Alignment</h5>
+                  <p>Completed at 10:15 AM — All brass and bronze moulds sanitized to food-grade perfection.</p>
+                </div>
+              </div>
+
+              <div class="m-check-item">
+                <i class="fa-solid fa-circle-check m-check-icon done"></i>
+                <div class="m-check-content">
+                  <h5>Semolina Flour Storage &amp; Temperature Vault Sync</h5>
+                  <p>Completed at 11:30 AM — Relative humidity held at 55% and 18°C.</p>
+                </div>
+              </div>
+
+              <div class="m-check-item">
+                <i class="fa-solid fa-gear m-check-icon active"></i>
+                <div class="m-check-content">
+                  <h5>Wholesale Ordering Portal &amp; Live Stock Sync</h5>
+                  <p>In Progress (82% done) — Updating secure trade checkout and batch serial tracking.</p>
+                </div>
+              </div>
+
+              <div class="m-check-item">
+                <i class="fa-regular fa-clock m-check-icon pending"></i>
+                <div class="m-check-content">
+                  <h5>Morning Chilled Logistics Final Dispatch Check</h5>
+                  <p>Pending — Scheduled for automated verification immediately upon server reboot.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Emergency Hotline Box -->
+            <div class="emergency-card">
+              <div class="emergency-info">
+                <h4><i class="fa-solid fa-phone-volume" style="color:var(--terracotta)"></i> Urgent Foodservice or Chef Orders?</h4>
+                <p>Standing morning wholesale restaurant deliveries are unaffected. Our commercial team is on call.</p>
+              </div>
+              <div style="display:flex; gap:0.75rem; flex-wrap:wrap">
+                <a href="tel:+61390001234" class="btn btn-primary btn-sm"><i class="fa-solid fa-phone"></i> +61 3 9000 1234</a>
+                <a href="mailto:wholesale@pasta.com.au" class="btn btn-secondary btn-sm"><i class="fa-solid fa-envelope"></i> Email Wholesale</a>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Quick Return Buttons -->
+          <div style="display:flex; justify-content:center; gap:1rem; flex-wrap:wrap">
+            <a href="index.html" class="btn btn-secondary">
+              <i class="fa-solid fa-house"></i> Home
+            </a>
+            <a href="coming-soon.html" class="btn btn-gold">
+              <i class="fa-solid fa-sparkles"></i> Coming Soon Preview
+            </a>
+            <a href="contact.html" class="btn btn-white">
+              <i class="fa-solid fa-location-dot"></i> Visit Shop
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════════
+         S2 — PHYSICAL SHOP VISITING DETAILS
+         ════════════════════════════════════════════════════════════ -->
+    <section class="m-shop-notice" aria-label="Physical Shop Notice">
+      <div class="container">
+        <div class="m-shop-split">
+          <div class="m-shop-card" data-aos="fade-right">
+            <span class="badge badge-gold uppercase mb-2">
+              <i class="fa-solid fa-door-open"></i> Retail Shop Open
+            </span>
+            <h3>Our Melbourne Shop Counter Is Open For Walk-Ins</h3>
+            <p>While our digital kitchen experiences a brief planned upgrade, our physical Melbourne shop at 14 Pasta Lane is buzzing! Fresh tagliatelle, agnolotti, and warm pomodoro jars are available across the counter.</p>
+            
+            <div class="m-shop-meta-list">
+              <div class="m-meta-item">
+                <i class="fa-solid fa-location-dot"></i>
+                <span>14 Pasta Lane, Artisan Quarter, Melbourne VIC 3000</span>
+              </div>
+              <div class="m-meta-item">
+                <i class="fa-solid fa-clock"></i>
+                <span>Open Today: 8:00 AM – 5:00 PM</span>
+              </div>
+              <div class="m-meta-item">
+                <i class="fa-solid fa-phone"></i>
+                <span>Shop Front Desk: +61 3 9000 1234</span>
+              </div>
+            </div>
+
+            <div style="display:flex; gap:0.9rem; flex-wrap:wrap">
+              <a href="contact.html" class="btn btn-primary btn-sm"><i class="fa-solid fa-map-location-dot"></i> View Location Map</a>
+              <a href="products.html" class="btn btn-secondary btn-sm"><i class="fa-solid fa-utensils"></i> View Products Menu</a>
+            </div>
+          </div>
+
+          <div style="border-radius:var(--radius-lg); overflow:hidden; box-shadow:var(--shadow-lg); height:100%; min-height:300px" data-aos="fade-left">
+            <img src="images/italian_dining.jpg" alt="PASTA Melbourne Shop Front Dining Ambience" class="img-fill">
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ════════════════════════════════════════════════════════════
+       FOOTER
+       ════════════════════════════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="images/logo.jpg" alt="PASTA Logo">
+          <div class="brand-name">PASTA</div>
+          <p>Handcrafted fresh pasta and homemade noodles made daily in our local kitchen. From our family table to yours — with love, flour, and a little bit of magic.</p>
+          <div class="social-links">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5>Quick Links</h5>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">Our Story</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="wholesale.html">Wholesale</a></li>
+            <li><a href="blog.html">Blog &amp; Recipes</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="coming-soon.html">Coming Soon</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Our Products</h5>
+          <ul>
+            <li><a href="products.html">Fresh Spaghetti</a></li>
+            <li><a href="products.html">Tagliatelle</a></li>
+            <li><a href="products.html">Fettuccine</a></li>
+            <li><a href="products.html">Ricotta Ravioli</a></li>
+            <li><a href="products.html">Potato Gnocchi</a></li>
+            <li><a href="products.html">Artisan Sauces</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Visit Us</h5>
+          <div class="contact-item"><i class="fa-solid fa-location-dot"></i><span>14 Pasta Lane, Artisan Quarter,<br>Melbourne VIC 3000</span></div>
+          <div class="contact-item"><i class="fa-solid fa-phone"></i><span>+61 3 9000 1234</span></div>
+          <div class="contact-item"><i class="fa-solid fa-envelope"></i><span>hello@pasta.com.au</span></div>
+          <div class="contact-item"><i class="fa-solid fa-clock"></i><span>Tue–Sat: 8am – 5pm<br>Sun: 9am – 2pm</span></div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 PASTA Artisan &amp; Fresh. All rights reserved.</span>
+        <div style="display:flex; gap:1.2rem; flex-wrap:wrap">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="maintenance.html">Maintenance Status</a>
+          <a href="404.html">404 Error</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-chevron-up"></i></button>
+
+  <!-- Core Scripts -->
+  <script src="js/main.js"></script>
+</body>
+</html>

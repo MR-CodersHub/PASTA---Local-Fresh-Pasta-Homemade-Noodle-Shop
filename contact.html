@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contact PASTA in Melbourne. Visit our artisan pasta shop, place custom catering enquiries, book pasta workshops, or ask our chefs about cooking techniques.">
+  <title>Contact Us &amp; Visit Our Kitchen — PASTA</title>
+  <link rel="icon" type="image/jpeg" href="images/logo.jpg">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script>
+    (function() {
+      const t = localStorage.getItem('pasta_theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      const d = localStorage.getItem('pasta_dir') || 'ltr';
+      document.documentElement.setAttribute('data-theme', t);
+      document.documentElement.setAttribute('dir', d);
+      if (d === 'rtl') document.documentElement.setAttribute('lang', 'ar');
+    })();
+  </script>
+  <style>
+    /* ─── CONTACT PAGE SPECIFIC STYLES ─── */
+
+    /* Info Cards Grid */
+    .contact-info-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.8rem;
+    }
+    .info-card {
+      background: #fff;
+      border-radius: var(--radius-lg);
+      padding: 2.2rem 1.6rem;
+      border: 1px solid var(--beige);
+      box-shadow: var(--shadow-sm);
+      text-align: center;
+      transition: all var(--t-mid) var(--ease);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .info-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--terracotta);
+    }
+    .info-icon-circle {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: var(--cream);
+      color: var(--red-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      margin-bottom: 1.2rem;
+      transition: all var(--t-fast) var(--ease);
+    }
+    .info-card:hover .info-icon-circle {
+      background: var(--red-primary);
+      color: #fff;
+    }
+    .info-card h4 {
+      font-size: 1.15rem;
+      margin-bottom: 0.5rem;
+    }
+    .info-card p {
+      font-size: 0.88rem;
+      color: var(--brown-mid);
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+    .info-card a {
+      color: var(--red-primary);
+      font-weight: 700;
+      font-size: 0.92rem;
+      margin-top: auto;
+    }
+    .info-card a:hover {
+      text-decoration: underline;
+    }
+
+    /* Form & Office Split */
+    .contact-main-split {
+      display: grid;
+      grid-template-columns: 1.3fr 0.9fr;
+      gap: 3.5rem;
+      align-items: start;
+    }
+    .form-wrapper-box {
+      background: #fff;
+      border-radius: var(--radius-lg);
+      padding: 2.8rem;
+      border: 1px solid var(--beige);
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Map & Directions Showcase */
+    .map-showcase {
+      background: var(--burgundy-deep);
+      color: var(--cream);
+      position: relative;
+    }
+    .map-card-container {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 2.5rem;
+      align-items: center;
+    }
+    .interactive-map-visual {
+      background: linear-gradient(135deg, #2a1515 0%, #3e1b1b 100%);
+      border: 2px solid rgba(212, 165, 67, 0.35);
+      border-radius: var(--radius-xl);
+      padding: 3rem 2rem;
+      text-align: center;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      overflow: hidden;
+    }
+    .map-pin-pulse {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background: var(--red-primary);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      margin: 0 auto 1.5rem;
+      box-shadow: 0 0 0 0 rgba(192, 57, 43, 0.7);
+      animation: pinPulse 2s infinite;
+    }
+    @keyframes pinPulse {
+      0% { box-shadow: 0 0 0 0 rgba(192, 57, 43, 0.7); }
+      70% { box-shadow: 0 0 0 20px rgba(192, 57, 43, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(192, 57, 43, 0); }
+    }
+    .transit-item {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.4rem;
+    }
+    .transit-item i {
+      font-size: 1.4rem;
+      color: var(--gold);
+      margin-top: 0.2rem;
+    }
+    .transit-item h5 {
+      color: var(--gold-light);
+      margin-bottom: 0.2rem;
+      font-size: 1rem;
+    }
+    .transit-item p {
+      font-size: 0.86rem;
+      opacity: 0.85;
+      margin: 0;
+    }
+
+    /* Accordion FAQ */
+    .faq-container {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .accordion-item {
+      background: #fff;
+      border: 1px solid var(--beige-dark);
+      border-radius: var(--radius-md);
+      margin-bottom: 1rem;
+      overflow: hidden;
+      transition: border-color var(--t-fast) var(--ease), box-shadow var(--t-fast) var(--ease);
+    }
+    .accordion-item:has(.accordion-btn.active) {
+      border-color: var(--terracotta);
+      box-shadow: var(--shadow-sm);
+    }
+    .accordion-btn {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 1.4rem 1.6rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      text-align: left;
+      font-family: var(--font-display);
+      font-size: 1.12rem;
+      font-weight: 700;
+      color: var(--brown);
+      cursor: pointer;
+      gap: 1rem;
+      transition: color var(--t-fast) var(--ease);
+    }
+    .accordion-btn:hover {
+      color: var(--red-primary);
+    }
+    .accordion-btn i {
+      font-size: 0.95rem;
+      color: var(--terracotta);
+      transition: transform var(--t-mid) var(--ease);
+    }
+    .accordion-btn.active i {
+      transform: rotate(180deg);
+      color: var(--red-primary);
+    }
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0, 1, 0, 1), padding 0.3s var(--ease);
+      background: #fff;
+      padding: 0 1.6rem;
+    }
+    .accordion-content.open {
+      max-height: 350px;
+      padding: 0.4rem 1.6rem 1.6rem;
+      border-top: 1px dashed var(--beige);
+    }
+    .accordion-content p {
+      font-size: 0.92rem;
+      color: var(--brown-mid);
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    /* Final CTA */
+    .contact-final-cta {
+      background: linear-gradient(135deg, var(--red-dark) 0%, var(--red-primary) 60%, var(--terracotta) 100%);
+      color: #fff;
+      text-align: center;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .contact-info-grid { grid-template-columns: repeat(2, 1fr); }
+      .contact-main-split { grid-template-columns: 1fr; }
+      .map-card-container { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .contact-info-grid { grid-template-columns: 1fr; }
+      .form-wrapper-box { padding: 1.8rem 1.4rem; }
+    }
+
+    /* ── Dark Theme Overrides for Contact Page ── */
+    [data-theme="dark"] .info-card {
+      background: #180803 !important;
+      border-color: rgba(212, 165, 67, 0.25) !important;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
+    }
+    [data-theme="dark"] .info-card:hover {
+      border-color: var(--gold) !important;
+      background: #220c06 !important;
+      transform: translateY(-6px);
+      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.6) !important;
+    }
+    [data-theme="dark"] .info-icon-circle {
+      background: rgba(212, 165, 67, 0.15) !important;
+      color: var(--gold) !important;
+      border: 1px solid rgba(212, 165, 67, 0.3) !important;
+    }
+    [data-theme="dark"] .info-card:hover .info-icon-circle {
+      background: var(--red-primary) !important;
+      color: #ffffff !important;
+      border-color: var(--red-primary) !important;
+    }
+    [data-theme="dark"] .info-card h4 {
+      color: #ffffff !important;
+    }
+    [data-theme="dark"] .info-card p {
+      color: rgba(255, 255, 255, 0.82) !important;
+    }
+    [data-theme="dark"] .info-card p strong {
+      color: #ffffff !important;
+    }
+    [data-theme="dark"] .info-card a {
+      color: var(--gold) !important;
+    }
+    [data-theme="dark"] .info-card a:hover {
+      color: #ffffff !important;
+    }
+    [data-theme="dark"] .form-wrapper-box {
+      background: #180803 !important;
+      border-color: rgba(212, 165, 67, 0.25) !important;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
+      color: #fdfaf5 !important;
+    }
+    [data-theme="dark"] .form-wrapper-box h2,
+    [data-theme="dark"] .form-wrapper-box label {
+      color: #ffffff !important;
+    }
+    [data-theme="dark"] .form-wrapper-box p {
+      color: rgba(255, 255, 255, 0.82) !important;
+    }
+    [data-theme="dark"] .form-wrapper-box .form-control {
+      background: #120602 !important;
+      border-color: rgba(212, 165, 67, 0.3) !important;
+      color: #ffffff !important;
+    }
+    [data-theme="dark"] .form-wrapper-box .form-control:focus {
+      border-color: var(--gold) !important;
+      box-shadow: 0 0 0 3px rgba(212, 165, 67, 0.2) !important;
+    }
+    [data-theme="dark"] .contact-details-box {
+      background: #180803 !important;
+      border-color: rgba(212, 165, 67, 0.25) !important;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
+    }
+    [data-theme="dark"] .contact-details-box h3,
+    [data-theme="dark"] .contact-details-box h5 {
+      color: #ffffff !important;
+    }
+    [data-theme="dark"] .contact-details-box p {
+      color: rgba(255, 255, 255, 0.82) !important;
+    }
+    [data-theme="dark"] .contact-details-box div[style*="border-top"] {
+      border-top-color: rgba(212, 165, 67, 0.2) !important;
+    }
+    [data-theme="dark"] .accordion-item {
+      background: #180803 !important;
+      border-color: rgba(212, 165, 67, 0.22) !important;
+    }
+    [data-theme="dark"] .accordion-btn {
+      color: #ffffff !important;
+    }
+    [data-theme="dark"] .accordion-btn.active {
+      background: rgba(212, 165, 67, 0.08) !important;
+      color: var(--gold) !important;
+    }
+    [data-theme="dark"] .accordion-content {
+      border-top: 1px solid rgba(212, 165, 67, 0.15) !important;
+    }
+    [data-theme="dark"] .accordion-content p {
+      color: rgba(255, 255, 255, 0.82) !important;
+    }
+  </style>
+</head>
+<body>
+  <div id="progress-bar"></div>
+
+  <!-- NAVIGATION -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="index.html" class="nav-logo">
+          <img src="images/logo.jpg" alt="PASTA Logo">
+          <div class="nav-logo-text">
+            <span class="brand">PASTA</span>
+            <span class="tagline">Artisan &amp; Fresh</span>
+          </div>
+        </a>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="home2.html">Home 2</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="wholesale.html">Wholesale</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li class="nav-item-dropdown">
+            <a href="#" class="dropdown-trigger">Pages <i class="fa-solid fa-chevron-down dropdown-arrow"></i></a>
+            <ul class="nav-dropdown-menu">
+              <li><a href="coming-soon.html"><i class="fa-solid fa-sparkles"></i> Coming Soon</a></li>
+              <li><a href="maintenance.html"><i class="fa-solid fa-wrench"></i> Maintenance</a></li>
+              <li><a href="404.html"><i class="fa-solid fa-triangle-exclamation"></i> 404 Error</a></li>
+            </ul>
+          </li>
+        </ul>
+        <div class="nav-actions">
+          <div class="header-toggle-group">
+            <button class="theme-toggle-btn" id="theme-toggle" type="button" aria-label="Toggle dark/light mode" title="Switch Theme">
+              <i class="fa-solid fa-moon"></i>
+            </button>
+            <button class="rtl-toggle-btn" id="rtl-toggle" type="button" aria-label="Toggle RTL/LTR direction" title="Switch RTL/LTR">
+              <span class="rtl-label">RTL</span>
+            </button>
+          </div>
+          <a href="#contact-form-section" class="btn btn-primary btn-sm">Get in Touch</a>
+          <button class="hamburger" id="hamburger-btn" aria-label="Open navigation menu">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="nav-overlay" id="nav-overlay"></div>
+  <nav class="nav-drawer" id="nav-drawer">
+    <button class="nav-drawer-close" id="drawer-close" aria-label="Close menu">✕</button>
+    <a href="index.html">Home</a>
+    <a href="home2.html">Home 2</a>
+    <a href="about.html">About</a>
+    <a href="products.html">Products</a>
+    <a href="wholesale.html">Wholesale</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html">Contact</a>
+    <div style="height:1px; background:var(--beige); margin:0.5rem 0; opacity:0.6"></div>
+    <span style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--terracotta); padding:0.4rem 1rem;">Pages</span>
+    <a href="coming-soon.html"><i class="fa-solid fa-sparkles" style="color:var(--gold); margin-right:8px"></i> Coming Soon</a>
+    <a href="maintenance.html"><i class="fa-solid fa-wrench" style="color:var(--gold); margin-right:8px"></i> Maintenance</a>
+    <a href="404.html"><i class="fa-solid fa-triangle-exclamation" style="color:var(--gold); margin-right:8px"></i> 404 Error</a>
+    <a href="#contact-form-section" class="btn btn-primary">Get in Touch</a>
+    <div class="drawer-toggles">
+      <button class="drawer-toggle theme-toggle-btn" id="drawer-theme-toggle" type="button" aria-label="Toggle dark/light mode">
+        <i class="fa-solid fa-moon"></i> <span class="theme-text">Dark Mode</span>
+      </button>
+      <button class="drawer-toggle rtl-toggle-btn" id="drawer-rtl-toggle" type="button" aria-label="Toggle RTL/LTR">
+        <span class="rtl-label">RTL</span> <span class="rtl-text">Right-to-Left</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ════════════════════════════════════════════════════════════
+       S1 — CONTACT PAGE HERO (UNIFIED 520PX HEIGHT)
+       ════════════════════════════════════════════════════════════ -->
+  <section class="page-hero hero" aria-label="Contact page hero">
+    <div class="hero-bg-overlay" style="background-image: url('images/hero_contact.jpg');"></div>
+    <div class="hero-bg-pattern"></div>
+    <div class="container hero-container">
+      <div class="hero-grid-split">
+        <div class="hero-text-col" data-aos="fade-right">
+          <span class="badge badge-gold uppercase mb-2">
+            <i class="fa-solid fa-location-dot"></i> We Are Here For You
+          </span>
+          <h1>Visit Our Melbourne Kitchen<br>&amp; <em>Get in Touch.</em></h1>
+          <p class="hero-desc">Have a custom catering query, seeking cooking advice from our chefs, or planning a visit to sample warm fresh pasta? We’re always delighted to chat and welcome you to our shop.</p>
+          <div class="hero-actions-wrap">
+            <a href="#contact-form-section" class="btn btn-gold"><i class="fa-solid fa-paper-plane"></i> Send a Message</a>
+            <a href="#visit-map" class="btn btn-outline-white"><i class="fa-solid fa-location-dot"></i> View Location</a>
+            <a href="#faq" class="btn btn-white"><i class="fa-solid fa-circle-question"></i> Browse FAQ</a>
+          </div>
+        </div>
+        <div class="hero-media-col" data-aos="fade-left" data-aos-delay="150">
+          <div class="hero-image-card">
+            <img src="images/italian_dining.jpg" alt="Warm Italian dining room ambience at PASTA shop">
+            <div class="hero-floating-pill">
+              <i class="fa-solid fa-clock"></i>
+              <span>Open Tue–Sat from 8:00 AM</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main>
+
+    <!-- ════════════════════════════════════════════════════════════
+         S2 — CONTACT INFO CARDS
+         ════════════════════════════════════════════════════════════ -->
+    <section class="section section-cream" id="contact-info" aria-label="Contact Information">
+      <div class="container">
+        <div class="contact-info-grid">
+
+          <!-- Card 1 -->
+          <div class="info-card" data-aos="fade-up">
+            <div class="info-icon-circle"><i class="fa-solid fa-location-dot"></i></div>
+            <h4>Our Shop Address</h4>
+            <p>14 Pasta Lane, Artisan Quarter<br>Melbourne VIC 3000<br>Australia</p>
+            <a href="#visit-map">Get Directions <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="info-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="info-icon-circle"><i class="fa-solid fa-phone"></i></div>
+            <h4>Phone &amp; Kitchen</h4>
+            <p>General Enquiries &amp; Orders:<br><strong>+61 3 9000 1234</strong><br>Wholesale: +61 3 9000 1238</p>
+            <a href="tel:+61390001234">Call Directly <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="info-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="info-icon-circle"><i class="fa-solid fa-envelope"></i></div>
+            <h4>Email Inquiries</h4>
+            <p>Customer Support:<br><strong>hello@pasta.com.au</strong><br>Wholesale: trade@pasta.com.au</p>
+            <a href="mailto:hello@pasta.com.au">Send Email <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="info-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="info-icon-circle"><i class="fa-solid fa-clock"></i></div>
+            <h4>Opening Hours</h4>
+            <p>Tue – Fri: 8:00am – 5:30pm<br>Saturday: 8:00am – 4:00pm<br>Sunday: 9:00am – 2:00pm<br><em>(Mon: Closed for kneading)</em></p>
+            <a href="products.html">Reserve Pickup <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════════
+         S3 — CONTACT & GENERAL ENQUIRY FORM
+         ════════════════════════════════════════════════════════════ -->
+    <section class="section section-beige" id="contact-form-section" aria-label="Contact Form">
+      <div class="container">
+        <div class="contact-main-split">
+
+          <!-- Left Form -->
+          <div class="form-wrapper-box" data-aos="fade-right">
+            <span class="eyebrow"><i class="fa-solid fa-envelope-open-text" style="color:var(--red-primary)"></i> Direct Communication</span>
+            <h2>Send Us a Message</h2>
+            <p style="color:var(--brown-mid); margin:0.8rem 0 1.8rem">Fill out the form below. Whether you want to enquire about wedding pasta catering, recipe questions, or private workshops, we reply promptly.</p>
+
+            <form class="contact-form" novalidate>
+              <div class="grid grid-2" style="gap:1rem">
+                <div class="form-group">
+                  <label class="form-label" for="c-name">Your Full Name *</label>
+                  <input type="text" id="c-name" name="name" class="form-control" placeholder="e.g. Sofia Bellini" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="c-email">Email Address *</label>
+                  <input type="email" id="c-email" name="email" class="form-control" placeholder="sofia@example.com" required>
+                </div>
+              </div>
+
+              <div class="grid grid-2" style="gap:1rem">
+                <div class="form-group">
+                  <label class="form-label" for="c-phone">Phone Number</label>
+                  <input type="tel" id="c-phone" name="phone" class="form-control" placeholder="+61 400 123 456">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="c-subject">Enquiry Subject *</label>
+                  <select id="c-subject" name="subject" class="form-control" required>
+                    <option value="">-- Please select a subject --</option>
+                    <option value="general">General Question</option>
+                    <option value="catering">Private Party / Catering Order</option>
+                    <option value="workshops">Pasta Making Masterclasses</option>
+                    <option value="wholesale">Wholesale &amp; Restaurant Trade</option>
+                    <option value="press">Press, Media &amp; Partnerships</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="c-message">Your Message *</label>
+                <textarea id="c-message" name="message" class="form-control" rows="5" placeholder="How can our kitchen help you today? Please include any dates, guest numbers, or dietary requirements." required></textarea>
+              </div>
+
+              <div class="form-msg"></div>
+
+              <button type="submit" class="btn btn-primary btn-lg" style="width:100%; justify-content:center">
+                <i class="fa-solid fa-paper-plane"></i> Send Message
+              </button>
+            </form>
+          </div>
+
+          <!-- Right Details -->
+          <div data-aos="fade-left" data-aos-delay="150">
+            <div class="contact-details-box" style="background:#fff; border-radius:var(--radius-lg); padding:2.5rem; border:1px solid var(--beige); box-shadow:var(--shadow-sm)">
+              <h3 style="margin-bottom:1.2rem">Warm Welcomes Daily</h3>
+              <p style="color:var(--brown-mid); line-height:1.7; margin-bottom:1.5rem">Our shop is designed with an open-view glass partition so visitors can watch our pastaioli rolling sheets of dough, filling agnolotti, and hanging tagliatelle ribbons.</p>
+
+              <div style="border-top:1px dashed var(--beige); padding-top:1.4rem; margin-bottom:1.4rem">
+                <h5 style="margin-bottom:0.4rem; color:var(--red-primary)"><i class="fa-solid fa-heart"></i> Daily Pasta Tasting Plate</h5>
+                <p style="font-size:0.88rem; color:var(--brown-mid); margin:0">Every Saturday between 11:30am and 1:30pm, we offer warm 2-bite tasting bowls of our featured pasta &amp; sauce of the week. Complimentary for all visitors.</p>
+              </div>
+
+              <div style="border-top:1px dashed var(--beige); padding-top:1.4rem; margin-bottom:1.4rem">
+                <h5 style="margin-bottom:0.4rem; color:var(--brown)"><i class="fa-solid fa-wheat-awn"></i> Pre-Ordering Advice</h5>
+                <p style="font-size:0.88rem; color:var(--brown-mid); margin:0">We make a set quantity of dough each morning. For specific shapes or orders over 1.5kg, we warmly advise placing an enquiry 24 hours ahead to avoid missing out.</p>
+              </div>
+
+              <div style="border-top:1px dashed var(--beige); padding-top:1.4rem">
+                <h5 style="margin-bottom:0.4rem; color:var(--gold)"><i class="fa-solid fa-gift"></i> Gift Vouchers</h5>
+                <p style="font-size:0.88rem; color:var(--brown-mid); margin:0">Physical embossed gift cards and digital vouchers for pasta workshops are available in-store or by contacting us above.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════════
+         S4 — LOCATION, MAP & TRANSIT EXPERIENCE
+         ════════════════════════════════════════════════════════════ -->
+    <section class="section map-showcase" id="visit-map" aria-label="Location and Transit">
+      <div class="container">
+        <div class="text-center mb-4" data-aos="fade-up">
+          <span class="badge badge-gold mb-2 uppercase">Finding Us</span>
+          <h2 style="color:var(--cream)">In The Heart of The Artisan Quarter</h2>
+          <p style="color:rgba(253,246,236,0.85); max-width:650px; margin:0.6rem auto 0">Nestled on cobblestoned Pasta Lane, surrounded by boutique bakeries, espresso bars, and artisan cheese rooms.</p>
+        </div>
+
+        <div class="map-card-container">
+
+          <!-- Left Interactive Visual -->
+          <div class="interactive-map-visual" data-aos="fade-right">
+            <div class="map-pin-pulse"><i class="fa-solid fa-bowl-food"></i></div>
+            <h3 style="color:var(--gold-light); margin-bottom:0.5rem; font-size:1.6rem">PASTA Kitchen &amp; Shop</h3>
+            <p style="color:var(--cream); font-size:1.05rem; margin-bottom:1.2rem">14 Pasta Lane, Artisan Quarter, Melbourne VIC 3000</p>
+            <p style="color:rgba(253,246,236,0.75); font-size:0.85rem; max-width:440px; margin:0 auto 1.8rem">GPS Coordinates: -37.8136° S, 144.9631° E. Located between St. Jude Bakery and Caffè Fiorentino.</p>
+            <div class="flex gap-sm" style="justify-content:center; flex-wrap:wrap">
+              <a href="https://maps.google.com" target="_blank" rel="noopener" class="btn btn-gold btn-sm"><i class="fa-solid fa-map-location-dot"></i> Open in Google Maps</a>
+              <a href="tel:+61390001234" class="btn btn-outline-white btn-sm"><i class="fa-solid fa-phone"></i> Call for Directions</a>
+            </div>
+          </div>
+
+          <!-- Right Transit Details -->
+          <div data-aos="fade-left" data-aos-delay="100">
+            <h3 style="color:var(--cream); margin-bottom:1.5rem">Getting Here is Easy</h3>
+
+            <div class="transit-item">
+              <i class="fa-solid fa-train-subway"></i>
+              <div>
+                <h5>By Metro Train</h5>
+                <p>5-minute walk from Melbourne Central Station or Flinders Street Station. Take the Elizabeth Street exit toward Artisan Quarter.</p>
+              </div>
+            </div>
+
+            <div class="transit-item">
+              <i class="fa-solid fa-train-tram"></i>
+              <div>
+                <h5>By Melbourne Tram</h5>
+                <p>Routes 19, 57, and 59 stop directly at Stop 7 (Artisan Walk). Just a 60-second stroll down cobblestone Pasta Lane.</p>
+              </div>
+            </div>
+
+            <div class="transit-item">
+              <i class="fa-solid fa-square-parking"></i>
+              <div>
+                <h5>Customer Parking</h5>
+                <p>Four dedicated 15-minute express customer loading bays located directly in front of the shop. Multi-level parking garage 80m away on Market St.</p>
+              </div>
+            </div>
+
+            <div class="transit-item">
+              <i class="fa-solid fa-wheelchair"></i>
+              <div>
+                <h5>Accessibility</h5>
+                <p>Step-free street-level entrance with wide sliding doors suitable for strollers, wheelchairs, and mobility aids.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════════
+         S5 — FAQ ACCORDION
+         ════════════════════════════════════════════════════════════ -->
+    <section class="section section-cream" id="faq" aria-label="Frequently Asked Questions">
+      <div class="container">
+        <div class="text-center mb-4" data-aos="fade-up">
+          <span class="eyebrow"><i class="fa-solid fa-circle-question" style="color:var(--red-primary)"></i> Clear Answers</span>
+          <h2>Frequently Asked Questions</h2>
+          <p class="lead" style="max-width:680px; margin:0.6rem auto 0">Everything you need to know about shelf life, cooking methods, portion planning, and dietary varieties.</p>
+        </div>
+
+        <div class="faq-container" data-aos="fade-up">
+
+          <!-- Q1 -->
+          <div class="accordion-item">
+            <button class="accordion-btn" type="button">
+              <span>How long does your fresh pasta keep in the refrigerator?</span>
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="accordion-content">
+              <p>Our fresh egg-based long pasta (Tagliatelle, Fettuccine, Spaghetti) keeps refrigerated at 2°C to 4°C for up to 4 days. Stuffed pasta such as Ravioli and Tortelloni should ideally be cooked within 3 days to preserve the moisture balance between filling and pasta sheet.</p>
+            </div>
+          </div>
+
+          <!-- Q2 -->
+          <div class="accordion-item">
+            <button class="accordion-btn" type="button">
+              <span>Can I freeze your fresh pasta, and do I need to thaw it first?</span>
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="accordion-content">
+              <p>Yes, all our pasta freezes beautifully for up to 3 months! CRITICAL RULE: NEVER thaw fresh pasta before cooking. Drop frozen pasta directly into rapidly boiling salted water and add approximately 60 to 90 seconds to standard cooking time. Thawing will cause pasta to stick and turn gummy.</p>
+            </div>
+          </div>
+
+          <!-- Q3 -->
+          <div class="accordion-item">
+            <button class="accordion-btn" type="button">
+              <span>Do you offer gluten-free, vegan, or egg-free options?</span>
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="accordion-content">
+              <p>Yes! Our Orecchiette and Campanelle shapes are naturally 100% vegan, made solely with Australian durum wheat semolina and mountain spring water. We also produce small-batch gluten-free potato gnocchi and chickpea fettuccine on dedicated Thursday clean runs to prevent cross-contamination.</p>
+            </div>
+          </div>
+
+          <!-- Q4 -->
+          <div class="accordion-item">
+            <button class="accordion-btn" type="button">
+              <span>How much fresh pasta should I calculate per person?</span>
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="accordion-content">
+              <p>Because fresh pasta contains high egg content and moisture, it is richer and more filling than dry commercial pasta. For a main dinner course, we recommend 130g to 150g per person. For a first course (primo piatto) or rich stuffed ravioli, 100g to 120g is the ideal culinary standard.</p>
+            </div>
+          </div>
+
+          <!-- Q5 -->
+          <div class="accordion-item">
+            <button class="accordion-btn" type="button">
+              <span>Do you host hands-on pasta making workshops?</span>
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="accordion-content">
+              <p>We do! Every Thursday evening and Saturday morning, we host intimate 2.5-hour masterclasses for up to 10 guests. You learn flour science, roll your own dough with wooden rolling pins, shape 3 varieties of pasta, and enjoy a sit-down wine tasting lunch with your creations.</p>
+            </div>
+          </div>
+
+          <!-- Q6 -->
+          <div class="accordion-item">
+            <button class="accordion-btn" type="button">
+              <span>Can I buy pasta without pre-ordering, or do I need to book ahead?</span>
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="accordion-content">
+              <p>Walk-ins are warmly welcomed! Our display chillers are stocked fresh every morning with our core shapes and sauces. However, our most popular stuffed ravioli and specialty colored noodles often sell out by early afternoon, so pre-reserving via our Products page is recommended.</p>
+            </div>
+          </div>
+
+          <!-- Q7 -->
+          <div class="accordion-item">
+            <button class="accordion-btn" type="button">
+              <span>Where do you source your ingredients?</span>
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="accordion-content">
+              <p>We believe local provenance creates unmatched flavor. Our durum wheat semolina is milled organically in regional Victoria; our eggs are delivered weekly from free-range pasture farms in the Yarra Valley; our ricotta is hand-ladled fresh in Gippsland; and our black truffles are harvested in northern Tasmania.</p>
+            </div>
+          </div>
+
+          <!-- Q8 -->
+          <div class="accordion-item">
+            <button class="accordion-btn" type="button">
+              <span>How do I set up a commercial wholesale account for my venue?</span>
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="accordion-content">
+              <p>Please navigate to our Wholesale page and submit our quick trade application form. Our foodservice team will deliver a complimentary 4kg chef sample box to your venue within 48 hours and discuss weekly standing deliveries and trade pricing tiers.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════════
+         S6 — FINAL CONTACT CALL TO ACTION
+         ════════════════════════════════════════════════════════════ -->
+    <section class="section contact-final-cta" aria-label="Final Call to Action">
+      <div class="container" style="position:relative; z-index:1">
+        <div data-aos="fade-up">
+          <span class="badge badge-gold mb-3 uppercase">Drop In Today</span>
+          <h2>The Flour Is Flowing &amp; The Water Is Boiling</h2>
+          <p style="color:rgba(253,246,236,0.85); max-width:600px; margin:0 auto 2rem; font-size:1.05rem">Come taste the authentic difference of real local handmade pasta. We look forward to welcoming you to our shop table.</p>
+          <div class="flex gap-sm" style="justify-content:center; flex-wrap:wrap">
+            <a href="tel:+61390001234" class="btn btn-white btn-lg"><i class="fa-solid fa-phone"></i> Call +61 3 9000 1234</a>
+            <a href="products.html" class="btn btn-gold"><i class="fa-solid fa-utensils"></i> View Fresh Menu</a>
+            <a href="wholesale.html" class="btn btn-outline-white">Wholesale Supply</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="images/logo.jpg" alt="PASTA Logo">
+          <div class="brand-name">PASTA</div>
+          <p>Handcrafted fresh pasta and homemade noodles made daily in our local kitchen. From our family table to yours — with love, flour, and a little bit of magic.</p>
+          <div class="social-links">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5>Quick Links</h5>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">Our Story</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="wholesale.html">Wholesale</a></li>
+            <li><a href="blog.html">Blog &amp; Recipes</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Our Products</h5>
+          <ul>
+            <li><a href="products.html">Fresh Spaghetti</a></li>
+            <li><a href="products.html">Tagliatelle</a></li>
+            <li><a href="products.html">Fettuccine</a></li>
+            <li><a href="products.html">Ricotta Ravioli</a></li>
+            <li><a href="products.html">Potato Gnocchi</a></li>
+            <li><a href="products.html">Artisan Sauces</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Visit Us</h5>
+          <div class="contact-item"><i class="fa-solid fa-location-dot"></i><span>14 Pasta Lane, Artisan Quarter,<br>Melbourne VIC 3000</span></div>
+          <div class="contact-item"><i class="fa-solid fa-phone"></i><span>+61 3 9000 1234</span></div>
+          <div class="contact-item"><i class="fa-solid fa-envelope"></i><span>hello@pasta.com.au</span></div>
+          <div class="contact-item"><i class="fa-solid fa-clock"></i><span>Tue–Sat: 8am – 5pm<br>Sun: 9am – 2pm</span></div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 PASTA Artisan &amp; Fresh. All rights reserved.</span>
+        <div style="display:flex; gap:1.2rem; flex-wrap:wrap">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Wholesale T&amp;Cs</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-chevron-up"></i></button>
+  <script src="js/main.js"></script>
+</body>
+</html>

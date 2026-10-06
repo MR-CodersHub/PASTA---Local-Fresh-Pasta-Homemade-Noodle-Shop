@@ -1,0 +1,1500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore PASTA's fresh handcrafted pasta and homemade noodle collection. Extruded through bronze dies, hand-rolled daily in Melbourne with organic Australian durum semolina.">
+  <title>Fresh Pasta &amp; Homemade Noodles Collection — PASTA</title>
+  <link rel="icon" type="image/jpeg" href="images/logo.jpg">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script>
+    (function() {
+      const t = localStorage.getItem('pasta_theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      const d = localStorage.getItem('pasta_dir') || 'ltr';
+      document.documentElement.setAttribute('data-theme', t);
+      document.documentElement.setAttribute('dir', d);
+      if (d === 'rtl') document.documentElement.setAttribute('lang', 'ar');
+    })();
+  </script>
+  <style>
+    /* ─── PRODUCTS PAGE SPECIFIC STYLES ─── */
+
+    /* Filter Tabs */
+    .filter-tabs {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-bottom: 2.8rem;
+    }
+    .filter-tab {
+      background: #fff;
+      border: 1.5px solid var(--beige-dark);
+      color: var(--brown-mid);
+      padding: 0.65rem 1.4rem;
+      border-radius: var(--radius-full);
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--t-fast) var(--ease);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+    .filter-tab:hover {
+      border-color: var(--red-primary);
+      color: var(--red-primary);
+      background: var(--cream);
+    }
+    .filter-tab.active {
+      background: var(--red-primary);
+      border-color: var(--red-primary);
+      color: #fff;
+      box-shadow: 0 4px 14px rgba(192, 57, 43, 0.28);
+    }
+
+    /* Product Grid & Cards */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+    .product-card {
+      background: #fff;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--beige);
+      transition: transform var(--t-mid) var(--ease), box-shadow var(--t-mid) var(--ease);
+      display: flex;
+      flex-direction: column;
+    }
+    .product-card:hover {
+      transform: translateY(-7px);
+      box-shadow: var(--shadow-lg);
+    }
+    .product-img-wrap {
+      position: relative;
+      height: 220px;
+      overflow: hidden;
+      background: var(--cream-dark);
+    }
+    .product-img-wrap img {
+      width: 100%;
+      height: 100% !important;
+      object-fit: cover !important;
+      transition: transform 0.6s var(--ease);
+    }
+    .product-card:hover .product-img-wrap img {
+      transform: scale(1.08);
+    }
+    .product-badge {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      z-index: 2;
+    }
+    .product-cook-time {
+      position: absolute;
+      bottom: 0.8rem;
+      right: 0.8rem;
+      background: rgba(44, 24, 16, 0.82);
+      backdrop-filter: blur(4px);
+      color: var(--gold-light);
+      font-size: 0.76rem;
+      font-weight: 600;
+      padding: 0.3rem 0.65rem;
+      border-radius: var(--radius-full);
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+    .product-body {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+    .product-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+    .product-category {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--red-primary);
+      font-weight: 700;
+    }
+    .product-pack {
+      font-size: 0.78rem;
+      color: var(--brown-mid);
+    }
+    .product-title {
+      font-size: 1.25rem;
+      margin-bottom: 0.6rem;
+      font-family: var(--font-display);
+    }
+    .product-desc {
+      font-size: 0.88rem;
+      color: var(--brown-mid);
+      line-height: 1.6;
+      margin-bottom: 1.2rem;
+      flex-grow: 1;
+    }
+    .product-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-bottom: 1.2rem;
+    }
+    .product-tag {
+      font-size: 0.72rem;
+      background: var(--cream-dark);
+      color: var(--brown);
+      padding: 0.2rem 0.55rem;
+      border-radius: var(--radius-sm);
+    }
+    .product-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 1rem;
+      border-top: 1px solid var(--beige);
+    }
+    .product-price {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--brown);
+    }
+    .product-price span {
+      font-size: 0.78rem;
+      font-family: var(--font-body);
+      color: var(--brown-mid);
+      font-weight: 400;
+    }
+
+    /* Specialty Noodles Section */
+    .specialty-section {
+      background: var(--burgundy-deep);
+      color: var(--cream);
+      position: relative;
+    }
+    .specialty-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.6rem;
+    }
+    .specialty-card {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(237, 217, 187, 0.15);
+      border-radius: var(--radius-lg);
+      padding: 1.8rem 1.4rem;
+      transition: all var(--t-mid) var(--ease);
+      position: relative;
+      overflow: hidden;
+    }
+    .specialty-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--accent-color, var(--gold));
+    }
+    .specialty-card:hover {
+      background: rgba(255, 255, 255, 0.12);
+      transform: translateY(-6px);
+    }
+    .specialty-swatch {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      margin-bottom: 1.2rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      border: 2px solid rgba(255,255,255,0.4);
+    }
+    .specialty-card h4 {
+      color: var(--gold-light);
+      margin-bottom: 0.5rem;
+      font-size: 1.15rem;
+    }
+    .specialty-flavor {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--beige);
+      margin-bottom: 0.7rem;
+      font-weight: 600;
+    }
+    .specialty-card p {
+      font-size: 0.85rem;
+      opacity: 0.85;
+      line-height: 1.65;
+      margin-bottom: 1rem;
+    }
+    .specialty-pair {
+      font-size: 0.76rem;
+      border-top: 1px dashed rgba(255,255,255,0.2);
+      padding-top: 0.8rem;
+      color: var(--gold);
+    }
+
+
+    /* ══════════ SAUCE SHOWCASE — Modern Editorial ══════════ */
+    .sauce-showcase {
+      background: linear-gradient(135deg, #1a0800 0%, #2d1208 40%, #1f0d06 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .sauce-showcase::before {
+      content: '';
+      position: absolute;
+      top: -200px; left: 50%;
+      transform: translateX(-50%);
+      width: 800px; height: 800px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(212,165,67,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .sauce-showcase-head {
+      text-align: center;
+      margin-bottom: 3.5rem;
+      position: relative; z-index: 1;
+    }
+    .sauce-showcase-head .eyebrow {
+      color: var(--gold-light);
+      opacity: 0.9;
+    }
+    .sauce-showcase-head h2 {
+      color: #fff;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      margin: 0.5rem 0 1rem;
+    }
+    .sauce-showcase-head .lead {
+      color: rgba(255,255,255,0.65);
+      max-width: 620px;
+      margin: 0 auto;
+    }
+    /* Cards strip */
+    .sauce-strip {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1.2rem;
+      position: relative; z-index: 1;
+    }
+    .sauce-strip-card {
+      border-radius: 20px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      transition: transform 0.4s cubic-bezier(0.16,1,0.3,1),
+                  box-shadow 0.4s ease,
+                  border-color 0.3s ease;
+      position: relative;
+    }
+    .sauce-strip-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.55);
+      border-color: rgba(212,165,67,0.4);
+    }
+    /* Image zone */
+    .sauce-strip-img {
+      position: relative;
+      height: 200px;
+      overflow: hidden;
+    }
+    .sauce-strip-img img {
+      width: 100%;
+      height: 100% !important;
+      object-fit: cover !important;
+      display: block;
+      transition: transform 0.7s ease;
+    }
+    .sauce-strip-card:hover .sauce-strip-img img {
+      transform: scale(1.1);
+    }
+    /* Colour accent bar — top edge */
+    .sauce-strip-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      z-index: 10;
+      transition: height 0.3s ease;
+    }
+    .sauce-strip-card:hover::before { height: 5px; }
+    .sauce-accent-red::before   { background: linear-gradient(90deg, #e63946, #c1121f); }
+    .sauce-accent-gold::before  { background: linear-gradient(90deg, #d4a843, #f4c542); }
+    .sauce-accent-green::before { background: linear-gradient(90deg, #2d6a4f, #52b788); }
+    .sauce-accent-fire::before  { background: linear-gradient(90deg, #e85d04, #f48c06); }
+    .sauce-accent-wine::before  { background: linear-gradient(90deg, #6d2b3d, #a4133c); }
+    /* Dark overlay on image */
+    .sauce-strip-img::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(18,5,3,0.92) 0%, rgba(18,5,3,0.35) 55%, transparent 100%);
+    }
+    /* Price pill over image */
+    .sauce-img-price {
+      position: absolute;
+      bottom: 0.9rem; right: 0.9rem;
+      z-index: 3;
+      background: rgba(18,5,3,0.88);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(212,165,67,0.5);
+      color: var(--gold);
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 800;
+      padding: 0.3em 0.75em;
+      border-radius: 999px;
+    }
+    /* Heat badge on image */
+    .sauce-heat-badge {
+      position: absolute;
+      top: 0.8rem; left: 0.8rem;
+      z-index: 3;
+      display: flex;
+      gap: 2px;
+      font-size: 0.7rem;
+    }
+    .sauce-heat-badge i {
+      color: #f48c06;
+    }
+    .sauce-heat-badge i.off {
+      color: rgba(255,255,255,0.2);
+    }
+    /* Card body */
+    .sauce-strip-body {
+      padding: 1.2rem 1.1rem 1.4rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .sauce-strip-name {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.2;
+    }
+    .sauce-strip-size {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+    }
+    .sauce-strip-desc {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.55;
+      flex-grow: 1;
+    }
+    /* Ingredient pills */
+    .sauce-ingredient-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.3rem;
+    }
+    .sauce-pill {
+      font-size: 0.67rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: rgba(255,255,255,0.7);
+      white-space: nowrap;
+    }
+    /* Pairing suggestion strip */
+    .sauce-pairing-bar {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-top: 0.5rem;
+      padding-top: 0.7rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.45);
+    }
+    .sauce-pairing-bar i {
+      color: var(--gold);
+      font-size: 0.65rem;
+    }
+    .sauce-pairing-bar strong {
+      color: var(--gold-light);
+      font-weight: 600;
+    }
+    /* Bottom CTA row */
+    .sauce-cta-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-top: 2.8rem;
+      position: relative;
+      z-index: 1;
+    }
+    .sauce-cta-stat {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: rgba(255,255,255,0.7);
+      font-size: 0.82rem;
+      white-space: nowrap;
+    }
+    .sauce-cta-stat i { color: var(--gold); }
+    /* Responsive */
+    @media (max-width: 1200px) {
+      .sauce-strip { grid-template-columns: repeat(3, 1fr); }
+      .sauce-cta-row { gap: 1.2rem; }
+    }
+    @media (max-width: 768px) {
+      .sauce-strip { grid-template-columns: repeat(2, 1fr); }
+      .sauce-cta-row {
+        gap: 1rem 1.4rem;
+        margin-top: 2.2rem;
+      }
+    }
+    @media (max-width: 576px) {
+      .sauce-strip { grid-template-columns: 1fr; }
+      .sauce-cta-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.85rem 0.6rem;
+        margin-top: 2rem;
+        width: 100%;
+        max-width: 340px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .sauce-cta-stat {
+        font-size: 0.76rem;
+        white-space: normal;
+        line-height: 1.35;
+      }
+      .sauce-cta-row .btn {
+        grid-column: 1 / -1;
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+        margin: 0.6rem 0 0 0 !important;
+      }
+      .pairing-table-wrap {
+        padding: 1.2rem 0.8rem;
+        border-radius: var(--radius-md);
+      }
+    }
+    @media (max-width: 480px) {
+      .sauce-strip { grid-template-columns: 1fr; }
+    }
+
+    /* Pairing Matrix */
+    .pairing-table-wrap {
+      background: #fff;
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--beige);
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      max-width: 100%;
+    }
+    .pairing-table {
+      width: 100%;
+      min-width: 600px;
+      border-collapse: collapse;
+      text-align: left;
+    }
+    .pairing-table th {
+      background: var(--cream-dark);
+      padding: 1rem 1.2rem;
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      color: var(--brown);
+      border-bottom: 2px solid var(--terracotta);
+    }
+    .pairing-table td {
+      padding: 1.1rem 1.2rem;
+      border-bottom: 1px solid var(--beige);
+      font-size: 0.9rem;
+      vertical-align: middle;
+    }
+    .pairing-table tr:hover td {
+      background: var(--cream);
+    }
+    .shape-pill {
+      display: inline-block;
+      padding: 0.25rem 0.7rem;
+      border-radius: var(--radius-full);
+      background: var(--terracotta-light);
+      color: var(--burgundy-deep);
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    .pairing-badge-match {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      color: #27ae60;
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+
+    /* Enquiry Split */
+    .enquiry-split {
+      display: grid;
+      grid-template-columns: 1.3fr 0.9fr;
+      gap: 3.5rem;
+      align-items: start;
+    }
+    .pickup-info-card {
+      background: var(--cream-dark);
+      border-radius: var(--radius-lg);
+      padding: 2.2rem;
+      border: 1px solid var(--beige-dark);
+    }
+    .pickup-feature {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .pickup-feature i {
+      font-size: 1.3rem;
+      color: var(--red-primary);
+      margin-top: 0.2rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .products-grid { grid-template-columns: repeat(2, 1fr); }
+      .specialty-grid { grid-template-columns: repeat(2, 1fr); }
+      .enquiry-split { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .products-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .specialty-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── Dark Theme Overrides for Products Page ── */
+    [data-theme="dark"] .product-card,
+    [data-theme="dark"] .specialty-card,
+    [data-theme="dark"] .sauce-card-modern,
+    [data-theme="dark"] .pickup-info-card,
+    [data-theme="dark"] .pairing-interactive-box {
+      background: #1b0a04 !important;
+      border-color: rgba(212, 165, 67, 0.25) !important;
+      color: #fdfaf5 !important;
+    }
+    [data-theme="dark"] .product-card h3,
+    [data-theme="dark"] .product-card h4,
+    [data-theme="dark"] .specialty-card h4,
+    [data-theme="dark"] .sauce-card-modern h3,
+    [data-theme="dark"] .pickup-info-card h4 {
+      color: #ffffff !important;
+    }
+    [data-theme="dark"] .product-desc,
+    [data-theme="dark"] .specialty-card p,
+    [data-theme="dark"] .pickup-info-card p {
+      color: rgba(255, 255, 255, 0.8) !important;
+    }
+    [data-theme="dark"] .product-price {
+      color: var(--gold) !important;
+    }
+    [data-theme="dark"] .product-price span {
+      color: rgba(255, 255, 255, 0.7) !important;
+    }
+    [data-theme="dark"] .pairing-table-wrap {
+      background: #180903 !important;
+      border-color: rgba(212, 165, 67, 0.25) !important;
+    }
+    [data-theme="dark"] .pairing-table th {
+      background: rgba(255, 255, 255, 0.05) !important;
+      color: var(--gold) !important;
+      border-bottom: 2px solid var(--gold) !important;
+    }
+    [data-theme="dark"] .pairing-table td {
+      color: rgba(255, 255, 255, 0.88) !important;
+      border-bottom-color: rgba(212, 165, 67, 0.15) !important;
+    }
+    [data-theme="dark"] .pairing-table td:first-child,
+    [data-theme="dark"] .pairing-table td strong {
+      color: #ffffff !important;
+    }
+    [data-theme="dark"] .pairing-table tr:hover td {
+      background: rgba(212, 165, 67, 0.08) !important;
+    }
+    [data-theme="dark"] .shape-pill {
+      background: rgba(212, 165, 67, 0.18) !important;
+      color: #ffffff !important;
+      border: 1px solid rgba(212, 165, 67, 0.4) !important;
+      font-weight: 700 !important;
+    }
+    [data-theme="dark"] .pairing-badge-match {
+      color: #48d186 !important;
+      font-weight: 700 !important;
+    }
+  </style>
+</head>
+<body>
+  <div id="progress-bar"></div>
+
+  <!-- NAVIGATION -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="index.html" class="nav-logo">
+          <img src="images/logo.jpg" alt="PASTA Logo">
+          <div class="nav-logo-text">
+            <span class="brand">PASTA</span>
+            <span class="tagline">Artisan &amp; Fresh</span>
+          </div>
+        </a>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="home2.html">Home 2</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="wholesale.html">Wholesale</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li class="nav-item-dropdown">
+            <a href="#" class="dropdown-trigger">Pages <i class="fa-solid fa-chevron-down dropdown-arrow"></i></a>
+            <ul class="nav-dropdown-menu">
+              <li><a href="coming-soon.html"><i class="fa-solid fa-sparkles"></i> Coming Soon</a></li>
+              <li><a href="maintenance.html"><i class="fa-solid fa-wrench"></i> Maintenance</a></li>
+              <li><a href="404.html"><i class="fa-solid fa-triangle-exclamation"></i> 404 Error</a></li>
+            </ul>
+          </li>
+        </ul>
+        <div class="nav-actions">
+          <div class="header-toggle-group">
+            <button class="theme-toggle-btn" id="theme-toggle" type="button" aria-label="Toggle dark/light mode" title="Switch Theme">
+              <i class="fa-solid fa-moon"></i>
+            </button>
+            <button class="rtl-toggle-btn" id="rtl-toggle" type="button" aria-label="Toggle RTL/LTR direction" title="Switch RTL/LTR">
+              <span class="rtl-label">RTL</span>
+            </button>
+          </div>
+          <a href="#order-enquiry" class="btn btn-primary btn-sm">Order Enquiry</a>
+          <button class="hamburger" id="hamburger-btn" aria-label="Open navigation menu">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="nav-overlay" id="nav-overlay"></div>
+  <nav class="nav-drawer" id="nav-drawer">
+    <button class="nav-drawer-close" id="drawer-close" aria-label="Close menu">✕</button>
+    <a href="index.html">Home</a>
+    <a href="home2.html">Home 2</a>
+    <a href="about.html">About</a>
+    <a href="products.html">Products</a>
+    <a href="wholesale.html">Wholesale</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html">Contact</a>
+    <div style="height:1px; background:var(--beige); margin:0.5rem 0; opacity:0.6"></div>
+    <span style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--terracotta); padding:0.4rem 1rem;">Pages</span>
+    <a href="coming-soon.html"><i class="fa-solid fa-sparkles" style="color:var(--gold); margin-right:8px"></i> Coming Soon</a>
+    <a href="maintenance.html"><i class="fa-solid fa-wrench" style="color:var(--gold); margin-right:8px"></i> Maintenance</a>
+    <a href="404.html"><i class="fa-solid fa-triangle-exclamation" style="color:var(--gold); margin-right:8px"></i> 404 Error</a>
+    <a href="#order-enquiry" class="btn btn-primary">Order Enquiry</a>
+    <div class="drawer-toggles">
+      <button class="drawer-toggle theme-toggle-btn" id="drawer-theme-toggle" type="button" aria-label="Toggle dark/light mode">
+        <i class="fa-solid fa-moon"></i> <span class="theme-text">Dark Mode</span>
+      </button>
+      <button class="drawer-toggle rtl-toggle-btn" id="drawer-rtl-toggle" type="button" aria-label="Toggle RTL/LTR">
+        <span class="rtl-label">RTL</span> <span class="rtl-text">Right-to-Left</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ════════════════════════════════════════════════════════════
+       S1 — PAGE HERO (UNIFIED 520PX HEIGHT)
+       ════════════════════════════════════════════════════════════ -->
+  <section class="page-hero hero" aria-label="Products page hero">
+    <div class="hero-bg-overlay" style="background-image: url('images/hero_products.jpg');"></div>
+    <div class="hero-bg-pattern"></div>
+    <div class="container hero-container">
+      <div class="hero-grid-split">
+        <div class="hero-text-col" data-aos="fade-right">
+          <span class="badge badge-gold uppercase mb-2">
+            <i class="fa-solid fa-wheat-awn"></i> Handcrafted Daily Collection
+          </span>
+          <h1>Fresh Artisan Pasta &amp;<br><em>Homemade Noodles.</em></h1>
+          <p class="hero-desc">Extruded through genuine Italian bronze dies and rolled by hand with golden pasture eggs and certified organic semolina. Freshly prepared every sunrise in our Melbourne kitchen.</p>
+          <div class="hero-actions-wrap">
+            <a href="#pasta-collection" class="btn btn-gold"><i class="fa-solid fa-utensils"></i> Browse Shapes</a>
+            <a href="#specialty-noodles" class="btn btn-outline-white"><i class="fa-solid fa-seedling"></i> Colored Noodles</a>
+            <a href="#order-enquiry" class="btn btn-white">Order Enquiry</a>
+          </div>
+        </div>
+        <div class="hero-media-col" data-aos="fade-left" data-aos-delay="150">
+          <div class="hero-image-card">
+            <img src="images/tagliatelle.jpg" alt="Golden fresh tagliatelle nests on wooden board">
+            <div class="hero-floating-pill">
+              <i class="fa-solid fa-sparkles"></i>
+              <span>Bronze-Die Extrusions · Chilled Daily</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main>
+
+    <!-- ════════════════════════════════════════════════════════════
+         S2 — FRESH PASTA COLLECTION (WITH FILTER TABS)
+         ════════════════════════════════════════════════════════════ -->
+    <section class="section section-cream" id="pasta-collection" aria-label="Fresh Pasta Collection">
+      <div class="container">
+        <div class="text-center mb-4" data-aos="fade-up">
+          <span class="eyebrow"><i class="fa-solid fa-wheat-awn" style="color:var(--red-primary)"></i> Signature Shapes</span>
+          <h2>Our Core Fresh Pasta Line</h2>
+          <p class="lead" style="max-width:680px; margin:0.6rem auto 0">Cooked to tender al dente perfection in just 2 to 4 minutes. Filter by shape family below.</p>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="filter-tabs" data-aos="fade-up">
+          <button class="filter-tab active" data-filter="all"><i class="fa-solid fa-border-all"></i> All Products</button>
+          <button class="filter-tab" data-filter="long"><i class="fa-solid fa-lines-leaning"></i> Long Pasta</button>
+          <button class="filter-tab" data-filter="stuffed"><i class="fa-solid fa-cookie-bite"></i> Stuffed Pasta</button>
+          <button class="filter-tab" data-filter="gnocchi"><i class="fa-solid fa-cloud"></i> Gnocchi &amp; Dumplings</button>
+          <button class="filter-tab" data-filter="specialty"><i class="fa-solid fa-award"></i> Specialty Shapes</button>
+        </div>
+
+        <!-- Products Grid -->
+        <div class="products-grid">
+
+          <!-- 1: Tagliatelle -->
+          <article class="product-card" data-category="long" data-aos="fade-up">
+            <div class="product-img-wrap">
+              <span class="badge badge-gold product-badge">Signature</span>
+              <img src="images/prod_tagliatelle.jpg" alt="Hand-rolled egg tagliatelle nests">
+              <span class="product-cook-time"><i class="fa-regular fa-clock"></i> 2–3 mins</span>
+            </div>
+            <div class="product-body">
+              <div class="product-meta">
+                <span class="product-category">Long Pasta</span>
+                <span class="product-pack">500g Pack (serves 3–4)</span>
+              </div>
+              <h3 class="product-title">Egg Tagliatelle Nests</h3>
+              <p class="product-desc">Golden ribbon pasta cut into 6mm strips using traditional bronze blades. Made with 30 egg yolks per kilo of flour for unmatched silkiness.</p>
+              <div class="product-tags">
+                <span class="product-tag">Pasture Eggs</span>
+                <span class="product-tag">Bronze Cut</span>
+                <span class="product-tag">Ragù Best Match</span>
+              </div>
+              <div class="product-footer">
+                <div class="product-price">$14.50 <span>/ pack</span></div>
+                <a href="#order-enquiry" class="btn btn-outline-primary btn-sm">Enquire Now</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 2: Ravioli -->
+          <article class="product-card" data-category="stuffed" data-aos="fade-up" data-aos-delay="100">
+            <div class="product-img-wrap">
+              <span class="badge badge-red product-badge">Top Seller</span>
+              <img src="images/prod_ravioli.jpg" alt="Ricotta and baby spinach fresh ravioli">
+              <span class="product-cook-time"><i class="fa-regular fa-clock"></i> 3–4 mins</span>
+            </div>
+            <div class="product-body">
+              <div class="product-meta">
+                <span class="product-category">Stuffed Pasta</span>
+                <span class="product-pack">400g Pack (approx 16 pcs)</span>
+              </div>
+              <h3 class="product-title">Spinach &amp; Ricotta Ravioli</h3>
+              <p class="product-desc">Pillowy square ravioli filled with fresh buffalo ricotta, wilted baby spinach, whole nutmeg, and aged Parmigiano Reggiano DOP.</p>
+              <div class="product-tags">
+                <span class="product-tag">Buffalo Ricotta</span>
+                <span class="product-tag">Vegetarian</span>
+                <span class="product-tag">Sage Butter Pairing</span>
+              </div>
+              <div class="product-footer">
+                <div class="product-price">$18.00 <span>/ pack</span></div>
+                <a href="#order-enquiry" class="btn btn-outline-primary btn-sm">Enquire Now</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 3: Spaghetti -->
+          <article class="product-card" data-category="long" data-aos="fade-up" data-aos-delay="200">
+            <div class="product-img-wrap">
+              <span class="badge badge-gold product-badge">Classic</span>
+              <img src="images/prod_spaghetti.jpg" alt="Fresh artisan spaghetti bowl">
+              <span class="product-cook-time"><i class="fa-regular fa-clock"></i> 3 mins</span>
+            </div>
+            <div class="product-body">
+              <div class="product-meta">
+                <span class="product-category">Long Pasta</span>
+                <span class="product-pack">500g Pack (serves 3–4)</span>
+              </div>
+              <h3 class="product-title">Bronze-Die Spaghetti Chitarra</h3>
+              <p class="product-desc">Square-cut spaghetti pressed with rough bronze dies for an ultra-porous surface that grabs every drop of sauce instead of letting it slip off.</p>
+              <div class="product-tags">
+                <span class="product-tag">Durum Semolina</span>
+                <span class="product-tag">Rough Texture</span>
+                <span class="product-tag">Carbonara Classic</span>
+              </div>
+              <div class="product-footer">
+                <div class="product-price">$12.50 <span>/ pack</span></div>
+                <a href="#order-enquiry" class="btn btn-outline-primary btn-sm">Enquire Now</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 4: Potato Gnocchi -->
+          <article class="product-card" data-category="gnocchi" data-aos="fade-up">
+            <div class="product-img-wrap">
+              <span class="badge badge-gold product-badge">Fluffy &amp; Light</span>
+              <img src="images/prod_gnocchi.jpg" alt="Handmade soft potato gnocchi">
+              <span class="product-cook-time"><i class="fa-regular fa-clock"></i> 2 mins</span>
+            </div>
+            <div class="product-body">
+              <div class="product-meta">
+                <span class="product-category">Gnocchi &amp; Dumplings</span>
+                <span class="product-pack">500g Pack (serves 2–3)</span>
+              </div>
+              <h3 class="product-title">Traditional Dutch Cream Gnocchi</h3>
+              <p class="product-desc">Steam-baked Gippsland Dutch cream potatoes with minimal flour. Fork-grooved to hold rich gorgonzola cream or fresh tomato pomodoro.</p>
+              <div class="product-tags">
+                <span class="product-tag">Fresh Potatoes</span>
+                <span class="product-tag">Melt in Mouth</span>
+                <span class="product-tag">Quick Cook</span>
+              </div>
+              <div class="product-footer">
+                <div class="product-price">$15.00 <span>/ pack</span></div>
+                <a href="#order-enquiry" class="btn btn-outline-primary btn-sm">Enquire Now</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 5: Pappardelle -->
+          <article class="product-card" data-category="long" data-aos="fade-up" data-aos-delay="100">
+            <div class="product-img-wrap">
+              <span class="badge badge-red product-badge">Rustic</span>
+              <img src="images/prod_pappardelle.jpg" alt="Broad ribbon pappardelle pasta">
+              <span class="product-cook-time"><i class="fa-regular fa-clock"></i> 3–4 mins</span>
+            </div>
+            <div class="product-body">
+              <div class="product-meta">
+                <span class="product-category">Long Pasta</span>
+                <span class="product-pack">500g Pack (serves 3–4)</span>
+              </div>
+              <h3 class="product-title">Tuscan Broad Pappardelle</h3>
+              <p class="product-desc">Substantial 20mm broad ribbons crafted for slow-braised duck, wild boar, and winter beef ragùs. Dense, toothsome, and deeply satisfying.</p>
+              <div class="product-tags">
+                <span class="product-tag">Extra Yolk Dough</span>
+                <span class="product-tag">Tuscan Tradition</span>
+                <span class="product-tag">Braised Meats</span>
+              </div>
+              <div class="product-footer">
+                <div class="product-price">$15.50 <span>/ pack</span></div>
+                <a href="#order-enquiry" class="btn btn-outline-primary btn-sm">Enquire Now</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 6: Truffle Agnolotti -->
+          <article class="product-card" data-category="stuffed" data-aos="fade-up" data-aos-delay="200">
+            <div class="product-img-wrap">
+              <span class="badge badge-gold product-badge">Gourmet</span>
+              <img src="images/prod_agnolotti.jpg" alt="Black truffle and porcini mushroom agnolotti">
+              <span class="product-cook-time"><i class="fa-regular fa-clock"></i> 3–4 mins</span>
+            </div>
+            <div class="product-body">
+              <div class="product-meta">
+                <span class="product-category">Stuffed Pasta</span>
+                <span class="product-pack">400g Pack (approx 18 pcs)</span>
+              </div>
+              <h3 class="product-title">Truffled Mushroom Agnolotti</h3>
+              <p class="product-desc">Piedmontese pinched ravioli stuffed with sautéed porcini mushrooms, Tasmanian black truffle salsa, and creamy Fontina Val d'Aosta.</p>
+              <div class="product-tags">
+                <span class="product-tag">Black Truffle</span>
+                <span class="product-tag">Porcini</span>
+                <span class="product-tag">Luxury Dining</span>
+              </div>
+              <div class="product-footer">
+                <div class="product-price">$21.00 <span>/ pack</span></div>
+                <a href="#order-enquiry" class="btn btn-outline-primary btn-sm">Enquire Now</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 7: Campanelle -->
+          <article class="product-card" data-category="specialty" data-aos="fade-up">
+            <div class="product-img-wrap">
+              <span class="badge badge-gold product-badge">Little Lilies</span>
+              <img src="images/prod_campanelle.jpg" alt="Fluted cone campanelle pasta">
+              <span class="product-cook-time"><i class="fa-regular fa-clock"></i> 3–4 mins</span>
+            </div>
+            <div class="product-body">
+              <div class="product-meta">
+                <span class="product-category">Specialty Shapes</span>
+                <span class="product-pack">500g Pack (serves 3–4)</span>
+              </div>
+              <h3 class="product-title">Fluted Campanelle (Gigli)</h3>
+              <p class="product-desc">Delicate cone-shaped pasta with ruffled petal edges resembling the florentine lily. Pockets trap pestos, peas, and creamy vegetable sauces.</p>
+              <div class="product-tags">
+                <span class="product-tag">Extruded Shape</span>
+                <span class="product-tag">Sauce Catcher</span>
+                <span class="product-tag">Pesto Friendly</span>
+              </div>
+              <div class="product-footer">
+                <div class="product-price">$13.50 <span>/ pack</span></div>
+                <a href="#order-enquiry" class="btn btn-outline-primary btn-sm">Enquire Now</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 8: Tortelloni -->
+          <article class="product-card" data-category="stuffed" data-aos="fade-up" data-aos-delay="100">
+            <div class="product-img-wrap">
+              <span class="badge badge-red product-badge">Emilia-Romagna</span>
+              <img src="images/prod_tortelloni.jpg" alt="Four cheese crown tortelloni">
+              <span class="product-cook-time"><i class="fa-regular fa-clock"></i> 4 mins</span>
+            </div>
+            <div class="product-body">
+              <div class="product-meta">
+                <span class="product-category">Stuffed Pasta</span>
+                <span class="product-pack">400g Pack (approx 14 pcs)</span>
+              </div>
+              <h3 class="product-title">Four-Cheese Crown Tortelloni</h3>
+              <p class="product-desc">Hand-folded crown rings filled with Parmigiano, aged pecorino, mascarpone, and smoked provolone with crushed roasted walnuts.</p>
+              <div class="product-tags">
+                <span class="product-tag">4 Italian Cheeses</span>
+                <span class="product-tag">Hand Folded</span>
+                <span class="product-tag">Bolognese Recipe</span>
+              </div>
+              <div class="product-footer">
+                <div class="product-price">$19.50 <span>/ pack</span></div>
+                <a href="#order-enquiry" class="btn btn-outline-primary btn-sm">Enquire Now</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 9: Orecchiette -->
+          <article class="product-card" data-category="specialty" data-aos="fade-up" data-aos-delay="200">
+            <div class="product-img-wrap">
+              <span class="badge badge-gold product-badge">Pugliese</span>
+              <img src="images/prod_orecchiette.jpg" alt="Hand-thumbed orecchiette little ears">
+              <span class="product-cook-time"><i class="fa-regular fa-clock"></i> 4 mins</span>
+            </div>
+            <div class="product-body">
+              <div class="product-meta">
+                <span class="product-category">Specialty Shapes</span>
+                <span class="product-pack">500g Pack (serves 3–4)</span>
+              </div>
+              <h3 class="product-title">Hand-Thumbed Orecchiette</h3>
+              <p class="product-desc">The iconic 'little ears' of Puglia, shaped one by one with a knife and thumb drag. Thick rim and thin cup give distinct dual textures in one bite.</p>
+              <div class="product-tags">
+                <span class="product-tag">Egg-Free Semolina</span>
+                <span class="product-tag">Puglia Heritage</span>
+                <span class="product-tag">Broccoli Rabe</span>
+              </div>
+              <div class="product-footer">
+                <div class="product-price">$14.00 <span>/ pack</span></div>
+                <a href="#order-enquiry" class="btn btn-outline-primary btn-sm">Enquire Now</a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════════
+         S3 — SPECIALTY NOODLE & VEGETABLE DOUGH VARIETIES
+         ════════════════════════════════════════════════════════════ -->
+    <section class="section specialty-section" id="specialty-noodles" aria-label="Specialty Vegetable Doughs">
+      <div class="container">
+        <div class="text-center mb-4" data-aos="fade-up">
+          <span class="badge badge-gold mb-2 uppercase">Natural Infusions</span>
+          <h2 style="color:var(--cream)">Homemade Specialty &amp; Colored Noodle Varieties</h2>
+          <p style="color:rgba(253,246,236,0.85); max-width:650px; margin:0.6rem auto 0">We do not use artificial colorants or powders. Our vibrant doughs are kneaded with pureed vegetables, squid ink, and floral infusions for extraordinary taste and table presentation.</p>
+        </div>
+
+        <div class="specialty-grid">
+
+          <!-- 1: Squid Ink -->
+          <div class="specialty-card" style="--accent-color: #2b2b2b" data-aos="fade-up">
+            <div class="specialty-swatch" style="background:#1a1a1a"></div>
+            <div class="specialty-flavor">Nero di Seppia</div>
+            <h4>Squid Ink Tagliolini</h4>
+            <p>Infused with genuine Mediterranean cuttlefish ink. Delivers a dramatic jet-black color, subtle briny salinity, and silky mouthfeel.</p>
+            <div class="specialty-pair"><i class="fa-solid fa-utensils"></i> Ideal with: Seared scallops, king prawns, garlic &amp; white wine reduction.</div>
+          </div>
+
+          <!-- 2: Beetroot -->
+          <div class="specialty-card" style="--accent-color: #9b2335" data-aos="fade-up" data-aos-delay="100">
+            <div class="specialty-swatch" style="background:#8b1e3f"></div>
+            <div class="specialty-flavor">Barbabietola &amp; Timo</div>
+            <h4>Beetroot &amp; Thyme Fettuccine</h4>
+            <p>Roasted golden-red beets pureed smooth and kneaded with fresh garden thyme. Spectacular crimson hue with earthy sweetness.</p>
+            <div class="specialty-pair"><i class="fa-solid fa-utensils"></i> Ideal with: Crumbled goat's curd, toasted walnuts &amp; brown butter.</div>
+          </div>
+
+          <!-- 3: Spinach & Basil -->
+          <div class="specialty-card" style="--accent-color: #27ae60" data-aos="fade-up" data-aos-delay="200">
+            <div class="specialty-swatch" style="background:#2d6a4f"></div>
+            <div class="specialty-flavor">Spinaci &amp; Basilico</div>
+            <h4>Verde Spinach Chitarra</h4>
+            <p>Blanched wild baby spinach and sweet Genovese basil leaves whipped with egg yolks before folding into high-protein semolina.</p>
+            <div class="specialty-pair"><i class="fa-solid fa-utensils"></i> Ideal with: Fresh cherry tomato confit, burrata &amp; pine nuts.</div>
+          </div>
+
+          <!-- 4: Smoked Paprika & Terracotta -->
+          <div class="specialty-card" style="--accent-color: #c25e3a" data-aos="fade-up" data-aos-delay="300">
+            <div class="specialty-swatch" style="background:#c25e3a"></div>
+            <div class="specialty-flavor">Peperone &amp; Zafferano</div>
+            <h4>Terracotta Saffron Bucatini</h4>
+            <p>Slow-roasted sweet capsicum juice married with Kashmiri saffron threads. Warm golden-orange glow with a hollow straw center.</p>
+            <div class="specialty-pair"><i class="fa-solid fa-utensils"></i> Ideal with: Calabrian 'nduja butter, clams, or roasted garlic puree.</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════════
+         S4 — ARTISAN SMALL-BATCH SAUCES
+         ════════════════════════════════════════════════════════════ -->
+    <section class="section sauce-showcase" id="sauces-collection" aria-label="Artisan Small-Batch Sauces">
+      <div class="container">
+
+        <!-- Section Header -->
+        <div class="sauce-showcase-head" data-aos="fade-up">
+          <span class="eyebrow"><i class="fa-solid fa-fire-burner"></i> Simmered For Hours</span>
+          <h2>House-Made Artisan Sauces</h2>
+          <p class="lead">Cooked in copper pans in small 30-litre batches using estate extra virgin olive oil and no chemical preservatives. Jarred warm, chilled instantly.</p>
+        </div>
+
+        <div class="sauce-strip">
+
+          <!-- Sauce 1: San Marzano Pomodoro -->
+          <div class="sauce-strip-card sauce-accent-red" data-aos="fade-up" data-aos-delay="0">
+            <div class="sauce-strip-img">
+              <img src="images/sauce_pomodoro.jpg" alt="San Marzano Pomodoro sauce" loading="lazy">
+              <div class="sauce-heat-badge">
+                <i class="fa-solid fa-pepper-hot"></i>
+                <i class="fa-solid fa-pepper-hot off"></i>
+                <i class="fa-solid fa-pepper-hot off"></i>
+              </div>
+              <div class="sauce-img-price">$9.50</div>
+            </div>
+            <div class="sauce-strip-body">
+              <div class="sauce-strip-name">San Marzano Pomodoro</div>
+              <div class="sauce-strip-size">350g Jar &middot; Serves 3</div>
+              <p class="sauce-strip-desc">DOP plum tomatoes simmered 5 hours with fresh basil, sweet garlic, and unrefined Sicilian sea salt.</p>
+              <div class="sauce-ingredient-pills">
+                <span class="sauce-pill">DOP Tomato</span>
+                <span class="sauce-pill">Fresh Basil</span>
+                <span class="sauce-pill">Garlic</span>
+              </div>
+              <div class="sauce-pairing-bar">
+                <i class="fa-solid fa-utensils"></i>
+                <span>Best with <strong>Spaghetti &amp; Bucatini</strong></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sauce 2: Truffled Alfredo Crema -->
+          <div class="sauce-strip-card sauce-accent-gold" data-aos="fade-up" data-aos-delay="70">
+            <div class="sauce-strip-img">
+              <img src="images/sauce_alfredo.jpg" alt="Truffled Alfredo Crema sauce" loading="lazy">
+              <div class="sauce-heat-badge">
+                <i class="fa-solid fa-pepper-hot off"></i>
+                <i class="fa-solid fa-pepper-hot off"></i>
+                <i class="fa-solid fa-pepper-hot off"></i>
+              </div>
+              <div class="sauce-img-price">$13.50</div>
+            </div>
+            <div class="sauce-strip-body">
+              <div class="sauce-strip-name">Truffled Alfredo Crema</div>
+              <div class="sauce-strip-size">350g Jar &middot; Serves 3</div>
+              <p class="sauce-strip-desc">Gippsland organic jersey cream, 24-month Parmigiano, cracked black pepper, and black truffle oil.</p>
+              <div class="sauce-ingredient-pills">
+                <span class="sauce-pill">Truffle Oil</span>
+                <span class="sauce-pill">Parmigiano</span>
+                <span class="sauce-pill">Cream</span>
+              </div>
+              <div class="sauce-pairing-bar">
+                <i class="fa-solid fa-utensils"></i>
+                <span>Best with <strong>Fettuccine &amp; Gnocchi</strong></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sauce 3: Pesto alla Genovese -->
+          <div class="sauce-strip-card sauce-accent-green" data-aos="fade-up" data-aos-delay="140">
+            <div class="sauce-strip-img">
+              <img src="images/sauce_pesto.jpg" alt="Pesto alla Genovese sauce" loading="lazy">
+              <div class="sauce-heat-badge">
+                <i class="fa-solid fa-pepper-hot off"></i>
+                <i class="fa-solid fa-pepper-hot off"></i>
+                <i class="fa-solid fa-pepper-hot off"></i>
+              </div>
+              <div class="sauce-img-price">$12.00</div>
+            </div>
+            <div class="sauce-strip-body">
+              <div class="sauce-strip-name">Pesto alla Genovese</div>
+              <div class="sauce-strip-size">250g Jar &middot; Serves 3–4</div>
+              <p class="sauce-strip-desc">Mortar-crushed sweet basil, Ligurian pine nuts, Pecorino Romano, and early-harvest olive oil.</p>
+              <div class="sauce-ingredient-pills">
+                <span class="sauce-pill">Sweet Basil</span>
+                <span class="sauce-pill">Pine Nuts</span>
+                <span class="sauce-pill">Pecorino</span>
+              </div>
+              <div class="sauce-pairing-bar">
+                <i class="fa-solid fa-utensils"></i>
+                <span>Best with <strong>Campanelle &amp; Trofie</strong></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sauce 4: Calabrian Arrabbiata -->
+          <div class="sauce-strip-card sauce-accent-fire" data-aos="fade-up" data-aos-delay="210">
+            <div class="sauce-strip-img">
+              <img src="images/sauce_arrabbiata.jpg" alt="Calabrian Arrabbiata sauce" loading="lazy">
+              <div class="sauce-heat-badge">
+                <i class="fa-solid fa-pepper-hot"></i>
+                <i class="fa-solid fa-pepper-hot"></i>
+                <i class="fa-solid fa-pepper-hot"></i>
+              </div>
+              <div class="sauce-img-price">$10.50</div>
+            </div>
+            <div class="sauce-strip-body">
+              <div class="sauce-strip-name">Calabrian Arrabbiata</div>
+              <div class="sauce-strip-size">350g Jar &middot; Serves 3</div>
+              <p class="sauce-strip-desc">Fire-roasted chilies from Calabria, crushed ripe tomatoes, confit garlic cloves, and fresh oregano.</p>
+              <div class="sauce-ingredient-pills">
+                <span class="sauce-pill">Calabrian Chilli</span>
+                <span class="sauce-pill">Confit Garlic</span>
+                <span class="sauce-pill">Oregano</span>
+              </div>
+              <div class="sauce-pairing-bar">
+                <i class="fa-solid fa-utensils"></i>
+                <span>Best with <strong>Rigatoni &amp; Penne</strong></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sauce 5: Slow Chianti Beef Ragù -->
+          <div class="sauce-strip-card sauce-accent-wine" data-aos="fade-up" data-aos-delay="280">
+            <div class="sauce-strip-img">
+              <img src="images/sauce_ragu.jpg" alt="Slow Chianti Beef Ragù sauce" loading="lazy">
+              <div class="sauce-heat-badge">
+                <i class="fa-solid fa-pepper-hot"></i>
+                <i class="fa-solid fa-pepper-hot off"></i>
+                <i class="fa-solid fa-pepper-hot off"></i>
+              </div>
+              <div class="sauce-img-price">$15.00</div>
+            </div>
+            <div class="sauce-strip-body">
+              <div class="sauce-strip-name">Slow Chianti Beef Ragù</div>
+              <div class="sauce-strip-size">450g Jar &middot; Serves 2–3</div>
+              <p class="sauce-strip-desc">Grass-fed beef chuck slow-braised 8 hours with Sangiovese wine, carrots, celery, and bay leaves.</p>
+              <div class="sauce-ingredient-pills">
+                <span class="sauce-pill">Grass-Fed Beef</span>
+                <span class="sauce-pill">Chianti Wine</span>
+                <span class="sauce-pill">Bay Leaf</span>
+              </div>
+              <div class="sauce-pairing-bar">
+                <i class="fa-solid fa-utensils"></i>
+                <span>Best with <strong>Tagliatelle &amp; Pappardelle</strong></span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Bottom stat row -->
+        <div class="sauce-cta-row" data-aos="fade-up" data-aos-delay="300">
+          <div class="sauce-cta-stat"><i class="fa-solid fa-fire-burner"></i> Cooked fresh weekly</div>
+          <div class="sauce-cta-stat"><i class="fa-solid fa-jar"></i> No preservatives</div>
+          <div class="sauce-cta-stat"><i class="fa-solid fa-wheat-awn"></i> Estate olive oil only</div>
+          <div class="sauce-cta-stat"><i class="fa-solid fa-temperature-low"></i> Jarred warm, chilled instantly</div>
+          <a href="contact.html" class="btn btn-gold">Order a Tasting Box</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════════
+         S5 — PASTA & SAUCE PAIRING GUIDE
+         ════════════════════════════════════════════════════════════ -->
+    <section class="section section-beige" id="pairing-matrix" aria-label="Pasta and Sauce Pairing Matrix">
+      <div class="container">
+        <div class="text-center mb-4" data-aos="fade-up">
+          <span class="eyebrow"><i class="fa-solid fa-circle-nodes" style="color:var(--red-primary)"></i> Italian Culinary Science</span>
+          <h2>The Art of The Perfect Pairing</h2>
+          <p class="lead" style="max-width:680px; margin:0.6rem auto 0">Every pasta shape has a purpose. Shape thickness, surface ridges, and hollows dictate which sauces cling and which slip away.</p>
+        </div>
+
+        <div class="pairing-table-wrap" data-aos="fade-up">
+          <table class="pairing-table">
+            <thead>
+              <tr>
+                <th>Pasta Category</th>
+                <th>Recommended Shapes</th>
+                <th>Sauce Chemistry</th>
+                <th>Best House Match</th>
+                <th>Chef’s Serving Secret</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Long &amp; Ribbon</strong></td>
+                <td><span class="shape-pill">Tagliatelle</span> <span class="shape-pill">Pappardelle</span></td>
+                <td>Wide flat surfaces cradle dense sauces with braised meat proteins and emulsion fats.</td>
+                <td><span class="pairing-badge-match"><i class="fa-solid fa-check"></i> Slow Chianti Beef Ragù</span></td>
+                <td>Toss with 2 tbsp starchy pasta water and a knob of cold butter off the flame.</td>
+              </tr>
+              <tr>
+                <td><strong>Long &amp; Rounded</strong></td>
+                <td><span class="shape-pill">Bronze Spaghetti</span> <span class="shape-pill">Bucatini</span></td>
+                <td>Smooth swirling strands distribute silky oil, light emulsified tomato, and egg emulsions.</td>
+                <td><span class="pairing-badge-match"><i class="fa-solid fa-check"></i> San Marzano Pomodoro</span></td>
+                <td>Lift directly from boiling pot into pan; never rinse in a colander.</td>
+              </tr>
+              <tr>
+                <td><strong>Delicate Stuffed</strong></td>
+                <td><span class="shape-pill">Ravioli</span> <span class="shape-pill">Tortelloni</span></td>
+                <td>The hero is inside the pasta. Heavy sauces drown the filling; simple aromatics complement.</td>
+                <td><span class="pairing-badge-match"><i class="fa-solid fa-check"></i> Sage &amp; Hazelnut Brown Butter</span></td>
+                <td>Cook gently on a simmer — a vigorous rolling boil will break the seams.</td>
+              </tr>
+              <tr>
+                <td><strong>Fluted &amp; Hollow</strong></td>
+                <td><span class="shape-pill">Campanelle</span> <span class="shape-pill">Rigatoni</span></td>
+                <td>The petals trap chunky vegetables, nuts, sausage bits, and coarse herb pastes.</td>
+                <td><span class="pairing-badge-match"><i class="fa-solid fa-check"></i> Pesto alla Genovese</span></td>
+                <td>Dilute cold pesto with warm cooking water before folding into warm pasta.</td>
+              </tr>
+              <tr>
+                <td><strong>Pillowy Gnocchi</strong></td>
+                <td><span class="shape-pill">Potato Gnocchi</span></td>
+                <td>Soft, delicate structure absorbs creamy reductions, melted gorgonzola, and oven-baked cheeses.</td>
+                <td><span class="pairing-badge-match"><i class="fa-solid fa-check"></i> Truffled Alfredo Crema</span></td>
+                <td>Remove from water the very second they float to the top to preserve pillowy texture.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════════
+         S6 — PRODUCT ENQUIRY & RESERVE FORM
+         ════════════════════════════════════════════════════════════ -->
+    <section class="section section-cream" id="order-enquiry" aria-label="Product Order Enquiry Form">
+      <div class="container">
+        <div class="enquiry-split">
+
+          <!-- Left Form -->
+          <div data-aos="fade-right">
+            <span class="eyebrow"><i class="fa-solid fa-calendar-check" style="color:var(--red-primary)"></i> Fresh Kitchen Reserve</span>
+            <h2>Reserve Your Fresh Pasta</h2>
+            <p style="color:var(--brown-mid); margin:0.8rem 0 1.8rem">Planning a dinner gathering, family meal, or regular weekly pickup? Tell us what you need and our pasta chefs will have it freshly cut and boxed waiting for you.</p>
+
+            <form class="enquiry-form" novalidate>
+              <div class="grid grid-2" style="gap:1rem">
+                <div class="form-group">
+                  <label class="form-label" for="prod-name">Your Full Name *</label>
+                  <input type="text" id="prod-name" name="name" class="form-control" placeholder="e.g. Maria Rossi" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="prod-email">Email Address *</label>
+                  <input type="email" id="prod-email" name="email" class="form-control" placeholder="maria@example.com" required>
+                </div>
+              </div>
+
+              <div class="grid grid-2" style="gap:1rem">
+                <div class="form-group">
+                  <label class="form-label" for="prod-phone">Contact Phone *</label>
+                  <input type="tel" id="prod-phone" name="phone" class="form-control" placeholder="+61 400 123 456" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="prod-date">Preferred Pickup Date *</label>
+                  <input type="date" id="prod-date" name="pickup_date" class="form-control" required>
+                </div>
+              </div>
+
+              <div class="grid grid-2" style="gap:1rem">
+                <div class="form-group">
+                  <label class="form-label" for="prod-choice">Primary Pasta Choice *</label>
+                  <select id="prod-choice" name="product" class="form-control" required>
+                    <option value="">-- Choose a pasta shape --</option>
+                    <option value="tagliatelle">Egg Tagliatelle Nests ($14.50)</option>
+                    <option value="ravioli">Spinach &amp; Ricotta Ravioli ($18.00)</option>
+                    <option value="spaghetti">Bronze-Die Spaghetti Chitarra ($12.50)</option>
+                    <option value="gnocchi">Dutch Cream Potato Gnocchi ($15.00)</option>
+                    <option value="pappardelle">Tuscan Broad Pappardelle ($15.50)</option>
+                    <option value="agnolotti">Truffled Mushroom Agnolotti ($21.00)</option>
+                    <option value="campanelle">Fluted Campanelle Gigli ($13.50)</option>
+                    <option value="specialty">Squid Ink / Beetroot / Spinach Specialty Noodles</option>
+                    <option value="mixed_box">Chef’s Weekend Tasting Bundle</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="prod-qty">Total Quantity Needed *</label>
+                  <select id="prod-qty" name="quantity" class="form-control" required>
+                    <option value="">-- Select approximate weight --</option>
+                    <option value="500g">500g (Serves 2–3)</option>
+                    <option value="1kg">1.0 kg (Serves 4–6)</option>
+                    <option value="1.5kg">1.5 kg (Serves 6–8)</option>
+                    <option value="2kg+">2.0 kg+ (Party / Family Gathering)</option>
+                    <option value="catering">5.0 kg+ (Private Event / Catering)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="prod-sauces">Sauce Jars to Add (Optional)</label>
+                <input type="text" id="prod-sauces" name="sauces" class="form-control" placeholder="e.g. 1x Pomodoro + 1x Truffled Alfredo">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="prod-notes">Special Requests or Dietary Requirements</label>
+                <textarea id="prod-notes" name="notes" class="form-control" rows="3" placeholder="Tell us about allergies, custom egg-free requests, or preferred collection time."></textarea>
+              </div>
+
+              <div class="form-msg"></div>
+
+              <button type="submit" class="btn btn-primary btn-lg" style="width:100%; justify-content:center">
+                <i class="fa-solid fa-paper-plane"></i> Submit Order Enquiry
+              </button>
+            </form>
+          </div>
+
+          <!-- Right Card -->
+          <div data-aos="fade-left" data-aos-delay="150">
+            <div class="pickup-info-card">
+              <h3 style="margin-bottom:1.2rem; font-size:1.35rem">Kitchen Pickup Details</h3>
+
+              <div class="pickup-feature">
+                <i class="fa-solid fa-location-dot"></i>
+                <div>
+                  <h5 style="margin-bottom:0.2rem">Artisan Shop Location</h5>
+                  <p style="font-size:0.86rem; color:var(--brown-mid); margin:0">14 Pasta Lane, Artisan Quarter, Melbourne VIC 3000. Free 15-minute customer collection parking directly outside.</p>
+                </div>
+              </div>
+
+              <div class="pickup-feature">
+                <i class="fa-solid fa-clock"></i>
+                <div>
+                  <h5 style="margin-bottom:0.2rem">Fresh Collection Hours</h5>
+                  <p style="font-size:0.86rem; color:var(--brown-mid); margin:0">Tuesday to Friday: 8:00am – 5:30pm<br>Saturday: 8:00am – 4:00pm<br>Sunday: 9:00am – 2:00pm (Pre-orders only)</p>
+                </div>
+              </div>
+
+              <div class="pickup-feature">
+                <i class="fa-solid fa-snowflake"></i>
+                <div>
+                  <h5 style="margin-bottom:0.2rem">Fresh Storage Guarantee</h5>
+                  <p style="font-size:0.86rem; color:var(--brown-mid); margin:0">All orders are sealed in breathable parchment and food-grade chilled boxes. Lasts 3 to 4 days refrigerated, or up to 3 months frozen without defrosting needed!</p>
+                </div>
+              </div>
+
+              <div class="pickup-feature">
+                <i class="fa-solid fa-truck-fast"></i>
+                <div>
+                  <h5 style="margin-bottom:0.2rem">Looking for Commercial Supply?</h5>
+                  <p style="font-size:0.86rem; color:var(--brown-mid); margin:0">If you operate a restaurant, café, or grocery store, please visit our <a href="wholesale.html" style="color:var(--red-primary); font-weight:600; text-decoration:underline">Wholesale Orders page</a> for trade accounts and scheduled logistics.</p>
+                </div>
+              </div>
+
+              <div style="margin-top:1.5rem; padding-top:1.2rem; border-top:1px solid var(--beige); text-align:center">
+                <a href="tel:+61390001234" class="btn btn-outline-primary btn-sm" style="display:inline-flex; width:100%; justify-content:center">
+                  <i class="fa-solid fa-phone"></i> Call Kitchen: +61 3 9000 1234
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="images/logo.jpg" alt="PASTA Logo">
+          <div class="brand-name">PASTA</div>
+          <p>Handcrafted fresh pasta and homemade noodles made daily in our local kitchen. From our family table to yours — with love, flour, and a little bit of magic.</p>
+          <div class="social-links">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5>Quick Links</h5>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">Our Story</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="wholesale.html">Wholesale</a></li>
+            <li><a href="blog.html">Blog &amp; Recipes</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Our Products</h5>
+          <ul>
+            <li><a href="products.html">Fresh Spaghetti</a></li>
+            <li><a href="products.html">Tagliatelle</a></li>
+            <li><a href="products.html">Fettuccine</a></li>
+            <li><a href="products.html">Ricotta Ravioli</a></li>
+            <li><a href="products.html">Potato Gnocchi</a></li>
+            <li><a href="products.html">Artisan Sauces</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Visit Us</h5>
+          <div class="contact-item"><i class="fa-solid fa-location-dot"></i><span>14 Pasta Lane, Artisan Quarter,<br>Melbourne VIC 3000</span></div>
+          <div class="contact-item"><i class="fa-solid fa-phone"></i><span>+61 3 9000 1234</span></div>
+          <div class="contact-item"><i class="fa-solid fa-envelope"></i><span>hello@pasta.com.au</span></div>
+          <div class="contact-item"><i class="fa-solid fa-clock"></i><span>Tue–Sat: 8am – 5pm<br>Sun: 9am – 2pm</span></div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 PASTA Artisan &amp; Fresh. All rights reserved.</span>
+        <div style="display:flex; gap:1.2rem; flex-wrap:wrap">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Wholesale T&amp;Cs</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-chevron-up"></i></button>
+  <script src="js/main.js"></script>
+</body>
+</html>

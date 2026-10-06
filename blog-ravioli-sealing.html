@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Why do ravioli burst in boiling water? It's not thin dough — it's trapped air expanding like a balloon. Master the gentle cup-and-press thumb technique.">
+  <title>The Anatomy of Ravioli: Sealing Without Trapping Destructive Air — PASTA</title>
+  <link rel="icon" type="image/jpeg" href="images/logo.jpg">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/blog-detail.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script>
+    (function() {
+      const t = localStorage.getItem('pasta_theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      const d = localStorage.getItem('pasta_dir') || 'ltr';
+      document.documentElement.setAttribute('data-theme', t);
+      document.documentElement.setAttribute('dir', d);
+      if (d === 'rtl') document.documentElement.setAttribute('lang', 'ar');
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="index.html" class="nav-logo" aria-label="PASTA Home">
+          <img src="images/logo.jpg" alt="PASTA Artisan & Fresh Logo">
+          <div class="nav-logo-text">
+            <span class="brand">PASTA</span>
+            <span class="tagline">Artisan &amp; Fresh</span>
+          </div>
+        </a>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="home2.html">Home 2</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="wholesale.html">Wholesale</a></li>
+          <li><a href="blog.html" class="active">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="nav-actions">
+          <div class="header-toggle-group">
+            <button class="theme-toggle-btn" id="theme-toggle" type="button" aria-label="Toggle dark/light mode" title="Switch Theme">
+              <i class="fa-solid fa-moon"></i>
+            </button>
+            <button class="rtl-toggle-btn" id="rtl-toggle" type="button" aria-label="Toggle RTL/LTR direction" title="Switch RTL/LTR">
+              <span class="rtl-label">RTL</span>
+            </button>
+          </div>
+          <a href="contact.html" class="btn btn-primary btn-sm">Enquire Now</a>
+          <button class="hamburger" id="hamburger-btn" aria-label="Open navigation menu">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Drawer -->
+  <div class="nav-overlay" id="nav-overlay"></div>
+  <nav class="nav-drawer" id="nav-drawer">
+    <button class="nav-drawer-close" id="drawer-close" aria-label="Close menu">✕</button>
+    <a href="index.html">Home</a>
+    <a href="home2.html">Home 2</a>
+    <a href="about.html">About</a>
+    <a href="products.html">Products</a>
+    <a href="wholesale.html">Wholesale</a>
+    <a href="blog.html" class="active">Blog</a>
+    <a href="contact.html">Contact</a>
+    <a href="contact.html" class="btn btn-primary">Enquire Now</a>
+    <div class="drawer-toggles">
+      <button class="drawer-toggle theme-toggle-btn" id="drawer-theme-toggle" type="button" aria-label="Toggle dark/light mode">
+        <i class="fa-solid fa-moon"></i> <span class="theme-text">Dark Mode</span>
+      </button>
+      <button class="drawer-toggle rtl-toggle-btn" id="drawer-rtl-toggle" type="button" aria-label="Toggle RTL/LTR">
+        <span class="rtl-label">RTL</span> <span class="rtl-text">Right-to-Left</span>
+      </button>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Breadcrumb -->
+    <nav class="article-breadcrumb" aria-label="Breadcrumb">
+      <div class="container">
+        <ol class="breadcrumb-list">
+          <li><a href="index.html">Home</a></li>
+          <li class="separator"><i class="fa-solid fa-chevron-right"></i></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li class="separator"><i class="fa-solid fa-chevron-right"></i></li>
+          <li><span>Stuffed Pasta</span></li>
+          <li class="separator"><i class="fa-solid fa-chevron-right"></i></li>
+          <li class="current" aria-current="page">Sealing Stuffed Ravioli</li>
+        </ol>
+      </div>
+    </nav>
+
+    <!-- Article Header -->
+    <header class="article-header-section">
+      <div class="container">
+        <div class="article-header-inner">
+          <span class="article-category-badge">
+            <i class="fa-solid fa-hand-sparkles"></i> Artisan Stuffed Pasta Technique
+          </span>
+          <h1 class="article-title">The Anatomy of Ravioli: Sealing Without Trapping Destructive Air</h1>
+          <p class="article-deck">Why do ravioli burst open in boiling water? It is rarely due to thin dough—it is trapped air expanding like a balloon. Here is the gentle cup-and-press thumb technique passed down by Italian grandmothers.</p>
+
+          <div class="article-meta-bar">
+            <div class="author-chip">
+              <img src="images/chef_rolling.jpg" alt="Lucia Bianchi" class="author-avatar">
+              <div class="author-info">
+                <strong>Lucia Bianchi</strong>
+                <span>Lead Sfoglina · Handcrafted Pasta</span>
+              </div>
+            </div>
+            <div class="meta-item"><i class="fa-regular fa-calendar"></i> August 30, 2026</div>
+            <div class="meta-item"><i class="fa-regular fa-clock"></i> 5 Min Read</div>
+            <div class="meta-item"><i class="fa-solid fa-certificate"></i> Emilian Craft</div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Media -->
+    <div class="article-hero-media">
+      <div class="article-hero-img-wrap">
+        <img src="images/article_sealing.jpg" alt="Hands using pastry wheel and thumbs to seal fresh ricotta ravioli parcels">
+        <div class="article-hero-caption">
+          <span>Figure 1: Expelling air from around ricotta mounds using cupped thumbs before cutting with a brass fluted wheel.</span>
+          <span>Photo: PASTA Melbourne Production Table</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Article Layout -->
+    <div class="article-layout">
+
+      <!-- Main Column -->
+      <article class="article-content">
+        <p class="lead-paragraph">
+          There is no tragedy in the kitchen quite like lowering a batch of plump, handmade ricotta ravioli into a simmering stockpot, only to watch three of them detonate thirty seconds later, spilling their precious cheese filling into cloudy water and leaving you with empty dough rags.
+        </p>
+
+        <p>
+          Home cooks invariably blame themselves for rolling the dough too thin or not pressing hard enough with a fork. In reality, the culprit is basic gas thermodynamics: <strong>Charles's Law</strong>. When air is trapped inside an airtight pocket and subjected to 100°C water, the gas rapidly expands. If that expanding air has no escape route, the hydraulic pressure blows the weakest dough seam apart.
+        </p>
+
+        <div class="editorial-quote">
+          <i class="fa-solid fa-quote-left"></i>
+          A raviolo should fit its filling like a tailored silk glove, not a puffy duvet. If you can see an air bubble under the dough sheet, that raviolo is already dead in the water.
+        </div>
+
+        <h2 id="the-cup-and-press-method">1. The Cup-and-Press Thumb Technique</h2>
+        <p>
+          Italian sfogline (master pasta rollers) never use their fingertips to press directly on top of the filling mound. Doing so displaces the filling outward onto the seam line, creating greasy fat barriers where dough can never bond. Instead, they use the sides of their thumbs in a horseshoe shape:
+        </p>
+
+        <div class="step-cards-container">
+          <div class="step-card">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <h4>Drape the Top Sheet Gently Without Stretching</h4>
+              <p>Lay the top sfoglia sheet over the piped filling mounds like a loose blanket. Never stretch the sheet tight; stretched dough has tension and will pull away from the base as soon as it heats up.</p>
+            </div>
+          </div>
+          <div class="step-card">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <h4>The Back-to-Front Horseshoe Sweep</h4>
+              <p>Form a curve with your thumb and index finger around the back of the filling mound. Gently cup down and press the air forward and out the open front edge before sealing the perimeter.</p>
+            </div>
+          </div>
+          <div class="step-card">
+            <div class="step-number">3</div>
+            <div class="step-content">
+              <h4>Firm Molecular Bonding of the Edges</h4>
+              <p>Once all air is expelled, use the fleshy pad of your thumbs to press down with firm pressure around the perimeter. You are physically fusing the gluten matrices of the top and bottom sheets together.</p>
+            </div>
+          </div>
+        </div>
+
+        <h2 id="water-vs-egg-wash">2. Water vs. Egg Wash: The Bonding Myth</h2>
+        <p>
+          Should you brush your pasta sheet with water or beaten egg wash before sealing?
+        </p>
+        <p>
+          <strong>If your pasta dough was made and rolled properly, you need neither.</strong>
+        </p>
+        <p>
+          Freshly rolled sfoglia has enough ambient tackiness to self-fuse upon contact. However, if your kitchen air is dry and the dough sheet has developed a slight dry skin, brushing with a water-drenched pastry brush is a recipe for disaster: excess water forms a slick barrier that prevents bonding and causes the seam to slide apart.
+        </p>
+
+        <div class="callout-box tip">
+          <div class="callout-icon"><i class="fa-solid fa-droplet"></i></div>
+          <div class="callout-content">
+            <h4>The Damp Cloth Technique</h4>
+            <p>Instead of brushing water directly on dough, dampen a clean kitchen towel with warm water, wring it out until barely moist, and press it against your palm. Lightly tap your damp palm across the dough sheet for micro-misting without soggy pools.</p>
+          </div>
+        </div>
+
+        <h2 id="cooking-technique">3. Water Dynamics: Rolling Boil vs. Gentle Simmer</h2>
+        <p>
+          Stuffed pasta must never be subjected to a violent, rolling boil. Violent bubbles toss ravioli against each other and against the hard metal walls of the pot, causing blunt-force seam trauma.
+        </p>
+        <ul>
+          <li><strong>Bring water to a rolling boil</strong> to dissolve your salt (6g–8g per litre).</li>
+          <li><strong>Drop the heat to a gentle simmer (92°C–95°C)</strong> right before dropping in your ravioli. Tiny champagne bubbles rising smoothly to the surface are the ideal cooking environment.</li>
+          <li><strong>Cook time:</strong> 3.5 to 4 minutes for fresh; 5 to 6 minutes for frozen. Remove individually with a spider strainer (<em>schiumarola</em>)—never dump filled pasta into a colander!</li>
+        </ul>
+
+        <!-- Article Footer Meta -->
+        <div class="article-footer-meta">
+          <div class="article-tags-wrap">
+            <span class="tag-label">Topics:</span>
+            <a href="blog.html" class="article-tag">#RavioliCraft</a>
+            <a href="blog.html" class="article-tag">#StuffedPasta</a>
+            <a href="blog.html" class="article-tag">#SfoglinaTechnique</a>
+            <a href="blog.html" class="article-tag">#HandmadePasta</a>
+          </div>
+
+          <!-- Post Navigation Grid -->
+          <div class="post-navigation-grid">
+            <a href="blog-pasta-water-emulsion.html" class="post-nav-card prev">
+              <span class="post-nav-dir"><i class="fa-solid fa-arrow-left"></i> Previous Masterclass</span>
+              <span class="post-nav-title">The Alchemy of 'Acqua di Cottura'</span>
+            </a>
+            <a href="blog-golden-hydration.html" class="post-nav-card next">
+              <span class="post-nav-dir">Next Masterclass <i class="fa-solid fa-arrow-right"></i></span>
+              <span class="post-nav-title">The Golden Hydration Rule: Egg Yolks vs. Water</span>
+            </a>
+          </div>
+        </div>
+
+      </article>
+
+      <!-- Sidebar -->
+      <aside class="article-sidebar">
+        <!-- Table of Contents -->
+        <div class="sidebar-card">
+          <h3 class="sidebar-title"><i class="fa-solid fa-list-ul"></i> Quick Navigation</h3>
+          <ul class="toc-list">
+            <li><a href="#the-cup-and-press-method" class="toc-link"><i class="fa-solid fa-circle"></i> 1. The Cup-and-Press Method</a></li>
+            <li><a href="#water-vs-egg-wash" class="toc-link"><i class="fa-solid fa-circle"></i> 2. Water vs. Egg Wash Myth</a></li>
+            <li><a href="#cooking-technique" class="toc-link"><i class="fa-solid fa-circle"></i> 3. Simmer vs. Rolling Boil</a></li>
+          </ul>
+        </div>
+
+        <!-- Author Card -->
+        <div class="sidebar-card author-card-content">
+          <img src="images/chef_rolling.jpg" alt="Lucia Bianchi" class="author-card-avatar">
+          <h4 class="author-card-name">Lucia Bianchi</h4>
+          <span class="author-card-role">Lead Sfoglina</span>
+          <p class="author-card-bio">Lucia has hand-pinched over 500,000 ravioli and tortelloni across a 15-year career in Bologna, Modena, and now Melbourne.</p>
+          <a href="about.html" class="btn btn-outline btn-sm" style="width:100%">Our Kitchen Story</a>
+        </div>
+
+        <!-- Featured Product Promo -->
+        <div class="sidebar-card text-center">
+          <h3 class="sidebar-title"><i class="fa-solid fa-basket-shopping"></i> Taste Stuffed Pasta</h3>
+          <img src="images/prod_agnolotti.jpg" alt="PASTA Agnolotti del Plin" class="promo-product-img">
+          <h4 class="promo-product-title">Agnolotti del Plin</h4>
+          <p class="promo-product-desc">Piedmontese pinched parcels filled with slow-roasted pork shoulder, veal, and cabbage.</p>
+          <a href="products.html" class="btn btn-primary btn-sm" style="width:100%">Order Agnolotti</a>
+        </div>
+      </aside>
+
+    </div>
+
+    <!-- Related Articles Section -->
+    <section class="related-posts-section">
+      <div class="container">
+        <div class="related-header">
+          <span class="eyebrow" style="color:var(--red-primary)"><i class="fa-solid fa-wheat-awn"></i> Keep Learning</span>
+          <h2>Related Kitchen Masterclasses</h2>
+        </div>
+        <div class="related-grid">
+          <!-- Card 1 -->
+          <article class="featured-card">
+            <div class="featured-img-wrap" style="height:190px">
+              <img src="images/article_storage.jpg" alt="Fresh pasta storage techniques">
+              <span class="dish-tag gold">Storage</span>
+            </div>
+            <div class="featured-body">
+              <div class="featured-meta">
+                <h3 style="font-size:1rem"><a href="blog-pasta-storage.html" style="color:inherit; text-decoration:none">Fresh Pasta Storage Guide</a></h3>
+                <p>Fridge vs. freezer: tray freezing method</p>
+              </div>
+              <a href="blog-pasta-storage.html" class="featured-order-btn">Read</a>
+            </div>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="featured-card">
+            <div class="featured-img-wrap" style="height:190px">
+              <img src="images/flour_mound.jpg" alt="Egg yolk hydration">
+              <span class="dish-tag">Chemistry</span>
+            </div>
+            <div class="featured-body">
+              <div class="featured-meta">
+                <h3 style="font-size:1rem"><a href="blog-golden-hydration.html" style="color:inherit; text-decoration:none">The Golden Hydration Rule</a></h3>
+                <p>Why egg yolks beat tap water</p>
+              </div>
+              <a href="blog-golden-hydration.html" class="featured-order-btn">Read</a>
+            </div>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="featured-card">
+            <div class="featured-img-wrap" style="height:190px">
+              <img src="images/article_emulsion.jpg" alt="Emulsified pasta sauce">
+              <span class="dish-tag red">Sauce</span>
+            </div>
+            <div class="featured-body">
+              <div class="featured-meta">
+                <h3 style="font-size:1rem"><a href="blog-pasta-water-emulsion.html" style="color:inherit; text-decoration:none">The Alchemy of Acqua di Cottura</a></h3>
+                <p>Emulsifying butter, oil &amp; cheese</p>
+              </div>
+              <a href="blog-pasta-water-emulsion.html" class="featured-order-btn">Read</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="images/logo.jpg" alt="PASTA Logo">
+          <div class="brand-name">PASTA</div>
+          <p>Handcrafted fresh pasta and homemade noodles made daily in our local kitchen. From our family table to yours — with love, flour, and a little bit of magic.</p>
+        </div>
+        <div class="footer-col">
+          <h5>Quick Links</h5>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">Our Story</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="wholesale.html">Wholesale</a></li>
+            <li><a href="blog.html">Blog &amp; Recipes</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Our Products</h5>
+          <ul>
+            <li><a href="products.html">Fresh Spaghetti</a></li>
+            <li><a href="products.html">Tagliatelle</a></li>
+            <li><a href="products.html">Fettuccine</a></li>
+            <li><a href="products.html">Ricotta Ravioli</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Visit Us</h5>
+          <div class="contact-item"><i class="fa-solid fa-location-dot"></i><span>14 Pasta Lane, Artisan Quarter, Melbourne VIC</span></div>
+          <div class="contact-item"><i class="fa-solid fa-phone"></i><span>+61 3 9000 1234</span></div>
+          <div class="contact-item"><i class="fa-solid fa-clock"></i><span>Tue–Sat: 8am – 5pm</span></div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 PASTA Artisan &amp; Fresh. All rights reserved.</span>
+        <div><a href="blog.html">Back to All Guides</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <button id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-chevron-up"></i></button>
+  <script src="js/main.js"></script>
+</body>
+</html>

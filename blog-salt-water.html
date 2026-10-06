@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="'Salty like the Mediterranean sea' is a dangerous culinary myth. Learn the exact 10g per litre science, osmotic pressure curves, and why salt timing matters.">
+  <title>How to Salt Pasta Water: The 10g per Litre Science — PASTA</title>
+  <link rel="icon" type="image/jpeg" href="images/logo.jpg">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/blog-detail.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script>
+    (function() {
+      const t = localStorage.getItem('pasta_theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      const d = localStorage.getItem('pasta_dir') || 'ltr';
+      document.documentElement.setAttribute('data-theme', t);
+      document.documentElement.setAttribute('dir', d);
+      if (d === 'rtl') document.documentElement.setAttribute('lang', 'ar');
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="index.html" class="nav-logo" aria-label="PASTA Home">
+          <img src="images/logo.jpg" alt="PASTA Artisan & Fresh Logo">
+          <div class="nav-logo-text">
+            <span class="brand">PASTA</span>
+            <span class="tagline">Artisan &amp; Fresh</span>
+          </div>
+        </a>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="home2.html">Home 2</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="wholesale.html">Wholesale</a></li>
+          <li><a href="blog.html" class="active">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="nav-actions">
+          <div class="header-toggle-group">
+            <button class="theme-toggle-btn" id="theme-toggle" type="button" aria-label="Toggle dark/light mode" title="Switch Theme">
+              <i class="fa-solid fa-moon"></i>
+            </button>
+            <button class="rtl-toggle-btn" id="rtl-toggle" type="button" aria-label="Toggle RTL/LTR direction" title="Switch RTL/LTR">
+              <span class="rtl-label">RTL</span>
+            </button>
+          </div>
+          <a href="contact.html" class="btn btn-primary btn-sm">Enquire Now</a>
+          <button class="hamburger" id="hamburger-btn" aria-label="Open navigation menu">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Drawer -->
+  <div class="nav-overlay" id="nav-overlay"></div>
+  <nav class="nav-drawer" id="nav-drawer">
+    <button class="nav-drawer-close" id="drawer-close" aria-label="Close menu">✕</button>
+    <a href="index.html">Home</a>
+    <a href="home2.html">Home 2</a>
+    <a href="about.html">About</a>
+    <a href="products.html">Products</a>
+    <a href="wholesale.html">Wholesale</a>
+    <a href="blog.html" class="active">Blog</a>
+    <a href="contact.html">Contact</a>
+    <a href="contact.html" class="btn btn-primary">Enquire Now</a>
+    <div class="drawer-toggles">
+      <button class="drawer-toggle theme-toggle-btn" id="drawer-theme-toggle" type="button" aria-label="Toggle dark/light mode">
+        <i class="fa-solid fa-moon"></i> <span class="theme-text">Dark Mode</span>
+      </button>
+      <button class="drawer-toggle rtl-toggle-btn" id="drawer-rtl-toggle" type="button" aria-label="Toggle RTL/LTR">
+        <span class="rtl-label">RTL</span> <span class="rtl-text">Right-to-Left</span>
+      </button>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Breadcrumb -->
+    <nav class="article-breadcrumb" aria-label="Breadcrumb">
+      <div class="container">
+        <ol class="breadcrumb-list">
+          <li><a href="index.html">Home</a></li>
+          <li class="separator"><i class="fa-solid fa-chevron-right"></i></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li class="separator"><i class="fa-solid fa-chevron-right"></i></li>
+          <li><span>Culinary Science</span></li>
+          <li class="separator"><i class="fa-solid fa-chevron-right"></i></li>
+          <li class="current" aria-current="page">Salting Pasta Water Science</li>
+        </ol>
+      </div>
+    </nav>
+
+    <!-- Article Header -->
+    <header class="article-header-section">
+      <div class="container">
+        <div class="article-header-inner">
+          <span class="article-category-badge">
+            <i class="fa-solid fa-flask-vial"></i> Food Chemistry &amp; Physics
+          </span>
+          <h1 class="article-title">How to Salt Pasta Water: The 10g per Litre Science</h1>
+          <p class="article-deck">'Salty like the Mediterranean sea' is a dangerous culinary myth that will ruin your dinner. We calculate the exact salinity curve and explain the classical Italian 10-100-1000 rule.</p>
+
+          <div class="article-meta-bar">
+            <div class="author-chip">
+              <img src="images/chef_rolling.jpg" alt="Sofia Moretti" class="author-avatar">
+              <div class="author-info">
+                <strong>Sofia Moretti</strong>
+                <span>Culinary Chemist · Research Lead</span>
+              </div>
+            </div>
+            <div class="meta-item"><i class="fa-regular fa-calendar"></i> September 14, 2026</div>
+            <div class="meta-item"><i class="fa-regular fa-clock"></i> 4 Min Read</div>
+            <div class="meta-item"><i class="fa-solid fa-square-root-variable"></i> Lab Verified</div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Media -->
+    <div class="article-hero-media">
+      <div class="article-hero-img-wrap">
+        <img src="images/article_salt.jpg" alt="Coarse Mediterranean sea salt raining into rolling boiling pasta water in a copper stockpot">
+        <div class="article-hero-caption">
+          <span>Figure 1: Coarse Sicilian sea salt hitting water at 100°C. Notice the immediate burst of vigorous nucleation bubbles.</span>
+          <span>Photo: PASTA Melbourne Testing Kitchen</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Article Layout -->
+    <div class="article-layout">
+
+      <!-- Main Column -->
+      <article class="article-content">
+        <p class="lead-paragraph">
+          You have heard the romantic adage a hundred times from celebrity chefs: <em>"Make your pasta water as salty as the Mediterranean sea!"</em> If you were to follow that advice literally, your pasta would be completely inedible. Mediterranean sea water contains approximately 3.8% dissolved salts (38 grams of salt per litre). At that salinity, pasta absorbs so much sodium that the human palate detects only acrid bitterness.
+        </p>
+
+        <p>
+          Salting pasta water is the only moment during the cooking process when flavor can penetrate into the innermost core of the noodle. Once drained, no amount of salt sprinkled on top will ever season the interior wheat starch. Here is the precise scientific formula used by Italy's culinary academies.
+        </p>
+
+        <div class="editorial-quote">
+          <i class="fa-solid fa-quote-left"></i>
+          Remember the golden Italian ratio: 10 - 100 - 1000. That is 10 grams of salt for every 100 grams of dry pasta, boiled in 1000 millilitres (1 litre) of water.
+        </div>
+
+        <h2 id="the-10-100-1000-rule">1. The 10 - 100 - 1000 Classical Ratio</h2>
+        <p>
+          This mnemonic device has governed Italian home kitchens for generations:
+        </p>
+        <ul>
+          <li><strong>10 Grams of Salt:</strong> Corresponds to approximately 1% salinity. At 1%, the osmotic pressure between boiling water and pasta starch is perfectly balanced.</li>
+          <li><strong>100 Grams of Pasta:</strong> Standard single-person portion size.</li>
+          <li><strong>1,000 Millilitres of Water (1 Litre):</strong> Ample volume to prevent water temperature from plummeting when pasta is submerged.</li>
+        </ul>
+
+        <div class="callout-box tip">
+          <div class="callout-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+          <div class="callout-content">
+            <h4>Quick Kitchen Conversion: Tablespoons to Grams</h4>
+            <p>10g of coarse sea salt = 1 rounded teaspoon. If using fine table salt, use only 7g (table salt packs tighter and contains anti-caking agents that taste metallic).</p>
+          </div>
+        </div>
+
+        <h2 id="when-to-salt">2. When Should You Add The Salt?</h2>
+        <p>
+          There is endless internet debate about whether to add salt to cold water or rolling boiling water. From a thermodynamic standpoint:
+        </p>
+        <p>
+          <strong>Always add salt when the water is already boiling.</strong>
+        </p>
+        <p>
+          Here are the two physical reasons why:
+        </p>
+        <ol>
+          <li><strong>Pitting Corrosion in Cookware:</strong> If you drop coarse salt into cold water, the heavy crystals sink directly to the stainless steel or aluminum bottom. In cold water, salt dissolves slowly, creating localized hyper-saline zones that corrode microscopic pits into your expensive stockpots.</li>
+          <li><strong>Immediate Nucleation:</strong> When salt is dropped into already boiling water, it dissolves in 3 seconds and produces rapid nucleation sites that create uniform, violent turbulence—ideal for keeping pasta strands separated.</li>
+        </ol>
+
+        <div class="callout-box science">
+          <div class="callout-icon"><i class="fa-solid fa-flask"></i></div>
+          <div class="callout-content">
+            <h4>The Boiling Point Elevation Myth</h4>
+            <p>Many cooks claim salt makes water boil faster. In reality, adding 10g of salt per litre raises the boiling point by a negligible 0.04°C. The difference is undetectable on a stove.</p>
+          </div>
+        </div>
+
+        <h2 id="sauce-salinity-adjustment">3. Adjusting for Cured Meats &amp; Aged Cheese</h2>
+        <p>
+          While 10g per litre is the baseline for fresh tomato and vegetable sauces, you must calibrate downwards if your finished sauce includes naturally salty cured ingredients:
+        </p>
+        <div class="article-table-wrap">
+          <table class="article-table">
+            <thead>
+              <tr>
+                <th>Sauce Profile</th>
+                <th>Key Ingredients</th>
+                <th>Recommended Salinity</th>
+                <th>Reasoning</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Cacio e Pepe / Carbonara</strong></td>
+                <td>Pecorino Romano DOP + Guanciale</td>
+                <td><strong>6g to 7g per Litre</strong></td>
+                <td>Pecorino Romano is heavily salted; high water salinity makes the sauce harsh.</td>
+              </tr>
+              <tr>
+                <td><strong>Bolognese Ragù</strong></td>
+                <td>Braised beef chuck, milk, wine</td>
+                <td><strong>10g per Litre</strong></td>
+                <td>Deep meat ragù needs well-seasoned pasta core for contrast.</td>
+              </tr>
+              <tr>
+                <td><strong>Burro e Salvia (Butter &amp; Sage)</strong></td>
+                <td>Unsalted butter, parmigiano</td>
+                <td><strong>10g to 11g per Litre</strong></td>
+                <td>Minimalist butter sauces rely entirely on pasta seasoning.</td>
+              </tr>
+              <tr>
+                <td><strong>Seafood Vongole / Bottarga</strong></td>
+                <td>Fresh clams, sea salt, roe</td>
+                <td><strong>5g per Litre</strong></td>
+                <td>Clam liquor naturally releases concentrated seawater into the pan.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Article Footer Meta -->
+        <div class="article-footer-meta">
+          <div class="article-tags-wrap">
+            <span class="tag-label">Topics:</span>
+            <a href="blog.html" class="article-tag">#CulinaryScience</a>
+            <a href="blog.html" class="article-tag">#PastaCooking</a>
+            <a href="blog.html" class="article-tag">#SalinityGuide</a>
+            <a href="blog.html" class="article-tag">#KitchenBasics</a>
+          </div>
+
+          <!-- Post Navigation Grid -->
+          <div class="post-navigation-grid">
+            <a href="blog-squid-ink.html" class="post-nav-card prev">
+              <span class="post-nav-dir"><i class="fa-solid fa-arrow-left"></i> Previous Masterclass</span>
+              <span class="post-nav-title">Kneading with Squid Ink: Jet-Black Color</span>
+            </a>
+            <a href="blog-pasta-water-emulsion.html" class="post-nav-card next">
+              <span class="post-nav-dir">Next Masterclass <i class="fa-solid fa-arrow-right"></i></span>
+              <span class="post-nav-title">The Alchemy of 'Acqua di Cottura'</span>
+            </a>
+          </div>
+        </div>
+
+      </article>
+
+      <!-- Sidebar -->
+      <aside class="article-sidebar">
+        <!-- Table of Contents -->
+        <div class="sidebar-card">
+          <h3 class="sidebar-title"><i class="fa-solid fa-list-ul"></i> Quick Navigation</h3>
+          <ul class="toc-list">
+            <li><a href="#the-10-100-1000-rule" class="toc-link"><i class="fa-solid fa-circle"></i> 1. The 10-100-1000 Ratio</a></li>
+            <li><a href="#when-to-salt" class="toc-link"><i class="fa-solid fa-circle"></i> 2. When to Add Salt</a></li>
+            <li><a href="#sauce-salinity-adjustment" class="toc-link"><i class="fa-solid fa-circle"></i> 3. Calibrate for Sauces</a></li>
+          </ul>
+        </div>
+
+        <!-- Author Card -->
+        <div class="sidebar-card author-card-content">
+          <img src="images/chef_rolling.jpg" alt="Sofia Moretti" class="author-card-avatar">
+          <h4 class="author-card-name">Sofia Moretti</h4>
+          <span class="author-card-role">Culinary Chemist</span>
+          <p class="author-card-bio">With a degree in food biochemistry from the University of Gastronomic Sciences in Pollenzo, Sofia investigates the science behind traditional Italian cooking.</p>
+          <a href="about.html" class="btn btn-outline btn-sm" style="width:100%">About Our Kitchen</a>
+        </div>
+
+        <!-- Featured Product Promo -->
+        <div class="sidebar-card text-center">
+          <h3 class="sidebar-title"><i class="fa-solid fa-basket-shopping"></i> Artisan Sauces</h3>
+          <img src="images/sauce_pomodoro.jpg" alt="PASTA Classic Pomodoro Sauce" class="promo-product-img">
+          <h4 class="promo-product-title">Slow Pomodoro Sugo</h4>
+          <p class="promo-product-desc">Slow-simmered for 8 hours with sweet San Marzano tomatoes, olive oil, and sweet garlic.</p>
+          <a href="products.html" class="btn btn-primary btn-sm" style="width:100%">View Our Sauces</a>
+        </div>
+      </aside>
+
+    </div>
+
+    <!-- Related Articles Section -->
+    <section class="related-posts-section">
+      <div class="container">
+        <div class="related-header">
+          <span class="eyebrow" style="color:var(--red-primary)"><i class="fa-solid fa-wheat-awn"></i> Keep Learning</span>
+          <h2>Related Kitchen Masterclasses</h2>
+        </div>
+        <div class="related-grid">
+          <!-- Card 1 -->
+          <article class="featured-card">
+            <div class="featured-img-wrap" style="height:190px">
+              <img src="images/article_emulsion.jpg" alt="Emulsified sauce">
+              <span class="dish-tag red">Sauce</span>
+            </div>
+            <div class="featured-body">
+              <div class="featured-meta">
+                <h3 style="font-size:1rem"><a href="blog-pasta-water-emulsion.html" style="color:inherit; text-decoration:none">Acqua di Cottura Science</a></h3>
+                <p>Emulsifying glossy restaurant glazes</p>
+              </div>
+              <a href="blog-pasta-water-emulsion.html" class="featured-order-btn">Read</a>
+            </div>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="featured-card">
+            <div class="featured-img-wrap" style="height:190px">
+              <img src="images/article_bronze.jpg" alt="Bronze vs teflon dies">
+              <span class="dish-tag gold">Craft</span>
+            </div>
+            <div class="featured-body">
+              <div class="featured-meta">
+                <h3 style="font-size:1rem"><a href="blog-bronze-dies.html" style="color:inherit; text-decoration:none">Bronze vs. Teflon Dies</a></h3>
+                <p>Surface texture &amp; sauce adherence</p>
+              </div>
+              <a href="blog-bronze-dies.html" class="featured-order-btn">Read</a>
+            </div>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="featured-card">
+            <div class="featured-img-wrap" style="height:190px">
+              <img src="images/flour_mound.jpg" alt="Egg yolk hydration">
+              <span class="dish-tag">Chemistry</span>
+            </div>
+            <div class="featured-body">
+              <div class="featured-meta">
+                <h3 style="font-size:1rem"><a href="blog-golden-hydration.html" style="color:inherit; text-decoration:none">The Golden Hydration Rule</a></h3>
+                <p>Why egg yolks beat tap water</p>
+              </div>
+              <a href="blog-golden-hydration.html" class="featured-order-btn">Read</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="images/logo.jpg" alt="PASTA Logo">
+          <div class="brand-name">PASTA</div>
+          <p>Handcrafted fresh pasta and homemade noodles made daily in our local kitchen. From our family table to yours — with love, flour, and a little bit of magic.</p>
+        </div>
+        <div class="footer-col">
+          <h5>Quick Links</h5>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">Our Story</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="wholesale.html">Wholesale</a></li>
+            <li><a href="blog.html">Blog &amp; Recipes</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Our Products</h5>
+          <ul>
+            <li><a href="products.html">Fresh Spaghetti</a></li>
+            <li><a href="products.html">Tagliatelle</a></li>
+            <li><a href="products.html">Fettuccine</a></li>
+            <li><a href="products.html">Ricotta Ravioli</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Visit Us</h5>
+          <div class="contact-item"><i class="fa-solid fa-location-dot"></i><span>14 Pasta Lane, Artisan Quarter, Melbourne VIC</span></div>
+          <div class="contact-item"><i class="fa-solid fa-phone"></i><span>+61 3 9000 1234</span></div>
+          <div class="contact-item"><i class="fa-solid fa-clock"></i><span>Tue–Sat: 8am – 5pm</span></div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 PASTA Artisan &amp; Fresh. All rights reserved.</span>
+        <div><a href="blog.html">Back to All Guides</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <button id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-chevron-up"></i></button>
+  <script src="js/main.js"></script>
+</body>
+</html>

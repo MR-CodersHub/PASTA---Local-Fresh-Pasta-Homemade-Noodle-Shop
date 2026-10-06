@@ -1,0 +1,3271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="PASTA — Freshly made artisan pasta and homemade noodles crafted daily in our local kitchen. Experience the taste of tradition.">
+  <meta name="keywords"
+    content="fresh pasta, handmade noodles, artisan pasta, local pasta shop, ravioli, tagliatelle, gnocchi, pasta sauce">
+  <title>PASTA — Freshly Made. Simply Delicious.</title>
+  <link rel="icon" type="image/jpeg" href="images/logo.jpg">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script>
+    (function () {
+      const t = localStorage.getItem('pasta_theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      const d = localStorage.getItem('pasta_dir') || 'ltr';
+      document.documentElement.setAttribute('data-theme', t);
+      document.documentElement.setAttribute('dir', d);
+      if (d === 'rtl') document.documentElement.setAttribute('lang', 'ar');
+    })();
+  </script>
+  <style>
+    /* ── HOME PAGE SPECIFIC ── */
+
+    /* ════════════════════════════════════════════════════
+       SECTION 1 — LUXURY ATELIER HERO MASTERPIECE
+    ════════════════════════════════════════════════════ */
+    .hero-luxury-wrap {
+      max-width: 1400px;
+      margin: 1.4rem auto 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .hero-luxury-card {
+      background: #ffffff;
+      border-radius: 26px;
+      overflow: hidden;
+      border: 1px solid rgba(212, 165, 67, 0.28);
+      box-shadow: 0 16px 45px rgba(58, 20, 5, 0.08), 0 4px 16px rgba(0, 0, 0, 0.03);
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* 2-Column Main Body */
+    .hero-luxury-body {
+      display: grid;
+      grid-template-columns: 1.05fr 1fr;
+      height: 430px;
+      position: relative;
+    }
+
+    /* Left Content Panel */
+    .hero-lux-content {
+      background: #FDF9F3;
+      padding: 2rem 2.8rem 1.6rem 3.2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      border-right: 1px solid rgba(212, 165, 67, 0.22);
+    }
+
+    .hero-lux-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      background: rgba(192, 57, 43, 0.06);
+      border: 1px solid rgba(192, 57, 43, 0.18);
+      padding: 4px 12px;
+      border-radius: 999px;
+      width: fit-content;
+      margin-bottom: 0.85rem;
+    }
+
+    .hero-lux-tag i {
+      color: var(--gold);
+    }
+
+    .hero-lux-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 3vw, 2.75rem);
+      line-height: 1.1;
+      color: var(--brown);
+      font-weight: 900;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-lux-title em {
+      color: var(--red-primary);
+      font-style: italic;
+      font-weight: 800;
+    }
+
+    .hero-lux-desc {
+      font-family: var(--font-serif);
+      font-size: 0.88rem;
+      line-height: 1.55;
+      color: var(--brown-mid);
+      max-width: 440px;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-lux-actions {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-lux-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      background: var(--red-primary);
+      color: #fff !important;
+      padding: 0.65em 1.6em;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.84rem;
+      letter-spacing: 0.02em;
+      text-decoration: none;
+      transition: all 0.28s ease;
+      box-shadow: 0 6px 20px rgba(192, 57, 43, 0.3);
+    }
+
+    .btn-lux-primary:hover {
+      background: var(--gold);
+      color: var(--brown) !important;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(212, 165, 67, 0.4);
+    }
+
+    .btn-lux-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-size: 0.84rem;
+      font-weight: 700;
+      color: var(--brown);
+      text-decoration: none;
+      border-bottom: 1.5px solid var(--gold);
+      padding-bottom: 2px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .btn-lux-ghost:hover {
+      color: var(--red-primary);
+      border-color: var(--red-primary);
+    }
+
+    /* Right Visual Panel */
+    .hero-lux-visual {
+      position: relative;
+      overflow: hidden;
+      background: #180800;
+    }
+
+    .hero-lux-img {
+      width: 100%;
+      height: 100% !important;
+      object-fit: cover !important;
+      object-position: center;
+      display: block;
+      transition: transform 0.8s ease;
+    }
+
+    .hero-luxury-card:hover .hero-lux-img {
+      transform: scale(1.03);
+    }
+
+    .hero-lux-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(24, 8, 0, 0.55) 0%, transparent 45%),
+        linear-gradient(to right, rgba(24, 8, 0, 0.2) 0%, transparent 35%);
+      pointer-events: none;
+    }
+
+    /* Floating Badges */
+    .hero-lux-badge {
+      position: absolute;
+      top: 1.2rem;
+      right: 1.2rem;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(212, 165, 67, 0.35);
+      border-radius: 12px;
+      padding: 0.5rem 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+      z-index: 2;
+    }
+
+    .hero-lux-badge i {
+      font-size: 1.15rem;
+      color: var(--red-primary);
+    }
+
+    .hero-lux-badge strong {
+      display: block;
+      font-size: 0.76rem;
+      color: var(--brown);
+      line-height: 1.1;
+    }
+
+    .hero-lux-badge span {
+      font-size: 0.62rem;
+      color: var(--brown-mid);
+    }
+
+    .hero-lux-special {
+      position: absolute;
+      bottom: 1.2rem;
+      left: 1.2rem;
+      background: rgba(24, 8, 0, 0.88);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(212, 165, 67, 0.4);
+      border-radius: 999px;
+      padding: 0.45rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 600;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+      z-index: 2;
+    }
+
+    .lux-pulse-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #4ade80;
+      box-shadow: 0 0 0 3px rgba(74, 222, 128, 0.35);
+      animation: pulse 2s infinite;
+    }
+
+    /* Full-Width Grounded Stats Pedestal */
+    .hero-lux-pedestal {
+      background: linear-gradient(135deg, #1f0b03 0%, #2a0f05 100%);
+      border-top: 1px solid rgba(212, 165, 67, 0.28);
+      display: flex;
+      align-items: center;
+      padding: 0.85rem 2rem;
+      color: #fff;
+    }
+
+    .hero-lux-stat {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.85rem;
+    }
+
+    .hero-lux-stat i {
+      font-size: 1.2rem;
+      color: var(--gold);
+      opacity: 0.9;
+    }
+
+    .hero-lux-stat .stat-text strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 900;
+      color: #fff;
+      line-height: 1;
+      margin-bottom: 0.1rem;
+    }
+
+    .hero-lux-stat .stat-text strong span {
+      color: var(--gold);
+      font-size: 0.75em;
+    }
+
+    .hero-lux-stat .stat-text span {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: rgba(255, 255, 255, 0.65);
+    }
+
+    .lux-stat-divider {
+      width: 1px;
+      height: 26px;
+      background: rgba(212, 165, 67, 0.22);
+    }
+
+    /* Responsive */
+    @media (max-width: 991px) {
+      .hero-luxury-wrap {
+        padding: 0 1rem;
+        margin-top: 1rem;
+      }
+
+      .hero-luxury-body {
+        grid-template-columns: 1fr;
+        height: auto;
+      }
+
+      .hero-lux-content {
+        padding: 2.2rem 1.6rem;
+        border-right: none;
+        border-bottom: 1px solid rgba(212, 165, 67, 0.2);
+        text-align: center;
+        align-items: center;
+      }
+
+      .hero-lux-actions {
+        justify-content: center;
+      }
+
+      .hero-lux-visual {
+        height: 300px;
+      }
+
+      .hero-lux-pedestal {
+        flex-wrap: wrap;
+        gap: 1rem;
+        padding: 1rem;
+      }
+
+      .hero-lux-stat {
+        flex: 1 1 40%;
+      }
+
+      .lux-stat-divider {
+        display: none;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .hero-luxury-wrap {
+        padding: 0 0.8rem;
+        margin-top: 0.8rem;
+      }
+
+      .hero-luxury-card {
+        border-radius: 20px;
+      }
+
+      .hero-lux-content {
+        padding: 1.8rem 1.2rem;
+      }
+
+      .hero-lux-tag {
+        font-size: 0.68rem;
+        padding: 0.35rem 0.8rem;
+      }
+
+      .hero-lux-title {
+        font-size: clamp(1.7rem, 6.8vw, 2.2rem);
+        line-height: 1.15;
+      }
+
+      .hero-lux-desc {
+        font-size: 0.92rem;
+        line-height: 1.6;
+        margin-bottom: 1.3rem;
+      }
+
+      .hero-lux-actions {
+        flex-direction: column;
+        width: 100%;
+        max-width: 320px;
+        margin: 0 auto;
+        gap: 0.75rem;
+      }
+
+      .btn-lux-primary {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+        padding: 0.8em 1.5em;
+      }
+
+      .btn-lux-ghost {
+        justify-content: center;
+        padding-top: 0.2rem;
+      }
+
+      .hero-lux-visual {
+        height: 250px;
+        min-height: 250px;
+      }
+
+      .hero-lux-badge {
+        top: 0.75rem;
+        right: 0.75rem;
+        padding: 0.35rem 0.65rem;
+      }
+
+      .hero-lux-special {
+        bottom: 0.75rem;
+        left: 0.75rem;
+        right: 0.75rem;
+        justify-content: center;
+        font-size: 0.68rem;
+        padding: 0.35rem 0.75rem;
+        white-space: normal;
+        text-align: center;
+      }
+
+      .hero-lux-pedestal {
+        padding: 1rem 0.8rem;
+        gap: 0.75rem;
+      }
+
+      .hero-lux-stat {
+        flex: 1 1 42%;
+        justify-content: flex-start;
+        gap: 0.6rem;
+      }
+    }
+
+    /* ========================================================
+       SECTION 2 — THE SHAPE ATELIER (CATEGORIES REDESIGN)
+       Unique Modern Culinary Cards with Interactive Revealing
+    ======================================================== */
+    #categories.section {
+      background: #faf6f0;
+      position: relative;
+      overflow: hidden;
+      padding: clamp(3.5rem, 6vw, 5.5rem) 0;
+    }
+
+    #categories::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 1000px;
+      height: 400px;
+      background: radial-gradient(ellipse at center, rgba(212, 165, 67, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .cat-atelier-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 2.2rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .cat-tile {
+      position: relative;
+      height: 460px;
+      border-radius: 24px;
+      overflow: hidden;
+      cursor: pointer;
+      border: 1px solid rgba(212, 165, 67, 0.22);
+      box-shadow: 0 10px 30px rgba(60, 20, 5, 0.07);
+      background: #180800;
+      transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .cat-tile:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 22px 48px rgba(60, 20, 5, 0.16);
+      border-color: rgba(212, 165, 67, 0.55);
+    }
+
+    /* Photo with zoom */
+    .cat-tile-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100% !important;
+      object-fit: cover !important;
+      display: block;
+      transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .cat-tile:hover .cat-tile-bg {
+      transform: scale(1.08);
+    }
+
+    /* Gradient overlay */
+    .cat-tile-scrim {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top,
+          rgba(20, 7, 1, 0.96) 0%,
+          rgba(20, 7, 1, 0.72) 42%,
+          rgba(20, 7, 1, 0.25) 70%,
+          rgba(20, 7, 1, 0.45) 100%);
+      transition: opacity 0.3s;
+    }
+
+    /* Top Badges Row */
+    .cat-tile-top {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem;
+    }
+
+    .cat-shape-num {
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: rgba(20, 7, 1, 0.75);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(212, 165, 67, 0.3);
+      padding: 4px 10px;
+      border-radius: 999px;
+    }
+
+    .cat-tech-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: #fff;
+      background: rgba(192, 57, 43, 0.85);
+      padding: 4px 10px;
+      border-radius: 999px;
+      letter-spacing: 0.05em;
+    }
+
+    /* Bottom Info Card */
+    .cat-tile-info {
+      position: relative;
+      z-index: 2;
+      padding: 1.4rem;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .cat-tile-info h3 {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: #fff;
+      margin: 0;
+      line-height: 1.15;
+    }
+
+    .cat-tile-info p {
+      font-size: 0.82rem;
+      color: rgba(255, 255, 255, 0.76);
+      line-height: 1.45;
+      margin: 0;
+    }
+
+    /* Shape Pills Row */
+    .cat-tile-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.3rem;
+    }
+
+    .cat-chip {
+      font-size: 0.65rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.9);
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 999px;
+      padding: 2px 8px;
+    }
+
+    /* Pairing Recommendation */
+    .cat-tile-pairing {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.72rem;
+      color: var(--gold);
+      font-weight: 600;
+      margin-top: 0.4rem;
+      padding-top: 0.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .cat-tile-pairing i {
+      font-size: 0.75rem;
+    }
+
+    /* Action Link */
+    .cat-tile-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: #fff;
+      text-decoration: none;
+      margin-top: 0.4rem;
+      padding: 6px 14px;
+      background: rgba(212, 165, 67, 0.22);
+      border: 1px solid rgba(212, 165, 67, 0.4);
+      border-radius: 999px;
+      width: fit-content;
+      transition: all 0.25s ease;
+    }
+
+    .cat-tile:hover .cat-tile-cta {
+      background: var(--gold);
+      color: var(--brown);
+      border-color: var(--gold);
+    }
+
+    .cat-tile-cta i {
+      transition: transform 0.2s;
+    }
+
+    .cat-tile:hover .cat-tile-cta i {
+      transform: translateX(3px);
+    }
+
+    /* Bottom Interactive Shape Explorer Bar */
+    .cat-shape-bar {
+      position: relative;
+      z-index: 2;
+      background: #fff;
+      border-radius: 20px;
+      border: 1px solid rgba(212, 165, 67, 0.25);
+      box-shadow: 0 8px 26px rgba(60, 20, 5, 0.05);
+      padding: 1.1rem 1.6rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .cat-shape-bar-left {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      flex-wrap: wrap;
+    }
+
+    .cat-bar-title {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--brown);
+      white-space: nowrap;
+    }
+
+    .cat-bar-title i {
+      color: var(--gold);
+    }
+
+    .cat-bar-pills {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      flex-wrap: wrap;
+    }
+
+    .cat-bar-pill {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--brown);
+      background: #fbf7f2;
+      border: 1px solid rgba(78, 30, 10, 0.08);
+      border-radius: 999px;
+      padding: 4px 11px;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+
+    .cat-bar-pill:hover {
+      background: var(--terracotta);
+      color: #fff;
+      border-color: var(--terracotta);
+    }
+
+    .cat-bar-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--brown);
+      color: #fff !important;
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 8px 18px;
+      border-radius: 999px;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: all 0.25s ease;
+    }
+
+    .cat-bar-btn:hover {
+      background: var(--red-primary);
+      transform: translateY(-1px);
+    }
+
+    /* Responsive */
+    @media (max-width: 1100px) {
+      .cat-atelier-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 580px) {
+      .cat-atelier-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cat-tile {
+        height: 380px;
+      }
+
+      .cat-shape-bar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    /* ══════════ SECTION 3 — FEATURED COLLECTION (COMPACT REDESIGN) ══════════ */
+    #featured.section {
+      padding: clamp(35px, 4.5vw, 55px) 0 clamp(40px, 5vw, 60px);
+      background: #FAF6F0;
+    }
+
+    /* ═══════ SECTION 3 — FEATURED EDITORIAL ═══════ */
+    .featured-section {
+      background: var(--brown);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Background grain texture overlay */
+    .featured-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+
+    /* Ambient gold glow */
+    .featured-section::after {
+      content: '';
+      position: absolute;
+      top: -200px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 500px;
+      background: radial-gradient(ellipse, rgba(212, 165, 67, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* Header */
+    .feat-header {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .feat-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.6rem;
+    }
+
+    .feat-eyebrow::before {
+      content: '';
+      width: 28px;
+      height: 2px;
+      background: var(--gold);
+    }
+
+    .feat-header h2 {
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      color: #fff;
+      font-weight: 900;
+      line-height: 1.1;
+      margin: 0;
+    }
+
+    .feat-header h2 em {
+      color: var(--gold);
+      font-style: italic;
+    }
+
+    .feat-header-right {
+      text-align: right;
+    }
+
+    .feat-header-right p {
+      font-size: 0.88rem;
+      color: rgba(255, 255, 255, 0.55);
+      line-height: 1.65;
+      max-width: 280px;
+    }
+
+    .feat-see-all {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 0.8rem;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--gold);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(212, 165, 67, 0.35);
+      padding-bottom: 2px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .feat-see-all:hover {
+      color: #fff;
+      border-color: rgba(255, 255, 255, 0.5);
+    }
+
+    /* Editorial grid */
+    .feat-editorial {
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 1rem;
+      height: 580px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* All dish cards */
+    .feat-dish {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .feat-dish img {
+      width: 100%;
+      height: 100% !important;
+      object-fit: cover !important;
+      display: block;
+      transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .feat-dish:hover img {
+      transform: scale(1.07);
+    }
+
+    /* Hero dish: spans 2 rows */
+    .feat-hero {
+      grid-row: 1 / 3;
+    }
+
+    /* Dark gradient overlay */
+    .feat-dish-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top,
+          rgba(26, 8, 0, 0.95) 0%,
+          rgba(26, 8, 0, 0.55) 45%,
+          rgba(26, 8, 0, 0.1) 100%);
+      transition: opacity 0.4s;
+    }
+
+    /* Side cards: lighter overlay */
+    .feat-side .feat-dish-overlay {
+      background: linear-gradient(to top,
+          rgba(26, 8, 0, 0.9) 0%,
+          rgba(26, 8, 0, 0.4) 50%,
+          transparent 100%);
+    }
+
+    /* Content inside each card */
+    .feat-dish-content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 1.8rem 2rem;
+      z-index: 2;
+    }
+
+    .feat-side .feat-dish-content {
+      padding: 1.4rem 1.6rem;
+    }
+
+    /* Badge */
+    .feat-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(212, 165, 67, 0.92);
+      color: var(--brown);
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 999px;
+      margin-bottom: 0.7rem;
+    }
+
+    .feat-badge.red-badge {
+      background: rgba(192, 57, 43, 0.9);
+      color: #fff;
+    }
+
+    .feat-dish-content h3 {
+      font-family: var(--font-display);
+      font-size: 1.55rem;
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.15;
+      margin-bottom: 0.4rem;
+    }
+
+    .feat-side .feat-dish-content h3 {
+      font-size: 1.15rem;
+    }
+
+    .feat-dish-content p {
+      font-size: 0.82rem;
+      color: rgba(255, 255, 255, 0.72);
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    .feat-side .feat-dish-content p {
+      font-size: 0.78rem;
+      margin-bottom: 0.8rem;
+    }
+
+    /* Ingredient pills row */
+    .feat-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .feat-pill {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      color: rgba(255, 255, 255, 0.8);
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 999px;
+      padding: 3px 9px;
+    }
+
+    /* CTA row */
+    .feat-dish-cta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .feat-price {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 900;
+      color: var(--gold);
+    }
+
+    .feat-side .feat-price {
+      font-size: 1.1rem;
+    }
+
+    .feat-order-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--red-primary);
+      color: #fff !important;
+      text-decoration: none;
+      padding: 9px 18px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 14px rgba(192, 57, 43, 0.45);
+    }
+
+    .feat-side .feat-order-btn {
+      padding: 7px 14px;
+      font-size: 0.72rem;
+    }
+
+    .feat-order-btn:hover {
+      background: var(--gold);
+      color: var(--brown) !important;
+      box-shadow: 0 6px 20px rgba(212, 165, 67, 0.5);
+    }
+
+    .feat-order-btn i {
+      transition: transform 0.2s;
+    }
+
+    .feat-order-btn:hover i {
+      transform: translateX(3px);
+    }
+
+    /* Hover reveal effect for side cards */
+    .feat-side .feat-pills {
+      opacity: 0;
+      transform: translateY(6px);
+      transition: all 0.35s ease;
+    }
+
+    .feat-side:hover .feat-pills {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .feat-editorial {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        height: auto;
+      }
+
+      .feat-hero {
+        grid-row: auto;
+        min-height: 380px;
+      }
+
+      .feat-side {
+        min-height: 280px;
+      }
+
+      .feat-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .feat-header-right {
+        text-align: left;
+      }
+    }
+
+    /* Section 4 — Story */
+    .story-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .story-img-wrap {
+      position: relative;
+    }
+
+    .story-img-wrap img {
+      width: 100%;
+      height: auto !important;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      object-fit: cover;
+      display: block;
+    }
+
+    .story-img-badge {
+      position: absolute;
+      bottom: -1.5rem;
+      right: -1.5rem;
+      background: var(--red-primary);
+      color: #fff;
+      border-radius: var(--radius-md);
+      padding: 1.3rem 1.6rem;
+      text-align: center;
+      box-shadow: var(--shadow-md);
+    }
+
+    .story-img-badge strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 2rem;
+    }
+
+    .story-img-badge span {
+      font-size: .78rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      opacity: .85;
+    }
+
+    .story-content .eyebrow {
+      color: var(--red-primary);
+    }
+
+    .story-content h2 {
+      margin-bottom: 1.2rem;
+    }
+
+    .story-content p {
+      color: var(--brown-mid);
+      margin-bottom: 1rem;
+    }
+
+    .story-features {
+      display: flex;
+      flex-direction: column;
+      gap: .85rem;
+      margin: 1.5rem 0 2rem;
+    }
+
+    .story-feature {
+      display: flex;
+      gap: .9rem;
+      align-items: flex-start;
+    }
+
+    .story-feature .icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(192, 57, 43, .1);
+      color: var(--red-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 1rem;
+    }
+
+    .story-feature h5 {
+      font-size: .92rem;
+      margin-bottom: .2rem;
+    }
+
+    .story-feature p {
+      font-size: .87rem;
+      color: var(--brown-mid);
+      margin-bottom: 0;
+    }
+
+    /* Section 5 — Sauces */
+    .sauces-bg {
+      background: var(--burgundy-deep);
+      color: var(--cream);
+      position: relative;
+    }
+
+    .sauce-cards {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1.2rem;
+    }
+
+    .sauce-card {
+      background: rgba(255, 255, 255, .06);
+      border: 1px solid rgba(237, 217, 187, .12);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      transition: all var(--t-mid) var(--ease);
+    }
+
+    .sauce-card:hover {
+      background: rgba(255, 255, 255, .12);
+      transform: translateY(-6px);
+      border-color: rgba(212, 165, 67, .4);
+    }
+
+    .sauce-card-img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      overflow: hidden;
+    }
+
+    .sauce-card-img img {
+      width: 100%;
+      height: 100% !important;
+      object-fit: cover !important;
+      display: block;
+      transition: transform var(--t-slow) var(--ease);
+    }
+
+    .sauce-card:hover .sauce-card-img img {
+      transform: scale(1.08);
+    }
+
+    .sauce-card-body {
+      padding: 1.2rem 1rem;
+      text-align: center;
+    }
+
+    .sauce-card h4 {
+      color: var(--gold-light);
+      margin-bottom: .4rem;
+      font-size: .97rem;
+    }
+
+    .sauce-card p {
+      font-size: .82rem;
+      opacity: .72;
+      line-height: 1.55;
+    }
+
+    /* ========================================================
+       SECTION 6 — THE ATELIER STANDARDS (Why Choose PASTA)
+       Luxury Editorial & Sensory Craft Showcase
+    ======================================================== */
+    .why-section {
+      background: #140804;
+      background-image:
+        radial-gradient(ellipse 80% 50% at 50% 0%, rgba(212, 165, 67, 0.12), transparent 70%),
+        radial-gradient(ellipse 60% 40% at 80% 100%, rgba(194, 94, 58, 0.1), transparent 60%);
+      position: relative;
+      overflow: hidden;
+      padding: clamp(4.5rem, 7vw, 6.5rem) 0;
+      color: #fff;
+    }
+
+    .why-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(212, 165, 67, 0.4), transparent);
+    }
+
+    /* Container */
+    .why-container {
+      max-width: 1360px;
+      margin: 0 auto;
+      padding: 0 clamp(1.2rem, 3vw, 2.5rem);
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Top Editorial Header */
+    .why-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 2.5rem;
+      margin-bottom: 3.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .why-header-left {
+      max-width: 700px;
+    }
+
+    .why-badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 6px 14px;
+      background: rgba(212, 165, 67, 0.12);
+      border: 1px solid rgba(212, 165, 67, 0.35);
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.2rem;
+    }
+
+    .why-badge-pill i {
+      font-size: 0.75rem;
+    }
+
+    .why-main-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.3rem, 4.5vw, 3.8rem);
+      font-weight: 800;
+      line-height: 1.08;
+      color: #ffffff;
+      margin: 0 0 1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .why-main-title em {
+      font-style: italic;
+      color: var(--gold);
+      font-family: var(--font-display);
+    }
+
+    .why-main-desc {
+      font-size: clamp(0.95rem, 1.2vw, 1.1rem);
+      color: rgba(255, 255, 255, 0.65);
+      line-height: 1.65;
+      margin: 0;
+      max-width: 620px;
+    }
+
+    /* Stats Strip in Header */
+    .why-header-metrics {
+      display: flex;
+      gap: clamp(1.5rem, 3vw, 2.8rem);
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(212, 165, 67, 0.2);
+      backdrop-filter: blur(16px);
+      padding: 1.2rem 2rem;
+      border-radius: 20px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
+    }
+
+    .why-metric-item {
+      text-align: left;
+    }
+
+    .why-metric-val {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: #fff;
+      line-height: 1;
+      margin-bottom: 0.25rem;
+    }
+
+    .why-metric-val span {
+      color: var(--gold);
+      font-size: 1.4rem;
+    }
+
+    .why-metric-lbl {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.45);
+    }
+
+    /* ── Split Interactive Craft Showcase ── */
+    .why-craft-stage {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 2.5rem;
+      align-items: stretch;
+      margin-bottom: 3.5rem;
+    }
+
+    /* Left: 4 Interactive Pillar Items */
+    .why-pillars-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .why-pillar-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 20px;
+      padding: 1.6rem 2rem;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 1.5rem;
+      align-items: center;
+      transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .why-pillar-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 4px;
+      background: linear-gradient(to bottom, var(--gold), var(--terracotta));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .why-pillar-card:hover,
+    .why-pillar-card.active {
+      background: rgba(212, 165, 67, 0.07);
+      border-color: rgba(212, 165, 67, 0.3);
+      transform: translateX(6px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .why-pillar-card:hover::before,
+    .why-pillar-card.active::before {
+      opacity: 1;
+    }
+
+    .why-pillar-index {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: rgba(212, 165, 67, 0.1);
+      border: 1px solid rgba(212, 165, 67, 0.25);
+      color: var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      font-weight: 800;
+      font-family: var(--font-display);
+      flex-shrink: 0;
+      transition: all 0.3s ease;
+    }
+
+    .why-pillar-card.active .why-pillar-index,
+    .why-pillar-card:hover .why-pillar-index {
+      background: var(--gold);
+      color: #140804;
+      box-shadow: 0 4px 14px rgba(212, 165, 67, 0.4);
+    }
+
+    .why-pillar-body h3 {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin: 0 0 0.4rem;
+      line-height: 1.25;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+
+    .why-pill-tag {
+      font-family: var(--font-sans);
+      font-size: 0.62rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 3px 9px;
+      border-radius: 999px;
+      background: rgba(212, 165, 67, 0.15);
+      color: var(--gold);
+      border: 1px solid rgba(212, 165, 67, 0.3);
+    }
+
+    .why-pillar-body p {
+      font-size: 0.88rem;
+      color: rgba(255, 255, 255, 0.6);
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    .why-pillar-arrow {
+      color: rgba(255, 255, 255, 0.3);
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+    }
+
+    .why-pillar-card.active .why-pillar-arrow,
+    .why-pillar-card:hover .why-pillar-arrow {
+      color: var(--gold);
+      transform: translateX(4px);
+    }
+
+    /* Right: Dynamic Craft Cinema & Comparison Box */
+    .why-cinema-card {
+      background: #1a0a05;
+      border: 1px solid rgba(212, 165, 67, 0.25);
+      border-radius: 26px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+    }
+
+    .why-cinema-media {
+      position: relative;
+      height: 280px;
+      overflow: hidden;
+    }
+
+    .why-cinema-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.8s ease;
+    }
+
+    .why-cinema-card:hover .why-cinema-img {
+      transform: scale(1.04);
+    }
+
+    .why-cinema-gradient {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(20, 8, 4, 0.1) 0%, rgba(20, 8, 4, 0.9) 100%);
+      pointer-events: none;
+    }
+
+    .why-cinema-tag {
+      position: absolute;
+      top: 1.2rem;
+      right: 1.2rem;
+      background: rgba(20, 8, 4, 0.75);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(212, 165, 67, 0.4);
+      color: var(--gold);
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    /* Comparison Stage Inside Card */
+    .why-comparison-panel {
+      padding: 1.8rem 2rem 2rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: #190904;
+    }
+
+    .why-comp-heading-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.2rem;
+    }
+
+    .why-comp-title {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #fff;
+      margin: 0;
+    }
+
+    .why-comp-toggle {
+      display: inline-flex;
+      background: rgba(255, 255, 255, 0.06);
+      padding: 3px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .why-toggle-btn {
+      background: transparent;
+      border: none;
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 5px 12px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .why-toggle-btn.active {
+      background: var(--gold);
+      color: #140804;
+      font-weight: 800;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Comparison Specs Table */
+    .why-specs-table {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .why-spec-row {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.65rem 0.9rem;
+      background: rgba(255, 255, 255, 0.025);
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      font-size: 0.8rem;
+    }
+
+    .why-spec-label {
+      color: rgba(255, 255, 255, 0.45);
+      font-weight: 600;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .why-spec-val {
+      color: #ffffff;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .why-spec-val i {
+      color: var(--gold);
+      font-size: 0.8rem;
+    }
+
+    .why-cinema-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 1.2rem;
+    }
+
+    .why-chef-seal {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .why-seal-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(212, 165, 67, 0.15);
+      border: 1px solid rgba(212, 165, 67, 0.35);
+      color: var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+    }
+
+    .why-seal-text {
+      font-size: 0.72rem;
+      line-height: 1.35;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .why-seal-text strong {
+      color: #fff;
+      display: block;
+      font-weight: 700;
+    }
+
+    .why-story-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      color: var(--gold);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.25s ease;
+    }
+
+    .why-story-btn:hover {
+      color: #fff;
+      transform: translateX(3px);
+    }
+
+    /* ════════════════════════════════════════════════════
+       SECTION 7 — CHEF & HOSPITALITY WHOLESALE PORTAL
+    ════════════════════════════════════════════════════ */
+    .wholesale-section-wrap {
+      background: var(--cream);
+      padding: clamp(4.5rem, 7vw, 6.5rem) 0;
+      position: relative;
+    }
+
+    .wholesale-master-card {
+      background: linear-gradient(135deg, #240b05 0%, #3e1208 45%, #2a0c06 100%);
+      border-radius: 32px;
+      border: 1px solid rgba(212, 165, 67, 0.28);
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 30px 80px rgba(61, 31, 14, 0.25);
+      color: #fff;
+    }
+
+    .wholesale-master-card::before {
+      content: '';
+      position: absolute;
+      top: -120px;
+      right: -80px;
+      width: 480px;
+      height: 480px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(212, 165, 67, 0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .wholesale-master-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      align-items: stretch;
+      position: relative;
+      z-index: 2;
+    }
+
+    .wholesale-content-side {
+      padding: clamp(3rem, 5vw, 5rem);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .wholesale-tag-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 6px 14px;
+      background: rgba(212, 165, 67, 0.15);
+      border: 1px solid rgba(212, 165, 67, 0.35);
+      border-radius: 999px;
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      width: fit-content;
+      margin-bottom: 1.4rem;
+    }
+
+    .wholesale-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 800;
+      line-height: 1.12;
+      color: #ffffff;
+      margin: 0 0 1.2rem;
+    }
+
+    .wholesale-desc {
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.72);
+      line-height: 1.65;
+      margin: 0 0 2.2rem;
+      max-width: 580px;
+    }
+
+    /* 2x2 Clean Benefit Grid */
+    .wholesale-benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .wholesale-benefit-item {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 1.2rem 1.4rem;
+      transition: all 0.3s ease;
+    }
+
+    .wholesale-benefit-item:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(212, 165, 67, 0.3);
+      transform: translateY(-3px);
+    }
+
+    .wholesale-item-header {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      margin-bottom: 0.45rem;
+    }
+
+    .wholesale-item-header i {
+      color: var(--gold);
+      font-size: 1rem;
+    }
+
+    .wholesale-item-header h4 {
+      font-family: var(--font-display);
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin: 0;
+    }
+
+    .wholesale-benefit-item p {
+      font-size: 0.8rem;
+      line-height: 1.5;
+      color: rgba(255, 255, 255, 0.6);
+      margin: 0;
+    }
+
+    /* Wholesale Actions */
+    .wholesale-action-row {
+      display: flex;
+      gap: 1.2rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-trade-gold {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.95rem 2.2rem;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+      color: #1a0803;
+      font-weight: 800;
+      font-size: 0.84rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-radius: 999px;
+      text-decoration: none;
+      box-shadow: 0 8px 24px rgba(212, 165, 67, 0.35);
+      transition: all 0.3s ease;
+    }
+
+    .btn-trade-gold:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(212, 165, 67, 0.5);
+      color: #000;
+    }
+
+    .btn-trade-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.95rem 1.8rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 0.84rem;
+      letter-spacing: 0.04em;
+      border-radius: 999px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .btn-trade-outline:hover {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: #fff;
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    /* Right: Visual Showcase */
+    .wholesale-visual-side {
+      position: relative;
+      overflow: hidden;
+      min-height: 480px;
+    }
+
+    .wholesale-visual-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: brightness(0.92);
+      transition: transform 0.9s ease;
+    }
+
+    .wholesale-master-card:hover .wholesale-visual-img {
+      transform: scale(1.03);
+    }
+
+    .wholesale-visual-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, #240b05 0%, transparent 40%, rgba(36, 11, 5, 0.4) 100%);
+      pointer-events: none;
+    }
+
+    /* Floating Status Chip on Image */
+    .wholesale-floating-badge {
+      position: absolute;
+      bottom: 2rem;
+      right: 2rem;
+      left: 2rem;
+      background: rgba(26, 10, 5, 0.85);
+      backdrop-filter: blur(18px);
+      border: 1px solid rgba(212, 165, 67, 0.4);
+      border-radius: 20px;
+      padding: 1.4rem 1.8rem;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    .wholesale-status-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.8rem;
+    }
+
+    .wholesale-live-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #4ade80;
+    }
+
+    .wholesale-live-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #4ade80;
+      box-shadow: 0 0 10px #4ade80;
+      animation: dotPulse 2s infinite;
+    }
+
+    @keyframes dotPulse {
+
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 0.5;
+        transform: scale(0.85);
+      }
+    }
+
+    .wholesale-status-header span.loc {
+      font-size: 0.72rem;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .wholesale-specs-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 0.8rem;
+    }
+
+    .wholesale-spec-col {
+      text-align: left;
+    }
+
+    .wholesale-spec-val {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--gold);
+      line-height: 1.1;
+    }
+
+    .wholesale-spec-sub {
+      font-size: 0.65rem;
+      color: rgba(255, 255, 255, 0.6);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .why-craft-stage {
+        grid-template-columns: 1fr;
+      }
+
+      .wholesale-master-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .wholesale-visual-side {
+        height: 380px;
+        min-height: 380px;
+      }
+
+      .wholesale-visual-overlay {
+        background: linear-gradient(to bottom, transparent 0%, #240b05 100%);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .why-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .why-header-metrics {
+        width: 100%;
+        justify-content: space-around;
+      }
+
+      .wholesale-benefits-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .wholesale-floating-badge {
+        position: relative;
+        inset: auto;
+        margin: -4rem 1.5rem 1.5rem 1.5rem;
+      }
+    }
+
+    @media (max-width: 576px) {
+
+      /* Why Section — The Craft Difference Mobile Tuning */
+      .why-comparison-panel {
+        padding: 1.4rem 1.1rem;
+      }
+
+      .why-comp-heading-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.85rem;
+      }
+
+      .why-comp-toggle {
+        width: 100%;
+        display: flex;
+      }
+
+      .why-toggle-btn {
+        flex: 1;
+        text-align: center;
+        padding: 6px 10px;
+        font-size: 0.68rem;
+      }
+
+      .why-pillar-card {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+      }
+
+      .why-spec-row {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.35rem;
+        padding: 0.65rem 0.85rem;
+      }
+
+      .why-spec-label {
+        font-size: 0.68rem;
+        letter-spacing: 0.08em;
+      }
+
+      .why-spec-val {
+        font-size: 0.84rem;
+        line-height: 1.45;
+      }
+
+      .why-cinema-footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.85rem;
+      }
+
+      /* Wholesale Master Card Mobile Tuning */
+      .wholesale-master-card {
+        border-radius: 20px;
+      }
+
+      .wholesale-content-side {
+        padding: 2rem 1.25rem;
+      }
+
+      .wholesale-title {
+        font-size: clamp(1.8rem, 6vw, 2.3rem);
+        margin-bottom: 0.8rem;
+      }
+
+      .wholesale-desc {
+        font-size: 0.92rem;
+        margin-bottom: 1.6rem;
+      }
+
+      .wholesale-benefits-grid {
+        gap: 0.85rem;
+        margin-bottom: 1.8rem;
+      }
+
+      .wholesale-benefit-item {
+        padding: 0.95rem 1.1rem;
+      }
+
+      .wholesale-action-row {
+        flex-direction: column;
+        width: 100%;
+        gap: 0.75rem;
+      }
+
+      .btn-trade-gold,
+      .btn-trade-outline {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+        padding: 0.85rem 1.4rem;
+      }
+
+      .wholesale-visual-side {
+        height: 250px;
+        min-height: 250px;
+      }
+
+      .wholesale-floating-badge {
+        margin: -2.5rem 1rem 1rem 1rem;
+        padding: 1rem 1.1rem;
+        border-radius: 14px;
+      }
+
+      .wholesale-specs-strip {
+        gap: 0.5rem;
+      }
+
+      .wholesale-spec-val {
+        font-size: 0.95rem;
+      }
+    }
+
+    /* Section 8 — CTA */
+    .cta-section {
+      background: var(--cream);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-inner {
+      background: linear-gradient(135deg, var(--burgundy-deep) 0%, #5a1414 100%);
+      border-radius: var(--radius-xl);
+      padding: clamp(3rem, 6vw, 5.5rem) clamp(2rem, 5vw, 4rem);
+      position: relative;
+      overflow: hidden;
+      color: #fff;
+    }
+
+    .cta-inner::before {
+      content: '';
+      position: absolute;
+      top: -80px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(212, 165, 67, .12) 0%, transparent 70%);
+    }
+
+    .cta-inner h2 {
+      color: #fff;
+      margin-bottom: 1rem;
+    }
+
+    .cta-inner .lead {
+      color: rgba(255, 255, 255, .82);
+      max-width: 560px;
+      margin: 0 auto 2.2rem;
+    }
+
+    .cta-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .stat-number {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 4vw, 3.4rem);
+      font-weight: 800;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: .35rem;
+    }
+
+    .stat-label {
+      font-size: .88rem;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      opacity: .7;
+      color: var(--cream);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 1024px) {
+      .categories-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .sauce-cards {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .story-wrap {
+        grid-template-columns: 1fr;
+      }
+
+      .story-img-badge {
+        right: 1rem;
+      }
+
+      .featured-grid {
+        grid-template-columns: 1fr;
+        max-width: 380px;
+        margin: 0 auto;
+      }
+
+      .wholesale-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .reasons-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .sauce-cards {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .categories-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .sauce-cards {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    /* ── Dark Theme Overrides for Home Page ── */
+    [data-theme="dark"] .hero-luxury-card {
+      background: #180903 !important;
+      border-color: rgba(212, 165, 67, 0.32) !important;
+    }
+
+    [data-theme="dark"] .hero-lux-content {
+      background: #1b0a04 !important;
+      border-right-color: rgba(212, 165, 67, 0.22) !important;
+      border-bottom-color: rgba(212, 165, 67, 0.22) !important;
+    }
+
+    [data-theme="dark"] .hero-lux-title {
+      color: #ffffff !important;
+    }
+
+    [data-theme="dark"] .hero-lux-desc {
+      color: rgba(255, 255, 255, 0.85) !important;
+    }
+
+    [data-theme="dark"] .btn-lux-ghost {
+      color: var(--gold) !important;
+      border-color: var(--gold) !important;
+    }
+
+    [data-theme="dark"] #categories.section {
+      background: #140703 !important;
+    }
+
+    [data-theme="dark"] .cat-shape-bar {
+      background: #1c0a04 !important;
+      border-color: rgba(212, 165, 67, 0.25) !important;
+    }
+
+    [data-theme="dark"] .cat-bar-title {
+      color: #ffffff !important;
+    }
+
+    [data-theme="dark"] .cat-bar-pill {
+      background: rgba(255, 255, 255, 0.08) !important;
+      color: rgba(255, 255, 255, 0.9) !important;
+      border-color: rgba(212, 165, 67, 0.2) !important;
+    }
+
+    [data-theme="dark"] #featured.section,
+    [data-theme="dark"] .featured-section {
+      background: #0d0402 !important;
+    }
+  </style>
+
+</head>
+
+<body>
+  <!-- Progress Bar -->
+  <div id="progress-bar"></div>
+
+  <!-- NAV -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="index.html" class="nav-logo" aria-label="PASTA Home">
+          <img src="images/logo.jpg" alt="PASTA Logo">
+          <div class="nav-logo-text">
+            <span class="brand">PASTA</span>
+            <span class="tagline">Artisan &amp; Fresh</span>
+          </div>
+        </a>
+        <ul class="nav-links" role="list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="home2.html">Home 2</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="wholesale.html">Wholesale</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li class="nav-item-dropdown">
+            <a href="#" class="dropdown-trigger">Pages <i class="fa-solid fa-chevron-down dropdown-arrow"></i></a>
+            <ul class="nav-dropdown-menu">
+              <li><a href="coming-soon.html"><i class="fa-solid fa-sparkles"></i> Coming Soon</a></li>
+              <li><a href="maintenance.html"><i class="fa-solid fa-wrench"></i> Maintenance</a></li>
+              <li><a href="404.html"><i class="fa-solid fa-triangle-exclamation"></i> 404 Error</a></li>
+            </ul>
+          </li>
+        </ul>
+        <div class="nav-actions">
+          <div class="header-toggle-group">
+            <button class="theme-toggle-btn" id="theme-toggle" type="button" aria-label="Toggle dark/light mode"
+              title="Switch Theme">
+              <i class="fa-solid fa-moon"></i>
+            </button>
+            <button class="rtl-toggle-btn" id="rtl-toggle" type="button" aria-label="Toggle RTL/LTR direction"
+              title="Switch RTL/LTR">
+              <span class="rtl-label">RTL</span>
+            </button>
+          </div>
+          <a href="contact.html" class="btn btn-primary btn-sm">Enquire Now</a>
+          <button class="hamburger" id="hamburger-btn" aria-label="Open menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Drawer -->
+  <div class="nav-overlay" id="nav-overlay"></div>
+  <nav class="nav-drawer" id="nav-drawer" aria-label="Mobile navigation">
+    <button class="nav-drawer-close" id="drawer-close" aria-label="Close menu">✕</button>
+    <a href="index.html">Home</a>
+    <a href="home2.html">Home 2</a>
+    <a href="about.html">About</a>
+    <a href="products.html">Products</a>
+    <a href="wholesale.html">Wholesale</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html">Contact</a>
+    <div style="height:1px; background:var(--beige); margin:0.5rem 0; opacity:0.6"></div>
+    <span
+      style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--terracotta); padding:0.4rem 1rem;">Pages</span>
+    <a href="coming-soon.html"><i class="fa-solid fa-sparkles" style="color:var(--gold); margin-right:8px"></i> Coming
+      Soon</a>
+    <a href="maintenance.html"><i class="fa-solid fa-wrench" style="color:var(--gold); margin-right:8px"></i>
+      Maintenance</a>
+    <a href="404.html"><i class="fa-solid fa-triangle-exclamation" style="color:var(--gold); margin-right:8px"></i> 404
+      Error</a>
+    <a href="contact.html" class="btn btn-primary">Enquire Now</a>
+    <div class="drawer-toggles">
+      <button class="drawer-toggle theme-toggle-btn" id="drawer-theme-toggle" type="button"
+        aria-label="Toggle dark/light mode">
+        <i class="fa-solid fa-moon"></i> <span class="theme-text">Dark Mode</span>
+      </button>
+      <button class="drawer-toggle rtl-toggle-btn" id="drawer-rtl-toggle" type="button" aria-label="Toggle RTL/LTR">
+        <span class="rtl-label">RTL</span> <span class="rtl-text">Right-to-Left</span>
+      </button>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- ════════════════════ S1 — HERO (REFINED ATELIER MASTERPIECE) ════════════════════ -->
+    <section class="hero-luxury-wrap" id="hero" aria-label="Hero">
+      <div class="hero-luxury-card">
+
+        <!-- Main 2-Col Body -->
+        <div class="hero-luxury-body">
+          <!-- Left Content -->
+          <div class="hero-lux-content">
+            <div class="hero-lux-tag">
+              <i class="fa-solid fa-wheat-awn"></i>
+              <span>Artisan Pasta Atelier · Melbourne</span>
+            </div>
+
+            <h1 class="hero-lux-title">
+              Handcrafted Fresh.<br>
+              <em>Simply Unrivalled.</em>
+            </h1>
+
+            <p class="hero-lux-desc">
+              Every ribbon, sheet and pillow is shaped by hand each morning in our local Melbourne kitchen — using
+              heritage durum semolina and pasture-raised eggs.
+            </p>
+
+            <div class="hero-lux-actions">
+              <a href="products.html" class="btn-lux-primary">
+                <i class="fa-solid fa-utensils"></i> Explore Our Pasta
+              </a>
+              <a href="about.html" class="btn-lux-ghost">
+                <span>Our Story</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Right Visual -->
+          <div class="hero-lux-visual">
+            <img src="images/hero_noodle_lift.jpg" alt="Steaming fresh handmade pasta lifted on fork"
+              class="hero-lux-img">
+            <div class="hero-lux-overlay"></div>
+
+            <!-- Floating Badges -->
+            <div class="hero-lux-badge">
+              <i class="fa-solid fa-shield-halved"></i>
+              <div>
+                <strong>HACCP Certified</strong>
+                <span>Commercial Kitchen</span>
+              </div>
+            </div>
+
+            <div class="hero-lux-special">
+              <span class="lux-pulse-dot"></span>
+              <span>Today's Batch: Hand-Rolled Tagliatelle</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Full-Width Grounded Stats Pedestal -->
+        <div class="hero-lux-pedestal">
+          <div class="hero-lux-stat">
+            <i class="fa-solid fa-wheat-awn"></i>
+            <div class="stat-text">
+              <strong>10<span>+</span></strong>
+              <span>Artisan Shapes</span>
+            </div>
+          </div>
+          <div class="lux-stat-divider"></div>
+          <div class="hero-lux-stat">
+            <i class="fa-solid fa-users"></i>
+            <div class="stat-text">
+              <strong>500<span>+</span></strong>
+              <span>Daily Diners</span>
+            </div>
+          </div>
+          <div class="lux-stat-divider"></div>
+          <div class="hero-lux-stat">
+            <i class="fa-solid fa-award"></i>
+            <div class="stat-text">
+              <strong>10<span>yr</span></strong>
+              <span>Quiet Craft</span>
+            </div>
+          </div>
+          <div class="lux-stat-divider"></div>
+          <div class="hero-lux-stat">
+            <i class="fa-solid fa-star"></i>
+            <div class="stat-text">
+              <strong>5.0<span>★</span></strong>
+              <span>Customer Rating</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════
+         SECTION 2 — THE SHAPE ATELIER (CATEGORIES)
+    ════════════════════════════════════════════════════ -->
+    <section class="section section-cream" id="categories" aria-label="Pasta Categories">
+      <div class="container">
+        <!-- Section Header -->
+        <div class="section-header" data-aos="fade-up">
+          <span class="eyebrow"><i class="fa-solid fa-wheat-awn"></i> The Shape Atelier</span>
+          <h2>Crafted for Sauce.<br><em>Shaped by Tradition.</em></h2>
+          <p>Every pasta shape has an architectural purpose — engineered over centuries to trap, coat, or embrace sauce
+            in distinct ways.</p>
+        </div>
+
+        <!-- 4-Column Modern Category Grid -->
+        <div class="cat-atelier-grid">
+          <!-- Card 1: Long Pasta -->
+          <div class="cat-tile" data-aos="fade-up" data-aos-delay="0" onclick="location.href='products.html#long'">
+            <img src="images/prod_tagliatelle.jpg" alt="Fresh artisan tagliatelle nests" class="cat-tile-bg"
+              loading="lazy">
+            <div class="cat-tile-scrim"></div>
+
+            <div class="cat-tile-top">
+              <span class="cat-shape-num">01 · Extruded</span>
+              <span class="cat-tech-badge"><i class="fa-solid fa-medal"></i> Bronze Die</span>
+            </div>
+
+            <div class="cat-tile-info">
+              <h3>Long Pasta</h3>
+              <p>Silky, bronze-drawn ribbon strands with micro-porous texture that clings to every drop of emulsion.</p>
+              <div class="cat-tile-chips">
+                <span class="cat-chip">Tagliatelle</span>
+                <span class="cat-chip">Spaghetti</span>
+                <span class="cat-chip">Pappardelle</span>
+              </div>
+              <div class="cat-tile-pairing">
+                <i class="fa-solid fa-bowl-food"></i> Best with: Truffle Butter, Slow Ragù
+              </div>
+              <a href="products.html#long" class="cat-tile-cta" aria-label="Explore Long Pasta Shapes">
+                <span>Explore Shapes</span> <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Card 2: Stuffed Pasta -->
+          <div class="cat-tile" data-aos="fade-up" data-aos-delay="80" onclick="location.href='products.html#stuffed'">
+            <img src="images/prod_ravioli.jpg" alt="Handcrafted ricotta ravioli parcels" class="cat-tile-bg"
+              loading="lazy">
+            <div class="cat-tile-scrim"></div>
+
+            <div class="cat-tile-top">
+              <span class="cat-shape-num">02 · Hand-Folded</span>
+              <span class="cat-tech-badge"><i class="fa-solid fa-hand-sparkles"></i> Artisan Fill</span>
+            </div>
+
+            <div class="cat-tile-info">
+              <h3>Stuffed Pasta</h3>
+              <p>Hand-crimped golden pillows brimming with buffalo ricotta, slow-braised beef, or wild mushrooms.</p>
+              <div class="cat-tile-chips">
+                <span class="cat-chip">Ricotta Ravioli</span>
+                <span class="cat-chip">Tortellini</span>
+                <span class="cat-chip">Agnolotti</span>
+              </div>
+              <div class="cat-tile-pairing">
+                <i class="fa-solid fa-bowl-food"></i> Best with: Sage Butter, Burnt Tomato
+              </div>
+              <a href="products.html#stuffed" class="cat-tile-cta" aria-label="Explore Stuffed Pasta Shapes">
+                <span>Explore Shapes</span> <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Card 3: Short & Sculpted -->
+          <div class="cat-tile" data-aos="fade-up" data-aos-delay="160" onclick="location.href='products.html#short'">
+            <img src="images/prod_campanelle.jpg" alt="Artisan fluted campanelle pasta cones" class="cat-tile-bg"
+              loading="lazy">
+            <div class="cat-tile-scrim"></div>
+
+            <div class="cat-tile-top">
+              <span class="cat-shape-num">03 · Sculpted</span>
+              <span class="cat-tech-badge"><i class="fa-solid fa-layer-group"></i> Fluted Cones</span>
+            </div>
+
+            <div class="cat-tile-info">
+              <h3>Short &amp; Sculpted</h3>
+              <p>Architectural hollows, ridges, and fluted petals engineered to scoop up thick sugo and hearty
+                vegetables.</p>
+              <div class="cat-tile-chips">
+                <span class="cat-chip">Campanelle</span>
+                <span class="cat-chip">Rigatoni</span>
+                <span class="cat-chip">Orecchiette</span>
+              </div>
+              <div class="cat-tile-pairing">
+                <i class="fa-solid fa-bowl-food"></i> Best with: Genovese Pesto, Sausage Ragù
+              </div>
+              <a href="products.html#short" class="cat-tile-cta" aria-label="Explore Short Pasta Shapes">
+                <span>Explore Shapes</span> <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Card 4: Gnocchi & Specialties -->
+          <div class="cat-tile" data-aos="fade-up" data-aos-delay="240" onclick="location.href='products.html#gnocchi'">
+            <img src="images/prod_gnocchi.jpg" alt="Fluffy artisan potato gnocchi" class="cat-tile-bg" loading="lazy">
+            <div class="cat-tile-scrim"></div>
+
+            <div class="cat-tile-top">
+              <span class="cat-shape-num">04 · Hand-Rolled</span>
+              <span class="cat-tech-badge"><i class="fa-solid fa-feather"></i> Cloud-Light</span>
+            </div>
+
+            <div class="cat-tile-info">
+              <h3>Gnocchi &amp; Specialty</h3>
+              <p>Melt-in-your-mouth potato dumplings and specialty seasonal doughs made fresh every sunrise.</p>
+              <div class="cat-tile-chips">
+                <span class="cat-chip">Potato Gnocchi</span>
+                <span class="cat-chip">Ricotta Dumpling</span>
+                <span class="cat-chip">Squid Ink</span>
+              </div>
+              <div class="cat-tile-pairing">
+                <i class="fa-solid fa-bowl-food"></i> Best with: Gorgonzola, Burnt Butter Sage
+              </div>
+              <a href="products.html#gnocchi" class="cat-tile-cta" aria-label="Explore Gnocchi and Specialty">
+                <span>Explore Shapes</span> <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive Quick Shape Explorer Bar -->
+        <div class="cat-shape-bar" data-aos="fade-up" data-aos-delay="100">
+          <div class="cat-shape-bar-left">
+            <span class="cat-bar-title"><i class="fa-solid fa-sparkles"></i> 10+ Daily Shapes:</span>
+            <div class="cat-bar-pills">
+              <a href="products.html" class="cat-bar-pill">Tagliatelle Nests</a>
+              <a href="products.html" class="cat-bar-pill">Bronze Rigatoni</a>
+              <a href="products.html" class="cat-bar-pill">Buffalo Ravioli</a>
+              <a href="products.html" class="cat-bar-pill">Fluted Campanelle</a>
+              <a href="products.html" class="cat-bar-pill">Potato Gnocchi</a>
+              <a href="products.html" class="cat-bar-pill">Braised Beef Tortellini</a>
+            </div>
+          </div>
+          <a href="products.html" class="cat-bar-btn">
+            <span>View Full Menu</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════
+         SECTION 3 — FEATURED PASTA COLLECTION (Editorial Redesign)
+    ════════════════════════════════════════════════════ -->
+    <section class="featured-section" id="featured" aria-label="Featured Pasta Collection">
+      <div class="container">
+        <!-- Header -->
+        <div class="feat-header" data-aos="fade-up">
+          <div class="feat-header-left">
+            <span class="feat-eyebrow">Chef's Daily Selection</span>
+            <h2>Fresh Off the Board.<br><em>Made for Tonight.</em></h2>
+          </div>
+          <div class="feat-header-right">
+            <p>Hand-rolled each morning using stone-ground semolina and farm eggs.</p>
+            <a href="products.html" class="feat-see-all">Explore All Shapes &amp; Sauces <i
+                class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <!-- Editorial Grid: 1 Hero left + 2 stacked right -->
+        <div class="feat-editorial">
+          <!-- Hero Card: Rigatoni al Pomodoro -->
+          <div class="feat-dish feat-hero" data-aos="fade-up" data-aos-delay="0">
+            <img src="images/bowl_dish_1.jpg" alt="Rigatoni al Pomodoro with slow-cooked San Marzano sauce">
+            <div class="feat-dish-overlay"></div>
+            <div class="feat-dish-content">
+              <div class="feat-badge"><i class="fa-solid fa-star"></i> House Signature</div>
+              <h3>Rigatoni al Pomodoro</h3>
+              <p>Slow-simmered San Marzano sugo, fresh basil, cold-pressed olive oil &amp; aged Pecorino Romano.</p>
+              <div class="feat-pills">
+                <span class="feat-pill">San Marzano D.O.P.</span>
+                <span class="feat-pill">Fresh Basil</span>
+                <span class="feat-pill">Pecorino Romano</span>
+                <span class="feat-pill">Bronze-Die Rigatoni</span>
+              </div>
+              <div class="feat-dish-cta">
+                <div class="feat-price">$18</div>
+                <a href="products.html" class="feat-order-btn">Order Now <i class="fa-solid fa-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Side Dish 1: Truffle Carbonara -->
+          <div class="feat-dish feat-side" data-aos="fade-up" data-aos-delay="100">
+            <img src="images/bowl_dish_2.jpg" alt="Truffle Carbonara with crispy guanciale and wild mushrooms">
+            <div class="feat-dish-overlay"></div>
+            <div class="feat-dish-content">
+              <div class="feat-badge red-badge"><i class="fa-solid fa-fire"></i> Bestseller</div>
+              <h3>Truffle Carbonara</h3>
+              <p>Free-range eggs, wild forest mushrooms, cracked black pepper &amp; black truffle oil.</p>
+              <div class="feat-pills">
+                <span class="feat-pill">Farm Eggs</span>
+                <span class="feat-pill">Black Truffle</span>
+                <span class="feat-pill">Wild Mushrooms</span>
+              </div>
+              <div class="feat-dish-cta">
+                <div class="feat-price">$22</div>
+                <a href="products.html" class="feat-order-btn">Order <i class="fa-solid fa-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Side Dish 2: Tagliatelle al Manzo -->
+          <div class="feat-dish feat-side" data-aos="fade-up" data-aos-delay="200">
+            <img src="images/bowl_dish_3.jpg" alt="Tagliatelle al Manzo with slow braised beef ribbons">
+            <div class="feat-dish-overlay"></div>
+            <div class="feat-dish-content">
+              <div class="feat-badge"><i class="fa-solid fa-leaf"></i> Today's Special</div>
+              <h3>Tagliatelle al Manzo</h3>
+              <p>Slow-braised beef ribbons, rich red wine reduction &amp; crisp garden greens.</p>
+              <div class="feat-pills">
+                <span class="feat-pill">Braised Beef</span>
+                <span class="feat-pill">Red Wine Ragù</span>
+                <span class="feat-pill">Fresh Herbs</span>
+              </div>
+              <div class="feat-dish-cta">
+                <div class="feat-price">$24</div>
+                <a href="products.html" class="feat-order-btn">Order <i class="fa-solid fa-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════
+         SECTION 4 — HANDMADE PREPARATION STORY
+    ════════════════════════════════════════════════════ -->
+    <section class="section section-cream" id="story" aria-label="Our Story">
+      <div class="container">
+        <div class="story-wrap">
+          <div class="story-img-wrap" data-aos="fade-right">
+            <img src="images/chef_rolling.jpg" alt="Master pasta maker hand-rolling dough in our local kitchen">
+            <div class="story-img-badge">
+              <strong>10+</strong>
+              <span>Years of Craft</span>
+            </div>
+          </div>
+          <div class="story-content" data-aos="fade-left" data-aos-delay="100">
+            <span class="eyebrow uppercase small">The PASTA Way</span>
+            <h2>Made by Hand,<br>Every Single Morning</h2>
+            <p class="font-serif">Before the sun rises, our kitchen fills with the scent of semolina and eggs. We mix,
+              rest, roll and cut each shape by hand — the same way Italian grandmothers have done for centuries.</p>
+            <p>No shortcuts. No machines for the important bits. Just skilled hands, quality ingredients, and a genuine
+              love for pasta-making that has become our daily ritual.</p>
+            <div class="story-features">
+              <div class="story-feature">
+                <div class="icon"><i class="fa-solid fa-egg"></i></div>
+                <div>
+                  <h5>Heritage Grain Flour</h5>
+                  <p>Stone-ground durum semolina and '00' flour from trusted Italian mills.</p>
+                </div>
+              </div>
+              <div class="story-feature">
+                <div class="icon"><i class="fa-solid fa-hand-sparkles"></i></div>
+                <div>
+                  <h5>Hand-Shaped, Always</h5>
+                  <p>Every piece is shaped by touch — no factory conveyor belts here.</p>
+                </div>
+              </div>
+              <div class="story-feature">
+                <div class="icon"><i class="fa-solid fa-leaf"></i></div>
+                <div>
+                  <h5>Garden-Fresh Fillings</h5>
+                  <p>Seasonal vegetables, local ricotta and herbs picked daily.</p>
+                </div>
+              </div>
+            </div>
+            <a href="about.html" class="btn btn-primary">
+              Read Our Full Story <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════
+         SECTION 5 — HOMEMADE SAUCE VARIETIES
+    ════════════════════════════════════════════════════ -->
+    <section class="section sauces-bg" id="sauces" aria-label="Our Sauces">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <span class="eyebrow">Liquid Gold</span>
+          <h2 style="color:#fff">Homemade Sauce Varieties</h2>
+          <p style="color:rgba(255,255,255,.7)">Every sauce simmers for hours — never rushed, never from a jar. Pair
+            them with our fresh pasta for the complete experience.</p>
+        </div>
+        <div class="sauce-cards">
+          <div class="sauce-card" data-aos="fade-up" data-aos-delay="0">
+            <div class="sauce-card-img"><img src="images/sauce_pomodoro.jpg" alt="Fresh tomato basil pomodoro sauce">
+            </div>
+            <div class="sauce-card-body">
+              <h4>Tomato Basil</h4>
+              <p>San Marzano tomatoes, garden basil, garlic and a whisper of chilli.</p>
+            </div>
+          </div>
+          <div class="sauce-card" data-aos="fade-up" data-aos-delay="80">
+            <div class="sauce-card-img"><img src="images/sauce_alfredo.jpg" alt="Rich creamy Alfredo sauce"></div>
+            <div class="sauce-card-body">
+              <h4>Alfredo Cream</h4>
+              <p>Butter, aged Parmesan and heavy cream — rich, silky and timeless.</p>
+            </div>
+          </div>
+          <div class="sauce-card" data-aos="fade-up" data-aos-delay="160">
+            <div class="sauce-card-img"><img src="images/sauce_pesto.jpg" alt="Classic fresh basil pesto"></div>
+            <div class="sauce-card-body">
+              <h4>Classic Pesto</h4>
+              <p>Freshly stone-ground basil, pine nuts, Pecorino and extra-virgin olive oil.</p>
+            </div>
+          </div>
+          <div class="sauce-card" data-aos="fade-up" data-aos-delay="240">
+            <div class="sauce-card-img"><img src="images/sauce_arrabbiata.jpg" alt="Spicy arrabbiata chilli sauce">
+            </div>
+            <div class="sauce-card-body">
+              <h4>Arrabbiata</h4>
+              <p>Fiery tomato sauce with Calabrian chillies, capers and olives.</p>
+            </div>
+          </div>
+          <div class="sauce-card" data-aos="fade-up" data-aos-delay="320">
+            <div class="sauce-card-img"><img src="images/sauce_ragu.jpg" alt="Slow-braised beef ragù"></div>
+            <div class="sauce-card-body">
+              <h4>Slow Ragù</h4>
+              <p>Whole heads of slow-roasted garlic blended with cream and thyme.</p>
+            </div>
+          </div>
+        </div>
+        <div class="text-center mt-4" data-aos="fade-up" data-aos-delay="400">
+          <a href="products.html#sauces" class="btn btn-gold btn-lg">View All Sauces</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════
+         SECTION 6 — THE ATELIER STANDARDS (Why Choose PASTA)
+         Luxury Editorial & Sensory Craft Showcase
+    ════════════════════════════════════════════════════ -->
+    <section class="why-section" id="why-us" aria-label="Why Choose PASTA">
+      <div class="why-container">
+
+        <!-- Top Editorial Header & Live Metrics -->
+        <div class="why-header">
+          <div class="why-header-left" data-aos="fade-right">
+            <span class="why-badge-pill">
+              <i class="fa-solid fa-award"></i> The Artisan Atelier Standards
+            </span>
+            <h2 class="why-main-title">Why Melbourne Swears by <em>Our Pasta</em></h2>
+            <p class="why-main-desc">We never operate like an automated factory warehouse. Every single morning, our
+              pasta makers stone-mill Victorian grains, crack fresh pasture eggs, and bronze-extrude every ribbon and
+              parcel by hand.</p>
+          </div>
+
+          <div class="why-header-metrics" data-aos="fade-left">
+            <div class="why-metric-item">
+              <div class="why-metric-val">5<span>AM</span></div>
+              <div class="why-metric-lbl">Daily Dawn Rollout</div>
+            </div>
+            <div class="why-metric-item">
+              <div class="why-metric-val">3<span>Only</span></div>
+              <div class="why-metric-lbl">Pure Ingredients</div>
+            </div>
+            <div class="why-metric-item">
+              <div class="why-metric-val">0<span>%</span></div>
+              <div class="why-metric-lbl">Additives or Gums</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Split Interactive Craft Showcase Stage -->
+        <div class="why-craft-stage">
+
+          <!-- Left: 4 Interactive Pillars -->
+          <div class="why-pillars-list" data-aos="fade-up">
+
+            <!-- Pillar 1 -->
+            <div class="why-pillar-card active" data-pillar="0">
+              <div class="why-pillar-index">01</div>
+              <div class="why-pillar-body">
+                <h3>Freshly Rolled at Dawn <span class="why-pill-tag">Zero Warehouse Lag</span></h3>
+                <p>Crafted exclusively in morning batches before Melbourne wakes. Delivered living and tender within
+                  hours of extrusion — never frozen, never sealed in modified chemical atmosphere.</p>
+              </div>
+              <div class="why-pillar-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+            </div>
+
+            <!-- Pillar 2 -->
+            <div class="why-pillar-card" data-pillar="1">
+              <div class="why-pillar-index">02</div>
+              <div class="why-pillar-body">
+                <h3>Bronze-Die Micro-Texture <span class="why-pill-tag">Sauce-Grip Chemistry</span></h3>
+                <p>Heavy traditional bronze dies carve a porous, matte, chalk-like exterior that mechanically bonds with
+                  sauces and emulsions, rather than letting sauce slide off like Teflon pasta.</p>
+              </div>
+              <div class="why-pillar-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+            </div>
+
+            <!-- Pillar 3 -->
+            <div class="why-pillar-card" data-pillar="2">
+              <div class="why-pillar-index">03</div>
+              <div class="why-pillar-body">
+                <h3>Stone-Milled Durum Semolina <span class="why-pill-tag">Clean Label Purity</span></h3>
+                <p>Strictly 3 ingredients: 100% Australian high-protein durum wheat, whole golden free-range eggs, and
+                  filtered mountain water. Zero preservatives, zero artificial colorants.</p>
+              </div>
+              <div class="why-pillar-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+            </div>
+
+            <!-- Pillar 4 -->
+            <div class="why-pillar-card" data-pillar="3">
+              <div class="why-pillar-index">04</div>
+              <div class="why-pillar-body">
+                <h3>Trusted by Top Trattorias <span class="why-pill-tag">Melbourne Rooted</span></h3>
+                <p>Supplying 45+ premier Italian osterias, bustling wine bars, and local households across Victoria who
+                  insist on authentic trattoria-grade al dente bite.</p>
+              </div>
+              <div class="why-pillar-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+            </div>
+
+          </div>
+
+          <!-- Right: Dynamic Cinema Card & Comparison Panel -->
+          <div class="why-cinema-card" data-aos="fade-left" data-aos-delay="150">
+            <div class="why-cinema-media">
+              <img src="images/pasta_machine.jpg" alt="Artisan bronze die pasta machine rolling fresh dough"
+                class="why-cinema-img" id="whyCinemaImg">
+              <div class="why-cinema-gradient"></div>
+              <div class="why-cinema-tag">
+                <i class="fa-solid fa-wheat-awn"></i> 100% Bronze Die Extrusion
+              </div>
+            </div>
+
+            <div class="why-comparison-panel">
+              <div class="why-comp-heading-row">
+                <h4 class="why-comp-title">The Craft Difference</h4>
+                <div class="why-comp-toggle">
+                  <button type="button" class="why-toggle-btn active" id="btnAtelierWay">Our Atelier</button>
+                  <button type="button" class="why-toggle-btn" id="btnFactoryWay">Commercial Boxed</button>
+                </div>
+              </div>
+
+              <!-- Specs Table (Dynamically switches on toggle or click) -->
+              <div class="why-specs-table" id="whySpecsTable">
+                <div class="why-spec-row">
+                  <span class="why-spec-label">Surface Finish</span>
+                  <span class="why-spec-val" id="specSurface"><i class="fa-solid fa-check"></i> Porous matte
+                    micro-crevice (Holds 300% more sauce)</span>
+                </div>
+                <div class="why-spec-row">
+                  <span class="why-spec-label">Production</span>
+                  <span class="why-spec-val" id="specPrep"><i class="fa-solid fa-check"></i> Hand-cut daily at dawn
+                    (Cooks tender in 2–3 mins)</span>
+                </div>
+                <div class="why-spec-row">
+                  <span class="why-spec-label">Ingredients</span>
+                  <span class="why-spec-val" id="specIngred"><i class="fa-solid fa-check"></i> 100% Durum semolina +
+                    Farm eggs + Pure water</span>
+                </div>
+                <div class="why-spec-row">
+                  <span class="why-spec-label">Additives</span>
+                  <span class="why-spec-val" id="specAdditives"><i class="fa-solid fa-check"></i> 0% Gums, 0% chemicals,
+                    clean unbleached label</span>
+                </div>
+              </div>
+
+              <div class="why-cinema-footer">
+                <div class="why-chef-seal">
+                  <div class="why-seal-icon"><i class="fa-solid fa-certificate"></i></div>
+                  <div class="why-seal-text">
+                    <strong>Artisan Guarantee</strong>
+                    Crafted daily in Melbourne Quarter
+                  </div>
+                </div>
+                <a href="about.html" class="why-story-btn">
+                  Our Story <i class="fa-solid fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════
+         SECTION 7 — CHEF & HOSPITALITY WHOLESALE PORTAL
+    ════════════════════════════════════════════════════ -->
+    <section class="wholesale-section-wrap" id="wholesale-banner" aria-label="Wholesale Information">
+      <div class="why-container">
+        <div class="wholesale-master-card" data-aos="zoom-in">
+          <div class="wholesale-master-grid">
+
+            <!-- Left: B2B Commercial Information -->
+            <div class="wholesale-content-side">
+              <span class="wholesale-tag-chip">
+                <i class="fa-solid fa-utensils"></i> For Melbourne Chefs &amp; Hospitality
+              </span>
+              <h2 class="wholesale-title">Empowering Local Kitchens with Reliable Morning Supply</h2>
+              <p class="wholesale-desc">From boutique enotecas on Flinders Lane to premier dining rooms — we produce and
+                deliver chef-grade fresh pasta cut to your precise kitchen specs before morning prep.</p>
+
+              <!-- 2x2 Clean Benefit Grid -->
+              <div class="wholesale-benefits-grid">
+                <div class="wholesale-benefit-item">
+                  <div class="wholesale-item-header">
+                    <i class="fa-solid fa-box-open"></i>
+                    <h4>Low 5 kg Minimums</h4>
+                  </div>
+                  <p>Flexible batch sizes tailored to your seating capacity to prevent waste.</p>
+                </div>
+                <div class="wholesale-benefit-item">
+                  <div class="wholesale-item-header">
+                    <i class="fa-solid fa-truck-fast"></i>
+                    <h4>Dawn Metro Delivery</h4>
+                  </div>
+                  <p>Temperature-controlled transport directly into your coolroom before 9:30 AM.</p>
+                </div>
+                <div class="wholesale-benefit-item">
+                  <div class="wholesale-item-header">
+                    <i class="fa-solid fa-shapes"></i>
+                    <h4>Custom Shapes &amp; Dies</h4>
+                  </div>
+                  <p>Bespoke agnolotti, seasonal fillings, and customized thickness upon request.</p>
+                </div>
+                <div class="wholesale-benefit-item">
+                  <div class="wholesale-item-header">
+                    <i class="fa-solid fa-file-invoice-dollar"></i>
+                    <h4>Trade Pricing &amp; Terms</h4>
+                  </div>
+                  <p>Competitive volume margins with flexible NET-30 invoicing for verified venues.</p>
+                </div>
+              </div>
+
+              <!-- Wholesale CTA Buttons -->
+              <div class="wholesale-action-row">
+                <a href="wholesale.html" class="btn-trade-gold">
+                  <i class="fa-solid fa-envelope-open-text"></i> Request Trade Catalog
+                </a>
+                <a href="contact.html" class="btn-trade-outline">
+                  <i class="fa-solid fa-phone"></i> Call Head Pasta Maker
+                </a>
+              </div>
+            </div>
+
+            <!-- Right: Kitchen & Dispatch Showcase -->
+            <div class="wholesale-visual-side">
+              <img src="images/hero_wholesale.jpg" alt="Commercial restaurant wholesale fresh pasta supply"
+                class="wholesale-visual-img" loading="lazy">
+              <div class="wholesale-visual-overlay"></div>
+
+              <!-- Floating Live Status Badge -->
+              <div class="wholesale-floating-badge" data-aos="fade-up" data-aos-delay="200">
+                <div class="wholesale-status-header">
+                  <div class="wholesale-live-pill">
+                    <span class="wholesale-live-dot"></span> Accepting Trade Accounts
+                  </div>
+                  <span class="loc"><i class="fa-solid fa-location-dot"></i> Melbourne Metro</span>
+                </div>
+                <div class="wholesale-specs-strip">
+                  <div class="wholesale-spec-col">
+                    <div class="wholesale-spec-val">6:00 AM</div>
+                    <div class="wholesale-spec-sub">Earliest Dispatch</div>
+                  </div>
+                  <div class="wholesale-spec-col">
+                    <div class="wholesale-spec-val">45+</div>
+                    <div class="wholesale-spec-sub">Active Venues</div>
+                  </div>
+                  <div class="wholesale-spec-col">
+                    <div class="wholesale-spec-val">14+</div>
+                    <div class="wholesale-spec-sub">Die Varieties</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════
+         SECTION 8 — FINAL CALL TO ACTION
+    ════════════════════════════════════════════════════ -->
+    <section class="section cta-section" id="cta" aria-label="Call to Action">
+      <div class="container" style="position:relative; z-index:1">
+        <div class="cta-inner" data-aos="fade-up">
+          <span class="badge badge-gold mb-3 uppercase small">
+            <i class="fa-solid fa-heart"></i> Join the PASTA Family
+          </span>
+          <h2>Ready to Taste the Difference?</h2>
+          <p class="lead">Whether you're cooking for your family tonight or stocking your restaurant kitchen — we have
+            the perfect fresh pasta for you.</p>
+          <div class="cta-actions">
+            <a href="products.html" class="btn btn-gold btn-lg">
+              <i class="fa-solid fa-utensils"></i> Browse All Pasta
+            </a>
+            <a href="wholesale.html" class="btn btn-outline-white btn-lg">Wholesale Orders</a>
+            <a href="contact.html" class="btn btn-white btn-lg">
+              <i class="fa-solid fa-phone"></i> Get in Touch
+            </a>
+          </div>
+          <!-- Stats -->
+          <div class="grid grid-4 mt-4"
+            style="max-width:900px; margin:3.5rem auto 0; text-align:center; gap:2rem; position:relative; z-index:1; border-top:1px solid rgba(255,255,255,.15); padding-top:2.5rem">
+            <div data-aos="fade-up" data-aos-delay="0">
+              <div class="stat-number" data-count="10" data-suffix="+">0+</div>
+              <div class="stat-label">Pasta Shapes</div>
+            </div>
+            <div data-aos="fade-up" data-aos-delay="100">
+              <div class="stat-number" data-count="500" data-suffix="+">0+</div>
+              <div class="stat-label">Happy Customers</div>
+            </div>
+            <div data-aos="fade-up" data-aos-delay="200">
+              <div class="stat-number" data-count="50" data-suffix="+">0+</div>
+              <div class="stat-label">Business Clients</div>
+            </div>
+            <div data-aos="fade-up" data-aos-delay="300">
+              <div class="stat-number" data-count="10" data-suffix="yr">0yr</div>
+              <div class="stat-label">Years of Craft</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Brand -->
+        <div class="footer-brand">
+          <img src="images/logo.jpg" alt="PASTA Logo">
+          <div class="brand-name">PASTA</div>
+          <p>Handcrafted fresh pasta and homemade noodles made daily in our local kitchen. From our family table to
+            yours — with love, flour, and a little bit of magic.</p>
+          <div class="social-links">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <!-- Quick Links -->
+        <div class="footer-col">
+          <h5>Quick Links</h5>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">Our Story</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="wholesale.html">Wholesale</a></li>
+            <li><a href="blog.html">Blog &amp; Recipes</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+        <!-- Products -->
+        <div class="footer-col">
+          <h5>Our Products</h5>
+          <ul>
+            <li><a href="products.html">Fresh Spaghetti</a></li>
+            <li><a href="products.html">Tagliatelle</a></li>
+            <li><a href="products.html">Fettuccine</a></li>
+            <li><a href="products.html">Ricotta Ravioli</a></li>
+            <li><a href="products.html">Potato Gnocchi</a></li>
+            <li><a href="products.html">Artisan Sauces</a></li>
+          </ul>
+        </div>
+        <!-- Contact -->
+        <div class="footer-col">
+          <h5>Visit Us</h5>
+          <div class="contact-item">
+            <i class="fa-solid fa-location-dot"></i>
+            <span>14 Pasta Lane, Artisan Quarter,<br>Melbourne VIC 3000</span>
+          </div>
+          <div class="contact-item">
+            <i class="fa-solid fa-phone"></i>
+            <span>+61 3 9000 1234</span>
+          </div>
+          <div class="contact-item">
+            <i class="fa-solid fa-envelope"></i>
+            <span>hello@pasta.com.au</span>
+          </div>
+          <div class="contact-item">
+            <i class="fa-solid fa-clock"></i>
+            <span>Tue–Sat: 8am – 5pm<br>Sun: 9am – 2pm</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 PASTA Artisan &amp; Fresh. All rights reserved.</span>
+        <div style="display:flex; gap:1.2rem; flex-wrap:wrap">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Wholesale T&amp;Cs</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top -->
+  <button id="back-to-top" aria-label="Back to top">
+    <i class="fa-solid fa-chevron-up"></i>
+  </button>
+
+  <script src="js/main.js"></script>
+  <script>
+    // Why Choose PASTA Interactive Craft Showcase
+    (function initWhyCraftStage() {
+      const pillars = document.querySelectorAll('.why-pillar-card');
+      const cinemaImg = document.getElementById('whyCinemaImg');
+      const btnAtelier = document.getElementById('btnAtelierWay');
+      const btnFactory = document.getElementById('btnFactoryWay');
+      const specSurface = document.getElementById('specSurface');
+      const specPrep = document.getElementById('specPrep');
+      const specIngred = document.getElementById('specIngred');
+      const specAdditives = document.getElementById('specAdditives');
+
+      const pillarImages = [
+        'images/pasta_machine.jpg',
+        'images/tagliatelle.jpg',
+        'images/flour_mound.jpg',
+        'images/kitchen.jpg'
+      ];
+
+      pillars.forEach((card, idx) => {
+        card.addEventListener('mouseenter', () => selectPillar(idx));
+        card.addEventListener('click', () => selectPillar(idx));
+      });
+
+      function selectPillar(index) {
+        pillars.forEach((p, i) => p.classList.toggle('active', i === index));
+        if (cinemaImg && pillarImages[index]) {
+          cinemaImg.src = pillarImages[index];
+        }
+      }
+
+      function setComparison(isAtelier) {
+        if (!btnAtelier || !btnFactory) return;
+        btnAtelier.classList.toggle('active', isAtelier);
+        btnFactory.classList.toggle('active', !isAtelier);
+
+        if (isAtelier) {
+          specSurface.innerHTML = '<i class="fa-solid fa-check" style="color:var(--gold)"></i> Porous matte micro-crevice (Holds 300% more sauce)';
+          specPrep.innerHTML = '<i class="fa-solid fa-check" style="color:var(--gold)"></i> Hand-cut daily at dawn (Cooks tender in 2–3 mins)';
+          specIngred.innerHTML = '<i class="fa-solid fa-check" style="color:var(--gold)"></i> 100% Durum semolina + Farm eggs + Pure water';
+          specAdditives.innerHTML = '<i class="fa-solid fa-check" style="color:var(--gold)"></i> 0% Gums, 0% chemicals, clean unbleached label';
+        } else {
+          specSurface.innerHTML = '<i class="fa-solid fa-xmark" style="color:#ef4444"></i> Slippery Teflon finish (Sauce slides off into bowl)';
+          specPrep.innerHTML = '<i class="fa-solid fa-xmark" style="color:#ef4444"></i> 90°C high-heat industrial baked (Denatured wheat)';
+          specIngred.innerHTML = '<i class="fa-solid fa-xmark" style="color:#ef4444"></i> Commercial dry flour mix & egg powder derivatives';
+          specAdditives.innerHTML = '<i class="fa-solid fa-xmark" style="color:#ef4444"></i> Shelf-life extenders, anti-caking gums & artificial tints';
+        }
+      }
+
+      if (btnAtelier) btnAtelier.addEventListener('click', () => setComparison(true));
+      if (btnFactory) btnFactory.addEventListener('click', () => setComparison(false));
+    })();
+  </script>
+</body>
+
+</html>

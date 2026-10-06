@@ -1,0 +1,1255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Something delicious is simmering! PASTA Melbourne is unveiling our next artisan collection, bronze dies, and kitchen masterclasses soon. Join the VIP tasting waitlist.">
+  <title>Coming Soon &amp; Maintenance — PASTA Melbourne Artisan</title>
+  <link rel="icon" type="image/jpeg" href="images/logo.jpg">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script>
+    (function () {
+      const t = localStorage.getItem('pasta_theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      const d = localStorage.getItem('pasta_dir') || 'ltr';
+      document.documentElement.setAttribute('data-theme', t);
+      document.documentElement.setAttribute('dir', d);
+      if (d === 'rtl') document.documentElement.setAttribute('lang', 'ar');
+    })();
+  </script>
+  <style>
+    /* ══════════════════════════════════════════════════════════════
+       COMING SOON & MAINTENANCE PAGE STYLES
+       ══════════════════════════════════════════════════════════════ */
+    .cs-hero {
+      position: relative;
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      padding: clamp(100px, 12vw, 140px) 0 clamp(60px, 8vw, 90px);
+      background: radial-gradient(circle at 50% 20%, rgba(212, 165, 67, 0.16) 0%, rgba(248, 240, 227, 0) 70%), var(--cream);
+      overflow: hidden;
+    }
+
+    .cs-hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('images/kitchen.jpg');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.12;
+      filter: saturate(1.2);
+      pointer-events: none;
+    }
+
+    .cs-container {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Interactive Dual Mode Switcher */
+    .mode-switch-bar {
+      display: inline-flex;
+      background: rgba(61, 31, 14, 0.08);
+      padding: 5px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(212, 165, 67, 0.35);
+      margin-bottom: 2rem;
+      backdrop-filter: blur(8px);
+    }
+
+    .mode-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.55rem 1.4rem;
+      border-radius: var(--radius-pill);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--brown);
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      transition: all var(--t-fast) var(--ease);
+    }
+
+    .mode-btn.active {
+      background: var(--red-primary);
+      color: #ffffff;
+      box-shadow: 0 4px 15px rgba(192, 57, 43, 0.35);
+    }
+
+    .mode-btn:hover:not(.active) {
+      background: rgba(212, 165, 67, 0.2);
+    }
+
+    /* Titles */
+    .cs-headline {
+      font-family: var(--font-display);
+      font-size: clamp(2.3rem, 4.6vw, 3.8rem);
+      font-weight: 800;
+      line-height: 1.15;
+      color: var(--brown);
+      margin-bottom: 1.2rem;
+    }
+
+    .cs-headline em {
+      color: var(--red-primary);
+      font-style: italic;
+    }
+
+    .cs-desc {
+      font-family: var(--font-serif);
+      font-size: clamp(1.05rem, 1.4vw, 1.22rem);
+      color: var(--brown-mid);
+      max-width: 700px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.75;
+    }
+
+    /* Live Countdown Clock */
+    .countdown-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.2rem;
+      max-width: 650px;
+      margin: 0 auto 2.6rem;
+    }
+
+    .countdown-card {
+      background: #ffffff;
+      border: 2px solid var(--beige);
+      border-radius: var(--radius-lg);
+      padding: 1.6rem 1rem;
+      box-shadow: var(--shadow-md);
+      position: relative;
+      overflow: hidden;
+      transition: all var(--t-mid) var(--ease);
+    }
+
+    .countdown-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--red-primary), var(--gold));
+    }
+
+    .countdown-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--gold);
+    }
+
+    .countdown-number {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 4vw, 3.4rem);
+      font-weight: 800;
+      color: var(--brown);
+      line-height: 1;
+      margin-bottom: 0.4rem;
+      display: block;
+    }
+
+    .countdown-label {
+      font-size: 0.76rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--terracotta);
+    }
+
+    /* Launch Readiness Progress Bar */
+    .cs-progress-container {
+      max-width: 650px;
+      margin: 0 auto 3rem;
+      background: #fff;
+      border: 1px solid var(--beige);
+      border-radius: var(--radius-pill);
+      padding: 6px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .cs-progress-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--brown-mid);
+      padding: 0 1rem 0.4rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .cs-progress-track {
+      background: var(--cream);
+      border-radius: 999px;
+      height: 12px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .cs-progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--red-primary) 0%, var(--gold) 100%);
+      width: 88%;
+      border-radius: 999px;
+      transition: width 1.2s ease-in-out;
+      position: relative;
+    }
+
+    .cs-progress-fill::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0) 100%);
+      animation: shimmerBar 2.5s infinite;
+    }
+
+    @keyframes shimmerBar {
+      0% {
+        transform: translateX(-100%);
+      }
+
+      100% {
+        transform: translateX(100%);
+      }
+    }
+
+    /* VIP Waitlist Subscription Box */
+    .vip-form-box {
+      background: #ffffff;
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--beige);
+      box-shadow: var(--shadow-md);
+      padding: clamp(2rem, 4vw, 2.8rem);
+      max-width: 720px;
+      margin: 0 auto 3.5rem;
+      text-align: left;
+    }
+
+    .vip-form-header {
+      text-align: center;
+      margin-bottom: 1.8rem;
+    }
+
+    .vip-form-header h3 {
+      font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+      color: var(--brown);
+      margin-bottom: 0.4rem;
+    }
+
+    .vip-form-header p {
+      font-size: 0.92rem;
+      color: var(--brown-mid);
+    }
+
+    .vip-input-row {
+      display: flex;
+      gap: 0.8rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .vip-input {
+      flex: 1;
+      padding: 0.95rem 1.4rem;
+      border: 2px solid var(--beige);
+      border-radius: var(--radius-pill);
+      font-size: 0.96rem;
+      font-family: var(--font-sans);
+      color: var(--brown);
+      background: var(--cream);
+      outline: none;
+      transition: all var(--t-fast) var(--ease);
+    }
+
+    .vip-input:focus {
+      background: #fff;
+      border-color: var(--red-primary);
+      box-shadow: 0 0 0 4px rgba(192, 57, 43, 0.12);
+    }
+
+    /* Interest Checkboxes */
+    .vip-interests {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .vip-check-label {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.85rem;
+      color: var(--brown);
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .vip-check-label input[type="checkbox"] {
+      accent-color: var(--red-primary);
+      width: 16px;
+      height: 16px;
+      cursor: pointer;
+    }
+
+    .vip-msg {
+      display: none;
+      padding: 1rem 1.2rem;
+      border-radius: var(--radius-md);
+      font-size: 0.9rem;
+      margin-top: 1rem;
+      text-align: center;
+    }
+
+    .vip-msg.success {
+      display: block;
+      background: rgba(46, 125, 50, 0.12);
+      color: #1b5e20;
+      border: 1px solid rgba(46, 125, 50, 0.3);
+    }
+
+    /* Maintenance Mode Specific Content (Toggled via JS) */
+    .maintenance-view {
+      display: none;
+      animation: fadeIn 0.4s ease forwards;
+    }
+
+    .maintenance-status-card {
+      background: #ffffff;
+      border: 2px solid var(--beige);
+      border-radius: var(--radius-xl);
+      padding: clamp(2rem, 4vw, 3rem);
+      box-shadow: var(--shadow-md);
+      max-width: 760px;
+      margin: 0 auto 3rem;
+      text-align: left;
+    }
+
+    .m-status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: rgba(212, 165, 67, 0.18);
+      border: 1px solid var(--gold);
+      color: var(--brown);
+      padding: 0.4rem 1.1rem;
+      border-radius: var(--radius-pill);
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 1.2rem;
+    }
+
+    .m-pulse-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #e67e22;
+      box-shadow: 0 0 0 3px rgba(230, 126, 34, 0.35);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(230, 126, 34, 0.6);
+      }
+
+      70% {
+        box-shadow: 0 0 0 8px rgba(230, 126, 34, 0);
+      }
+
+      100% {
+        box-shadow: 0 0 0 0 rgba(230, 126, 34, 0);
+      }
+    }
+
+    .m-task-checklist {
+      margin: 1.8rem 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+
+    .m-task-item {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      font-size: 0.92rem;
+      color: var(--brown);
+    }
+
+    .m-task-item i.done {
+      color: #2e7d32;
+      font-size: 1.1rem;
+    }
+
+    .m-task-item i.in-progress {
+      color: var(--gold);
+      font-size: 1.1rem;
+      animation: spinNoodle 4s linear infinite;
+    }
+
+    .m-task-item i.pending {
+      color: var(--beige-warm);
+      font-size: 1.1rem;
+    }
+
+    .m-emergency-box {
+      background: var(--cream);
+      border: 1px dashed var(--terracotta);
+      border-radius: var(--radius-md);
+      padding: 1.2rem 1.4rem;
+      margin-top: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .m-emergency-box h5 {
+      color: var(--brown);
+      margin-bottom: 0.2rem;
+      font-size: 1rem;
+    }
+
+    .m-emergency-box p {
+      color: var(--brown-mid);
+      font-size: 0.84rem;
+      margin: 0;
+    }
+
+    /* Teaser Showcase Cards */
+    .teaser-section {
+      padding: clamp(60px, 8vw, 100px) 0;
+      background: #ffffff;
+      border-top: 1px solid var(--beige);
+      border-bottom: 1px solid var(--beige);
+    }
+
+    .teaser-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .teaser-card {
+      background: var(--cream);
+      border: 1px solid var(--beige);
+      border-radius: var(--radius-lg);
+      padding: 2.2rem 1.8rem;
+      transition: all var(--t-mid) var(--ease);
+      position: relative;
+      text-align: left;
+    }
+
+    .teaser-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--gold);
+      background: #ffffff;
+    }
+
+    .teaser-badge {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--terracotta);
+      background: rgba(194, 94, 58, 0.12);
+      padding: 3px 10px;
+      border-radius: 999px;
+      margin-bottom: 1rem;
+    }
+
+    .teaser-card h4 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      color: var(--brown);
+      margin-bottom: 0.6rem;
+    }
+
+    .teaser-card p {
+      font-size: 0.9rem;
+      color: var(--brown-mid);
+      line-height: 1.65;
+    }
+
+    /* Physical Store Notice Card */
+    .physical-store-banner {
+      background: linear-gradient(135deg, var(--burgundy-deep) 0%, #2f0b07 100%);
+      color: #fff;
+      padding: clamp(45px, 6vw, 70px) 0;
+      position: relative;
+    }
+
+    .physical-store-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .physical-store-text {
+      max-width: 600px;
+    }
+
+    .physical-store-text h3 {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+
+    .physical-store-text p {
+      color: rgba(253, 246, 236, 0.85);
+      font-size: 0.95rem;
+      margin: 0;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .teaser-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .vip-input-row {
+        flex-direction: column;
+      }
+
+      .vip-interests {
+        grid-template-columns: 1fr;
+      }
+
+      .countdown-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.9rem;
+      }
+
+      .physical-store-inner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .mode-switch-bar {
+        width: 100%;
+        display: flex;
+      }
+
+      .mode-btn {
+        flex: 1;
+        justify-content: center;
+        padding: 0.5rem 0.6rem;
+        font-size: 0.78rem;
+      }
+    }
+
+    /* ─── Dark Theme Overrides for Coming Soon & Maintenance ─── */
+    [data-theme="dark"] .cs-hero {
+      background: radial-gradient(circle at 50% 20%, rgba(212, 165, 67, 0.1) 0%, rgba(18, 7, 3, 0) 70%), #120703;
+    }
+
+    [data-theme="dark"] .cs-headline {
+      color: #ffffff;
+    }
+
+    [data-theme="dark"] .cs-desc {
+      color: rgba(255, 255, 255, 0.82);
+    }
+
+    [data-theme="dark"] .mode-switch-bar {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(212, 165, 67, 0.3);
+    }
+
+    [data-theme="dark"] .mode-btn {
+      color: #ffffff;
+    }
+
+    [data-theme="dark"] .countdown-card {
+      background: #1a0a04;
+      border-color: rgba(212, 165, 67, 0.25);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+    }
+
+    [data-theme="dark"] .countdown-card:hover {
+      background: #230d06;
+      border-color: var(--gold);
+    }
+
+    [data-theme="dark"] .countdown-number {
+      color: #ffffff;
+    }
+
+    [data-theme="dark"] .countdown-label {
+      color: var(--gold-light);
+    }
+
+    [data-theme="dark"] .cs-progress-container {
+      background: #1a0a04;
+      border-color: rgba(212, 165, 67, 0.25);
+    }
+
+    [data-theme="dark"] .cs-progress-header {
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    [data-theme="dark"] .cs-progress-track {
+      background: #0f0502;
+    }
+
+    [data-theme="dark"] .vip-form-box {
+      background: #1a0a04;
+      border-color: rgba(212, 165, 67, 0.25);
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.6);
+    }
+
+    [data-theme="dark"] .vip-form-header h3 {
+      color: #ffffff;
+    }
+
+    [data-theme="dark"] .vip-form-header p {
+      color: rgba(255, 255, 255, 0.78);
+    }
+
+    [data-theme="dark"] .vip-input {
+      background: #0f0502;
+      border-color: rgba(212, 165, 67, 0.28);
+      color: #ffffff;
+    }
+
+    [data-theme="dark"] .vip-input:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 4px rgba(212, 165, 67, 0.2);
+    }
+
+    [data-theme="dark"] .vip-check-label {
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    [data-theme="dark"] .maintenance-status-card {
+      background: #1a0a04;
+      border-color: rgba(212, 165, 67, 0.25);
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.6);
+    }
+
+    [data-theme="dark"] .m-status-pill {
+      background: rgba(212, 165, 67, 0.15);
+      color: var(--gold-light);
+    }
+
+    [data-theme="dark"] .m-task-item {
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    [data-theme="dark"] .m-emergency-box {
+      background: #120602;
+      border-color: var(--gold);
+    }
+
+    [data-theme="dark"] .m-emergency-box h5 {
+      color: #ffffff;
+    }
+
+    [data-theme="dark"] .m-emergency-box p {
+      color: rgba(255, 255, 255, 0.78);
+    }
+
+    [data-theme="dark"] .teaser-section {
+      background: #140703;
+      border-color: rgba(212, 165, 67, 0.2);
+    }
+
+    [data-theme="dark"] .teaser-card {
+      background: #1c0b05;
+      border-color: rgba(212, 165, 67, 0.2);
+    }
+
+    [data-theme="dark"] .teaser-card:hover {
+      background: #250d06;
+      border-color: var(--gold);
+      box-shadow: 0 12px 34px rgba(0, 0, 0, 0.6);
+    }
+
+    [data-theme="dark"] .teaser-card h4 {
+      color: #ffffff;
+    }
+
+    [data-theme="dark"] .teaser-card p {
+      color: rgba(255, 255, 255, 0.78);
+    }
+
+    /* RTL Support Overrides */
+    [dir="rtl"] .vip-form-box,
+    [dir="rtl"] .maintenance-status-card,
+    [dir="rtl"] .teaser-card {
+      text-align: right;
+    }
+
+    [dir="rtl"] .vip-check-label {
+      flex-direction: row-reverse;
+      justify-content: flex-end;
+    }
+
+    [dir="rtl"] .m-task-item {
+      flex-direction: row-reverse;
+      text-align: right;
+    }
+
+    [dir="rtl"] .m-emergency-box {
+      flex-direction: row-reverse;
+      text-align: right;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="progress-bar"></div>
+
+  <!-- ════════════════════════════════════════════════════════════
+       NAVIGATION BAR
+       ════════════════════════════════════════════════════════════ -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="index.html" class="nav-logo" aria-label="PASTA Melbourne homepage">
+          <img src="images/logo.jpg" alt="PASTA Melbourne artisan logo">
+          <div class="nav-logo-text">
+            <span class="brand">PASTA</span>
+            <span class="tagline">Artisan &amp; Fresh</span>
+          </div>
+        </a>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="home2.html">Home 2</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="wholesale.html">Wholesale</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li class="nav-item-dropdown">
+            <a href="#" class="dropdown-trigger">Pages <i class="fa-solid fa-chevron-down dropdown-arrow"></i></a>
+            <ul class="nav-dropdown-menu">
+              <li><a href="coming-soon.html"><i class="fa-solid fa-sparkles"></i> Coming Soon</a></li>
+              <li><a href="maintenance.html"><i class="fa-solid fa-wrench"></i> Maintenance</a></li>
+              <li><a href="404.html"><i class="fa-solid fa-triangle-exclamation"></i> 404 Error</a></li>
+            </ul>
+          </li>
+        </ul>
+        <div class="nav-actions">
+          <div class="header-toggle-group">
+            <button class="theme-toggle-btn" id="theme-toggle" type="button" aria-label="Toggle dark/light mode"
+              title="Switch Theme">
+              <i class="fa-solid fa-moon"></i>
+            </button>
+            <button class="rtl-toggle-btn" id="rtl-toggle" type="button" aria-label="Toggle RTL/LTR direction"
+              title="Switch RTL/LTR">
+              <span class="rtl-label">RTL</span>
+            </button>
+          </div>
+          <a href="contact.html" class="btn btn-primary btn-sm">Visit Kitchen</a>
+          <button class="hamburger" id="hamburger-btn" aria-label="Open navigation menu">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Drawer -->
+  <div class="nav-overlay" id="nav-overlay"></div>
+  <nav class="nav-drawer" id="nav-drawer" aria-label="Mobile navigation drawer">
+    <button class="nav-drawer-close" id="drawer-close" aria-label="Close menu">✕</button>
+    <a href="index.html">Home</a>
+    <a href="home2.html">Home 2</a>
+    <a href="about.html">About</a>
+    <a href="products.html">Products</a>
+    <a href="wholesale.html">Wholesale</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html">Contact</a>
+    <div style="height:1px; background:var(--beige); margin:0.5rem 0; opacity:0.6"></div>
+    <span
+      style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--terracotta); padding:0.4rem 1rem;">Pages</span>
+    <a href="coming-soon.html"><i class="fa-solid fa-sparkles" style="color:var(--gold); margin-right:8px"></i> Coming
+      Soon</a>
+    <a href="maintenance.html"><i class="fa-solid fa-wrench" style="color:var(--gold); margin-right:8px"></i>
+      Maintenance</a>
+    <a href="404.html"><i class="fa-solid fa-triangle-exclamation" style="color:var(--gold); margin-right:8px"></i> 404
+      Error</a>
+    <a href="contact.html" class="btn btn-primary">Visit Kitchen</a>
+    <div class="drawer-toggles">
+      <button class="drawer-toggle theme-toggle-btn" id="drawer-theme-toggle" type="button"
+        aria-label="Toggle dark/light mode">
+        <i class="fa-solid fa-moon"></i> <span class="theme-text">Dark Mode</span>
+      </button>
+      <button class="drawer-toggle rtl-toggle-btn" id="drawer-rtl-toggle" type="button" aria-label="Toggle RTL/LTR">
+        <span class="rtl-label">RTL</span> <span class="rtl-text">Right-to-Left</span>
+      </button>
+    </div>
+  </nav>
+
+  <main>
+    <!-- ════════════════════════════════════════════════════════════
+         S1 — HERO SECTION WITH DUAL MODE SWITCHER
+         ════════════════════════════════════════════════════════════ -->
+    <section class="cs-hero" aria-label="Coming Soon &amp; Maintenance">
+      <div class="cs-hero-bg"></div>
+
+      <div class="container">
+        <div class="cs-container" data-aos="fade-up">
+
+          <!-- Interactive View Mode Switcher -->
+          <div class="mode-switch-bar" role="tablist" aria-label="Page mode selector">
+            <button type="button" class="mode-btn active" id="btn-mode-coming-soon" role="tab" aria-selected="true">
+              <i class="fa-solid fa-sparkles"></i> Coming Soon Mode
+            </button>
+            <button type="button" class="mode-btn" id="btn-mode-maintenance" role="tab" aria-selected="false">
+              <i class="fa-solid fa-wrench"></i> Maintenance Notice
+            </button>
+          </div>
+
+          <!-- ════════════ VIEW A: COMING SOON ════════════ -->
+          <div class="coming-soon-view" id="view-coming-soon">
+            <div style="margin-bottom: 1.2rem;">
+              <span class="badge badge-gold uppercase">
+                <i class="fa-solid fa-fire-burner"></i> Something Delicious Is Simmering
+              </span>
+            </div>
+
+            <h1 class="cs-headline">Our Next Seasonal Collection <em>Is Almost Ready.</em></h1>
+            <p class="cs-desc">
+              We are expanding our Melbourne pasta atelier, hand-finishing new bronze extrusion dies, and curating an
+              unmatched line of seasonal stuffed agnolotti and fresh sauces. Join our inner circle for the first boil.
+            </p>
+
+            <!-- Real-Time Luxury Countdown Clock -->
+            <div class="countdown-grid" aria-label="Countdown to launch">
+              <div class="countdown-card">
+                <span class="countdown-number" id="cd-days">14</span>
+                <span class="countdown-label">Days</span>
+              </div>
+              <div class="countdown-card">
+                <span class="countdown-number" id="cd-hours">08</span>
+                <span class="countdown-label">Hours</span>
+              </div>
+              <div class="countdown-card">
+                <span class="countdown-number" id="cd-minutes">42</span>
+                <span class="countdown-label">Minutes</span>
+              </div>
+              <div class="countdown-card">
+                <span class="countdown-number" id="cd-seconds">19</span>
+                <span class="countdown-label">Seconds</span>
+              </div>
+            </div>
+
+            <!-- Launch Readiness Bar -->
+            <div class="cs-progress-container">
+              <div class="cs-progress-header">
+                <span>Kitchen Readiness</span>
+                <span>88% Complete</span>
+              </div>
+              <div class="cs-progress-track">
+                <div class="cs-progress-fill" style="width: 88%;"></div>
+              </div>
+            </div>
+
+            <!-- VIP Waitlist Form -->
+            <div class="vip-form-box">
+              <div class="vip-form-header">
+                <h3><i class="fa-solid fa-envelope-open-text" style="color:var(--terracotta)"></i> Be First At The Table
+                </h3>
+                <p>Receive an exclusive invitation to our launch tasting box, secret opening discounts, and masterclass
+                  dates.</p>
+              </div>
+
+              <form id="cs-vip-form" novalidate>
+                <div class="vip-input-row">
+                  <input type="email" id="vip-email" class="vip-input"
+                    placeholder="Enter your email address (e.g. paolo@example.com)" required
+                    aria-label="Email address for VIP waitlist">
+                  <button type="submit" class="btn btn-primary">
+                    <i class="fa-solid fa-bell"></i> Notify Me
+                  </button>
+                </div>
+
+                <div class="vip-interests">
+                  <label class="vip-check-label">
+                    <input type="checkbox" checked name="pref-fresh">
+                    <span>Fresh Bronze-Extruded Ribbons</span>
+                  </label>
+                  <label class="vip-check-label">
+                    <input type="checkbox" checked name="pref-stuffed">
+                    <span>Seasonal Truffle &amp; Stuffed Ravioli</span>
+                  </label>
+                  <label class="vip-check-label">
+                    <input type="checkbox" name="pref-wholesale">
+                    <span>Commercial Restaurant Wholesale Boxes</span>
+                  </label>
+                  <label class="vip-check-label">
+                    <input type="checkbox" name="pref-classes">
+                    <span>Hands-On Weekend Pasta Masterclasses</span>
+                  </label>
+                </div>
+
+                <div class="vip-msg" id="vip-form-msg"></div>
+              </form>
+            </div>
+          </div>
+
+          <!-- ════════════ VIEW B: MAINTENANCE NOTICE ════════════ -->
+          <div class="maintenance-view" id="view-maintenance">
+            <div style="margin-bottom: 1.2rem;">
+              <span class="badge badge-red uppercase">
+                <i class="fa-solid fa-screwdriver-wrench"></i> Scheduled Kitchen Servicing
+              </span>
+            </div>
+
+            <h1 class="cs-headline">Kitchen Closed for Deep Seasoning <em>&amp; System Tuning.</em></h1>
+            <p class="cs-desc">
+              We are carrying out scheduled calibration of our Italian bronze extruders, sanitizing our
+              cold-fermentation vaults, and syncing live wholesale inventory. We will be back serving in just a brief
+              moment.
+            </p>
+
+            <div class="maintenance-status-card">
+              <div class="m-status-pill">
+                <span class="m-pulse-dot"></span> System Upgrade In Progress
+              </div>
+
+              <h3><i class="fa-solid fa-clock-rotate-left" style="color:var(--red-primary)"></i> Resuming Service
+                Shortly</h3>
+              <p style="color:var(--brown-mid); font-size:0.94rem; margin-bottom:1.5rem">
+                Estimated completion: <strong>Today at 2:00 PM AEST</strong> (Approx. 1 hr 45 mins remaining).
+              </p>
+
+              <div class="m-task-checklist">
+                <div class="m-task-item">
+                  <i class="fa-solid fa-circle-check done"></i>
+                  <span>Dough mixers deep-cleaned and mechanical bearings lubricated</span>
+                </div>
+                <div class="m-task-item">
+                  <i class="fa-solid fa-circle-check done"></i>
+                  <span>Traditional bronze die matrices ultrasonic sanitized &amp; aligned</span>
+                </div>
+                <div class="m-task-item">
+                  <i class="fa-solid fa-arrows-rotate in-progress"></i>
+                  <span>Wholesale live portal &amp; temperature telemetry update (85% completed)</span>
+                </div>
+                <div class="m-task-item">
+                  <i class="fa-solid fa-clock pending"></i>
+                  <span>Cold chain chilled dispatch verification &amp; shop open verification</span>
+                </div>
+              </div>
+
+              <div class="m-emergency-box">
+                <div>
+                  <h5><i class="fa-solid fa-phone-volume" style="color:var(--terracotta)"></i> Urgent Foodservice or
+                    Chef Orders?</h5>
+                  <p>Our restaurant priority dispatch team remains reachable via direct phone line.</p>
+                </div>
+                <div style="display:flex; gap:0.8rem; flex-wrap:wrap">
+                  <a href="tel:+61390001234" class="btn btn-primary btn-sm"><i class="fa-solid fa-phone"></i> +61 3 9000
+                    1234</a>
+                  <a href="mailto:wholesale@pasta.com.au" class="btn btn-secondary btn-sm"><i
+                      class="fa-solid fa-envelope"></i> Email Kitchen</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Return Action Buttons -->
+          <div style="display:flex; justify-content:center; gap:1rem; flex-wrap:wrap">
+            <a href="index.html" class="btn btn-secondary">
+              <i class="fa-solid fa-house"></i> Return to Homepage
+            </a>
+            <a href="about.html" class="btn btn-gold">
+              <i class="fa-solid fa-book-open"></i> Read Kitchen Story
+            </a>
+            <a href="contact.html" class="btn btn-white">
+              <i class="fa-solid fa-location-dot"></i> Visit Shop
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════════
+         S2 — "WHAT'S IN THE WORKS" ARTISAN PREVIEWS
+         ════════════════════════════════════════════════════════════ -->
+    <section class="teaser-section" aria-label="Upcoming Features Preview">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <span class="eyebrow">Behind The Flour Cloud</span>
+          <h2>What We’re Crafting For You</h2>
+          <p>Here is a sneak peek at the exciting additions arriving at PASTA Melbourne very soon.</p>
+        </div>
+
+        <div class="teaser-grid">
+
+          <!-- Teaser 1 -->
+          <div class="teaser-card" data-aos="fade-up">
+            <span class="teaser-badge"><i class="fa-solid fa-sparkles"></i> New Geometry</span>
+            <h4>Bespoke Bronze Extrusions</h4>
+            <p>We’ve commissioned three new vintage brass extrusion dies from Bologna: textured curly Reginette, fluted
+              Rigatoni Giganti, and authentic ruffled Campanelle with optimal sauce cling.</p>
+          </div>
+
+          <!-- Teaser 2 -->
+          <div class="teaser-card" data-aos="fade-up" data-aos-delay="100">
+            <span class="teaser-badge"><i class="fa-solid fa-gem"></i> Seasonal Reserve</span>
+            <h4>Winter Truffle Agnolotti</h4>
+            <p>Fresh Gippsland burrata and sheep’s milk ricotta hand-folded inside paper-thin egg pasta, infused with
+              freshly harvested black truffles from northern Tasmanian oak groves.</p>
+          </div>
+
+          <!-- Teaser 3 -->
+          <div class="teaser-card" data-aos="fade-up" data-aos-delay="200">
+            <span class="teaser-badge"><i class="fa-solid fa-truck-fast"></i> Cold-Chain Delivery</span>
+            <h4>Chilled Doorstep Subscription</h4>
+            <p>Weekly and fortnightly chilled delivery boxes containing freshly made ribbons, pairing jars of simmered
+              sauces, and freshly grated aged Parmigiano Reggiano straight to your doorstep.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════════
+         S3 — PHYSICAL RETAIL STORE STATUS BAR
+         ════════════════════════════════════════════════════════════ -->
+    <section class="physical-store-banner" aria-label="Physical Shop Notice">
+      <div class="container">
+        <div class="physical-store-inner" data-aos="fade-up">
+          <div class="physical-store-text">
+            <span class="badge badge-gold uppercase mb-2">
+              <i class="fa-solid fa-store"></i> Our Physical Shop Remains Open
+            </span>
+            <h3>Craving Fresh Handmade Pasta Right Now?</h3>
+            <p>While our digital kitchen prepares for grand launch, our Melbourne retail counter at <strong>14 Pasta
+                Lane, Artisan Quarter</strong> is open for walk-ins Tue–Sat 8:00 AM – 5:00 PM.</p>
+          </div>
+          <div style="display:flex; gap:1rem; flex-wrap:wrap">
+            <a href="contact.html" class="btn btn-white btn-lg">
+              <i class="fa-solid fa-location-dot"></i> Get Directions
+            </a>
+            <a href="tel:+61390001234" class="btn btn-gold btn-lg">
+              <i class="fa-solid fa-phone"></i> Call +61 3 9000 1234
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ════════════════════════════════════════════════════════════
+       FOOTER
+       ════════════════════════════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="images/logo.jpg" alt="PASTA Logo">
+          <div class="brand-name">PASTA</div>
+          <p>Handcrafted fresh pasta and homemade noodles made daily in our local kitchen. From our family table to
+            yours — with love, flour, and a little bit of magic.</p>
+          <div class="social-links">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5>Quick Links</h5>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">Our Story</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="wholesale.html">Wholesale</a></li>
+            <li><a href="blog.html">Blog &amp; Recipes</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="coming-soon.html">Coming Soon</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Our Products</h5>
+          <ul>
+            <li><a href="products.html">Fresh Spaghetti</a></li>
+            <li><a href="products.html">Tagliatelle</a></li>
+            <li><a href="products.html">Fettuccine</a></li>
+            <li><a href="products.html">Ricotta Ravioli</a></li>
+            <li><a href="products.html">Potato Gnocchi</a></li>
+            <li><a href="products.html">Artisan Sauces</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Visit Us</h5>
+          <div class="contact-item"><i class="fa-solid fa-location-dot"></i><span>14 Pasta Lane, Artisan
+              Quarter,<br>Melbourne VIC 3000</span></div>
+          <div class="contact-item"><i class="fa-solid fa-phone"></i><span>+61 3 9000 1234</span></div>
+          <div class="contact-item"><i class="fa-solid fa-envelope"></i><span>hello@pasta.com.au</span></div>
+          <div class="contact-item"><i class="fa-solid fa-clock"></i><span>Tue–Sat: 8am – 5pm<br>Sun: 9am – 2pm</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 PASTA Artisan &amp; Fresh. All rights reserved.</span>
+        <div style="display:flex; gap:1.2rem; flex-wrap:wrap">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="maintenance.html">Maintenance Status</a>
+          <a href="404.html">404 Error</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-chevron-up"></i></button>
+
+  <!-- Core Scripts -->
+  <script src="js/main.js"></script>
+
+  <!-- Coming Soon & Maintenance Logic -->
+  <script>
+    (function initCSFeatures() {
+      /* ─── Mode Switcher (Coming Soon vs Maintenance) ───────────── */
+      const btnCS = document.getElementById('btn-mode-coming-soon');
+      const btnM = document.getElementById('btn-mode-maintenance');
+      const viewCS = document.getElementById('view-coming-soon');
+      const viewM = document.getElementById('view-maintenance');
+
+      function switchMode(mode) {
+        if (mode === 'maintenance') {
+          btnCS.classList.remove('active');
+          btnCS.setAttribute('aria-selected', 'false');
+          btnM.classList.add('active');
+          btnM.setAttribute('aria-selected', 'true');
+          viewCS.style.display = 'none';
+          viewM.style.display = 'block';
+        } else {
+          btnM.classList.remove('active');
+          btnM.setAttribute('aria-selected', 'false');
+          btnCS.classList.add('active');
+          btnCS.setAttribute('aria-selected', 'true');
+          viewM.style.display = 'none';
+          viewCS.style.display = 'block';
+        }
+      }
+
+      if (btnCS && btnM) {
+        btnCS.addEventListener('click', () => switchMode('coming-soon'));
+        btnM.addEventListener('click', () => switchMode('maintenance'));
+
+        // Check URL parameter or hash
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('mode') === 'maintenance' || window.location.hash === '#maintenance') {
+          switchMode('maintenance');
+        }
+      }
+
+      /* ─── Live Ticking Countdown Clock ─────────────────────────── */
+      // Target launch date 14 days and 8 hours from now
+      let targetDate = new Date();
+      targetDate.setDate(targetDate.getDate() + 14);
+      targetDate.setHours(targetDate.getHours() + 8);
+      targetDate.setMinutes(targetDate.getMinutes() + 42);
+
+      const elDays = document.getElementById('cd-days');
+      const elHours = document.getElementById('cd-hours');
+      const elMinutes = document.getElementById('cd-minutes');
+      const elSeconds = document.getElementById('cd-seconds');
+
+      function updateCountdown() {
+        const now = new Date().getTime();
+        const diff = targetDate.getTime() - now;
+
+        if (diff <= 0) {
+          if (elDays) elDays.textContent = '00';
+          if (elHours) elHours.textContent = '00';
+          if (elMinutes) elMinutes.textContent = '00';
+          if (elSeconds) elSeconds.textContent = '00';
+          return;
+        }
+
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+        if (elDays) elDays.textContent = String(days).padStart(2, '0');
+        if (elHours) elHours.textContent = String(hours).padStart(2, '0');
+        if (elMinutes) elMinutes.textContent = String(minutes).padStart(2, '0');
+        if (elSeconds) elSeconds.textContent = String(seconds).padStart(2, '0');
+      }
+
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+
+      /* ─── VIP Waitlist Form Submission ──────────────────────────── */
+      const vipForm = document.getElementById('cs-vip-form');
+      const vipEmail = document.getElementById('vip-email');
+      const vipMsg = document.getElementById('vip-form-msg');
+
+      if (vipForm) {
+        vipForm.addEventListener('submit', function (e) {
+          e.preventDefault();
+          const emailVal = vipEmail.value.trim();
+
+          if (!emailVal || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal)) {
+            vipMsg.className = 'vip-msg';
+            vipMsg.style.display = 'block';
+            vipMsg.style.background = 'rgba(192, 57, 43, 0.12)';
+            vipMsg.style.color = 'var(--red-primary)';
+            vipMsg.style.border = '1px solid rgba(192, 57, 43, 0.3)';
+            vipMsg.innerHTML = '<i class="fa-solid fa-circle-exclamation"></i> Please enter a valid email address.';
+            vipEmail.focus();
+            return;
+          }
+
+          // Save preference to localStorage demo
+          try {
+            const subscribers = JSON.parse(localStorage.getItem('pasta_vip_subscribers') || '[]');
+            subscribers.push({ email: emailVal, date: new Date().toISOString() });
+            localStorage.setItem('pasta_vip_subscribers', JSON.stringify(subscribers));
+          } catch (err) { }
+
+          vipMsg.className = 'vip-msg success';
+          vipMsg.style.display = 'block';
+          vipMsg.innerHTML = `<i class="fa-solid fa-circle-check"></i> <strong>Benvenuto!</strong> You're on the exclusive VIP list for <em>${escapeHtml(emailVal)}</em>. We'll send your tasting invitation before general public release.`;
+          vipForm.reset();
+
+          setTimeout(() => {
+            if (vipMsg) vipMsg.style.display = 'none';
+          }, 8000);
+        });
+      }
+
+      function escapeHtml(str) {
+        return str.replace(/[&<>"']/g, function (m) {
+          return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[m];
+        });
+      }
+    })();
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="About PASTA — Our brand story, handmade philosophy, and the people behind your favourite fresh artisan pasta shop in Melbourne.">
+  <title>About — PASTA Artisan &amp; Fresh</title>
+  <link rel="icon" type="image/jpeg" href="images/logo.jpg">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script>
+    (function() {
+      const t = localStorage.getItem('pasta_theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      const d = localStorage.getItem('pasta_dir') || 'ltr';
+      document.documentElement.setAttribute('data-theme', t);
+      document.documentElement.setAttribute('dir', d);
+      if (d === 'rtl') document.documentElement.setAttribute('lang', 'ar');
+    })();
+  </script>
+  <style>
+    /* ── ABOUT PAGE ── */
+
+    /* S2 — Brand Story Timeline & Grid */
+    .brand-story-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: flex-start;
+    }
+    .timeline { position:relative; padding-left:2.5rem; }
+    .timeline::before {
+      content:''; position:absolute; left:16px; top:0; bottom:0;
+      width:2px; background:linear-gradient(var(--red-primary), var(--beige));
+    }
+    .timeline-item { position:relative; margin-bottom:2.8rem; }
+    .timeline-item::before {
+      content:''; position:absolute; left:-2rem; top:.35rem;
+      width:14px; height:14px;
+      border-radius:50%; background:var(--red-primary);
+      border:3px solid var(--cream);
+      box-shadow:0 0 0 3px rgba(192,57,43,.3);
+    }
+    .timeline-year { color:var(--red-primary); font-weight:700; font-size:.82rem; text-transform:uppercase; letter-spacing:.1em; margin-bottom:.3rem; }
+    .timeline-item h4 { margin-bottom:.35rem; }
+    .timeline-item p  { font-size:.92rem; color:var(--brown-mid); }
+
+    /* S3 — Philosophy Cards */
+    .philosophy-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.8rem; }
+    .philosophy-card {
+      background: var(--cream-dark);
+      border-radius: var(--radius-md);
+      padding: 2.2rem 1.8rem;
+      border-top: 4px solid var(--red-primary);
+      transition: all var(--t-mid) var(--ease);
+    }
+    .philosophy-card:nth-child(2) { border-top-color: var(--gold); }
+    .philosophy-card:nth-child(3) { border-top-color: var(--terracotta); }
+    .philosophy-card:hover { transform:translateY(-6px); box-shadow:var(--shadow-md); }
+    .philosophy-card .icon { font-size:2.5rem; margin-bottom:1rem; }
+    .philosophy-card h4  { margin-bottom:.6rem; }
+    .philosophy-card p   { font-size:.9rem; color:var(--brown-mid); line-height:1.7; }
+
+    /* S4 — Dough to Dish Process */
+    .dough-dish { background: var(--burgundy-deep); color:var(--cream); }
+    .dough-steps { display:grid; grid-template-columns:repeat(4,1fr); gap:1.5rem; counter-reset:step; }
+    .dough-step {
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(237,217,187,.12);
+      border-radius:var(--radius-md);
+      padding:2rem 1.4rem;
+      text-align:center;
+      transition:all var(--t-mid) var(--ease);
+    }
+    .dough-step:hover { background:rgba(255,255,255,.12); transform:translateY(-5px); }
+    .dough-step-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--red-primary), var(--terracotta));
+      color: #fff;
+      font-size: 1.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+      box-shadow: 0 6px 20px rgba(192,57,43,0.35);
+    }
+    .dough-step h4   { color:var(--gold-light); margin-bottom:.5rem; font-size:1rem; }
+    .dough-step p    { font-size:.85rem; opacity:.75; line-height:1.65; }
+    .step-num {
+      display:inline-block;
+      width:30px; height:30px;
+      border-radius:50%;
+      background:var(--red-primary);
+      color:#fff;
+      font-size:.78rem; font-weight:700;
+      line-height:30px;
+      margin-bottom:1rem;
+    }
+
+    /* S5 — Unique Qualities BENTO GRID */
+    .qualities-section {
+      background: linear-gradient(160deg, #1a0800 0%, #2d1208 60%, #1a0e05 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .qualities-section::before {
+      content: '';
+      position: absolute;
+      bottom: -100px; right: -100px;
+      width: 500px; height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(212,165,67,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .qualities-head {
+      text-align: center;
+      margin-bottom: 3rem;
+      position: relative; z-index: 1;
+    }
+    .qualities-head .eyebrow { color: var(--gold-light); opacity: 0.9; }
+    .qualities-head h2 { color: #fff; font-size: clamp(1.8rem, 3vw, 2.8rem); margin: 0.5rem 0 0.8rem; }
+    .qualities-head p { color: rgba(255,255,255,0.6); max-width: 560px; margin: 0 auto; font-size: 0.95rem; }
+    /* Bento grid */
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: auto;
+      gap: 1.2rem;
+      position: relative; z-index: 1;
+    }
+    .bento-card {
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.09);
+      transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s ease, border-color 0.3s;
+    }
+    .bento-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.5);
+      border-color: rgba(212,165,67,0.35);
+    }
+    /* Hero card: spans 2 cols, 2 rows */
+    .bento-hero {
+      grid-column: 1 / 3;
+      grid-row: 1 / 3;
+      min-height: 420px;
+    }
+    .bento-hero img {
+      width: 100%;
+      height: 100% !important;
+      object-fit: cover !important;
+      display: block;
+      opacity: 0.65;
+      transition: transform 10s ease, opacity 0.4s;
+    }
+    .bento-hero:hover img { opacity: 0.8; transform: scale(1.04); }
+    .bento-hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(26,8,0,0.82) 0%, rgba(26,8,0,0.3) 100%);
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 2.5rem;
+    }
+    .bento-hero-tag {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 0.8rem;
+    }
+    .bento-hero-tag::before {
+      content: ''; width: 20px; height: 2px; background: var(--gold);
+    }
+    .bento-hero h3 {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+      color: #fff; line-height: 1.15; font-weight: 900;
+      margin-bottom: 0.8rem;
+    }
+    .bento-hero p {
+      font-size: 0.9rem; color: rgba(255,255,255,0.75); line-height: 1.65;
+      max-width: 460px;
+    }
+    /* Regular feature card */
+    .bento-feature {
+      padding: 2rem 1.8rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+    .bento-icon {
+      width: 48px; height: 48px;
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+    .bento-num {
+      font-family: var(--font-display);
+      font-size: 0.7rem; font-weight: 800;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+    .bento-feature h4 {
+      font-size: 1rem; font-weight: 800; color: #fff; line-height: 1.2;
+      margin: 0;
+    }
+    .bento-feature p {
+      font-size: 0.83rem; color: rgba(255,255,255,0.62); line-height: 1.65; margin: 0;
+    }
+    /* Accent top bar */
+    .bento-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      transition: height 0.3s;
+    }
+    .bento-card:hover::before { height: 5px; }
+    .ba-red::before   { background: linear-gradient(90deg, #e63946, #c1121f); }
+    .ba-gold::before  { background: linear-gradient(90deg, #d4a843, #f4c542); }
+    .ba-green::before { background: linear-gradient(90deg, #2d6a4f, #52b788); }
+    .ba-blue::before  { background: linear-gradient(90deg, #1d3557, #457b9d); }
+    .ba-wine::before  { background: linear-gradient(90deg, #6d2b3d, #a4133c); }
+    /* Icon colour variants */
+    .bi-red  { background: rgba(230,57,70,0.18); color: #e87878; }
+    .bi-gold { background: rgba(212,165,67,0.18); color: var(--gold); }
+    .bi-green{ background: rgba(52,183,136,0.18); color: #52b788; }
+    .bi-blue { background: rgba(69,123,157,0.18); color: #90c7e8; }
+    .bi-wine { background: rgba(164,19,60,0.18); color: #e07090; }
+    /* Responsive */
+    @media (max-width: 900px) {
+      .bento-grid { grid-template-columns: repeat(2, 1fr); }
+      .bento-hero { grid-column: 1 / 3; grid-row: auto; min-height: 300px; }
+    }
+    @media (max-width: 540px) {
+      .bento-grid { grid-template-columns: 1fr; }
+      .bento-hero { grid-column: auto; }
+    }
+
+    /* S6 — About CTA */
+    .about-cta {
+      background: linear-gradient(135deg, var(--red-dark) 0%, var(--red-primary) 50%, var(--terracotta) 100%);
+      color:#fff; text-align:center;
+    }
+    .about-cta h2 { color:#fff; margin-bottom:1rem; }
+    .about-cta p  { color:rgba(255,255,255,.82); max-width:580px; margin:0 auto 2rem; }
+
+    /* ══════════ ABOUT INTRO — Immersive Editorial ══════════ */
+    .about-intro-section {
+      background: #FAF6F0;
+      position: relative;
+      overflow: hidden;
+      padding: 0 !important;
+    }
+    .about-intro-inner {
+      display: grid;
+      grid-template-columns: 45% 55%;
+      min-height: 85vh;
+    }
+    /* LEFT — Dark image panel */
+    .about-intro-visual {
+      position: relative;
+      background: #1a0808;
+      overflow: hidden;
+    }
+    .about-intro-visual img {
+      width: 100%;
+      height: 100% !important;
+      object-fit: cover !important;
+      display: block;
+      opacity: 0.75;
+      transition: transform 12s ease;
+    }
+    .about-intro-section:hover .about-intro-visual img {
+      transform: scale(1.04);
+    }
+    /* Gradient overlay */
+    .about-intro-visual::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg,
+        rgba(44,14,8,0.7) 0%,
+        rgba(26,8,8,0.35) 60%,
+        transparent 100%);
+    }
+    /* Floating year badge */
+    .about-year-badge {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 2.5rem;
+      z-index: 3;
+      background: var(--gold);
+      color: var(--brown);
+      border-radius: 16px;
+      padding: 1.2rem 1.8rem;
+      text-align: center;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.35);
+    }
+    .about-year-badge strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 2.4rem;
+      line-height: 1;
+      font-weight: 800;
+    }
+    .about-year-badge span {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-weight: 700;
+      opacity: 0.85;
+    }
+    /* Floating pill top-right */
+    .about-img-pill {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      z-index: 3;
+      background: rgba(18,5,3,0.85);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(212,165,67,0.45);
+      color: rgba(255,255,255,0.9);
+      padding: 0.5rem 1rem;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+    .about-img-pill i { color: var(--gold); }
+    /* RIGHT — Content panel */
+    .about-intro-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: clamp(3rem, 6vw, 6rem) clamp(2.5rem, 5vw, 5rem);
+      position: relative;
+    }
+    /* Deco watermark */
+    .about-intro-content::before {
+      content: 'PASTA';
+      position: absolute;
+      top: 2rem;
+      right: -1rem;
+      font-family: var(--font-display);
+      font-size: clamp(80px, 12vw, 160px);
+      font-weight: 900;
+      color: rgba(107,59,30,0.04);
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+      white-space: nowrap;
+    }
+    .about-intro-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--red-primary);
+      margin-bottom: 1.2rem;
+    }
+    .about-intro-eyebrow::before {
+      content: '';
+      width: 32px;
+      height: 2px;
+      background: var(--red-primary);
+    }
+    .about-intro-content h2 {
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      line-height: 1.1;
+      color: var(--brown);
+      margin-bottom: 1.4rem;
+      font-weight: 900;
+    }
+    .about-intro-content h2 em {
+      color: var(--red-primary);
+      font-style: italic;
+    }
+    .about-intro-lead {
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      line-height: 1.78;
+      color: var(--brown-mid);
+      margin-bottom: 1rem;
+      border-left: 3px solid var(--gold);
+      padding-left: 1.2rem;
+    }
+    .about-intro-body {
+      font-size: 0.9rem;
+      line-height: 1.75;
+      color: var(--brown-mid);
+      opacity: 0.85;
+      margin-bottom: 0.8rem;
+    }
+    /* Stat strip */
+    .about-stat-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      margin-top: 2.2rem;
+      border: 1px solid rgba(107,59,30,0.12);
+      border-radius: 16px;
+      overflow: hidden;
+      background: #fff;
+      box-shadow: 0 4px 24px rgba(61,31,14,0.06);
+    }
+    .about-stat-item {
+      padding: 1.4rem 1.2rem;
+      text-align: center;
+      border-right: 1px solid rgba(107,59,30,0.1);
+      position: relative;
+    }
+    .about-stat-item:last-child { border-right: none; }
+    .about-stat-item::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--red-primary), var(--terracotta));
+      transform: scaleX(0);
+      transition: transform 0.4s ease;
+    }
+    .about-stat-item:hover::before { transform: scaleX(1); }
+    .about-stat-num {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: var(--red-primary);
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+    .about-stat-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--brown-mid);
+    }
+    /* Responsive */
+    @media (max-width: 900px) {
+      .about-intro-inner { grid-template-columns: 1fr; min-height: auto; }
+      .about-intro-visual { height: 340px; }
+    }
+    @media (max-width: 480px) {
+      .about-stat-strip { grid-template-columns: 1fr; }
+      .about-stat-item { border-right: none; border-bottom: 1px solid rgba(107,59,30,0.1); }
+    }
+
+    @media(max-width:992px){
+      .brand-story-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    }
+    @media(max-width:768px){
+      .philosophy-grid { grid-template-columns:1fr; }
+      .dough-steps { grid-template-columns:repeat(2,1fr); }
+      .qualities-wrap { grid-template-columns:1fr; }
+      .about-intro-grid { grid-template-columns:1fr; }
+    }
+    @media(max-width:576px){
+      .brand-story-grid { gap: 2rem; }
+      .timeline { padding-left: 1.8rem; }
+      .timeline::before { left: 8px; }
+      .timeline-item::before { left: -1.6rem; }
+      .timeline-item { margin-bottom: 2rem; }
+      .brand-story-quote { padding: 1.2rem 1.2rem !important; }
+    }
+    @media(max-width:480px){
+      .dough-steps { grid-template-columns:1fr; }
+    }
+
+    /* ── Dark Theme Overrides for About Page ── */
+    [data-theme="dark"] .hero-floating-pill {
+      background: rgba(18, 6, 4, 0.92) !important;
+      border-color: rgba(212, 165, 67, 0.45) !important;
+      color: #ffffff !important;
+    }
+    [data-theme="dark"] .hero-floating-pill span {
+      color: #ffffff !important;
+    }
+    [data-theme="dark"] .hero-floating-pill i {
+      color: var(--gold) !important;
+    }
+    [data-theme="dark"] .about-intro-section {
+      background: #120703 !important;
+    }
+    [data-theme="dark"] .about-intro-content {
+      background: #160803 !important;
+    }
+    [data-theme="dark"] .about-intro-content::before {
+      color: rgba(212, 165, 67, 0.05) !important;
+    }
+    [data-theme="dark"] .about-intro-eyebrow {
+      color: var(--gold) !important;
+    }
+    [data-theme="dark"] .about-intro-eyebrow::before {
+      background: var(--gold) !important;
+    }
+    [data-theme="dark"] .about-intro-content h2 {
+      color: #ffffff !important;
+    }
+    [data-theme="dark"] .about-intro-content h2 em {
+      color: var(--gold) !important;
+    }
+    [data-theme="dark"] .about-intro-lead {
+      color: rgba(255, 255, 255, 0.88) !important;
+    }
+    [data-theme="dark"] .about-intro-body {
+      color: rgba(255, 255, 255, 0.78) !important;
+    }
+    [data-theme="dark"] .about-img-pill {
+      background: rgba(18, 6, 4, 0.9) !important;
+      border-color: rgba(212, 165, 67, 0.4) !important;
+      color: #ffffff !important;
+    }
+    [data-theme="dark"] .about-year-badge {
+      background: var(--gold) !important;
+      color: #140804 !important;
+    }
+    [data-theme="dark"] .about-year-badge strong {
+      color: #140804 !important;
+    }
+    [data-theme="dark"] .about-year-badge span {
+      color: #2b1307 !important;
+    }
+    [data-theme="dark"] .about-intro-stat strong {
+      color: #ffffff !important;
+    }
+    [data-theme="dark"] .about-intro-stat span {
+      color: rgba(255, 255, 255, 0.7) !important;
+    }
+    [data-theme="dark"] .dough-dish {
+      background: #180604 !important;
+      color: #fdfaf5 !important;
+    }
+    [data-theme="dark"] .dough-step {
+      background: #200b07 !important;
+      border-color: rgba(212, 165, 67, 0.22) !important;
+      color: #fdfaf5 !important;
+    }
+    [data-theme="dark"] .dough-step:hover {
+      background: #2a0f0a !important;
+      border-color: rgba(212, 165, 67, 0.45) !important;
+    }
+    [data-theme="dark"] .dough-step h4 {
+      color: var(--gold) !important;
+    }
+    [data-theme="dark"] .dough-step p {
+      color: rgba(255, 255, 255, 0.85) !important;
+      opacity: 1 !important;
+    }
+    [data-theme="dark"] .philosophy-card {
+      background: #1c0a04 !important;
+      border: 1px solid rgba(212, 165, 67, 0.25) !important;
+      border-top-width: 4px !important;
+    }
+    [data-theme="dark"] .philosophy-card h4 {
+      color: #ffffff !important;
+    }
+    [data-theme="dark"] .philosophy-card p {
+      color: rgba(255, 255, 255, 0.8) !important;
+    }
+    [data-theme="dark"] .bento-card {
+      background: #1c0b05 !important;
+      border-color: rgba(212, 165, 67, 0.25) !important;
+      color: #ffffff !important;
+    }
+    [data-theme="dark"] .bento-card h3,
+    [data-theme="dark"] .bento-card h4,
+    [data-theme="dark"] .bento-card h5 {
+      color: #ffffff !important;
+    }
+    [data-theme="dark"] .bento-card p {
+      color: rgba(255, 255, 255, 0.82) !important;
+    }
+    [data-theme="dark"] .brand-story-quote {
+      background: rgba(255, 255, 255, 0.05) !important;
+      color: rgba(255, 255, 255, 0.9) !important;
+    }
+    [data-theme="dark"] .brand-story-quote footer {
+      color: var(--gold-light) !important;
+    }
+    [data-theme="dark"] .timeline-item h4 {
+      color: #ffffff !important;
+    }
+    [data-theme="dark"] .timeline-item p {
+      color: rgba(255, 255, 255, 0.75) !important;
+    }
+    [data-theme="dark"] .timeline-item::before {
+      border-color: #120703 !important;
+    }
+  </style>
+</head>
+<body>
+  <div id="progress-bar"></div>
+  <nav class="navbar">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="index.html" class="nav-logo">
+          <img src="images/logo.jpg" alt="PASTA Logo">
+          <div class="nav-logo-text"><span class="brand">PASTA</span><span class="tagline">Artisan &amp; Fresh</span></div>
+        </a>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="home2.html">Home 2</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="wholesale.html">Wholesale</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li class="nav-item-dropdown">
+            <a href="#" class="dropdown-trigger">Pages <i class="fa-solid fa-chevron-down dropdown-arrow"></i></a>
+            <ul class="nav-dropdown-menu">
+              <li><a href="coming-soon.html"><i class="fa-solid fa-sparkles"></i> Coming Soon</a></li>
+              <li><a href="maintenance.html"><i class="fa-solid fa-wrench"></i> Maintenance</a></li>
+              <li><a href="404.html"><i class="fa-solid fa-triangle-exclamation"></i> 404 Error</a></li>
+            </ul>
+          </li>
+        </ul>
+        <div class="nav-actions">
+          <div class="header-toggle-group">
+            <button class="theme-toggle-btn" id="theme-toggle" type="button" aria-label="Toggle dark/light mode" title="Switch Theme">
+              <i class="fa-solid fa-moon"></i>
+            </button>
+            <button class="rtl-toggle-btn" id="rtl-toggle" type="button" aria-label="Toggle RTL/LTR direction" title="Switch RTL/LTR">
+              <span class="rtl-label">RTL</span>
+            </button>
+          </div>
+          <a href="contact.html" class="btn btn-primary btn-sm">Enquire Now</a>
+          <button class="hamburger" id="hamburger-btn" aria-label="Open menu"><span></span><span></span><span></span></button>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div class="nav-overlay" id="nav-overlay"></div>
+  <nav class="nav-drawer" id="nav-drawer">
+    <button class="nav-drawer-close" id="drawer-close">✕</button>
+    <a href="index.html">Home</a><a href="home2.html">Home 2</a><a href="about.html">About</a>
+    <a href="products.html">Products</a><a href="wholesale.html">Wholesale</a>
+    <a href="blog.html">Blog</a><a href="contact.html">Contact</a>
+    <div style="height:1px; background:var(--beige); margin:0.5rem 0; opacity:0.6"></div>
+    <span style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--terracotta); padding:0.4rem 1rem;">Pages</span>
+    <a href="coming-soon.html"><i class="fa-solid fa-sparkles" style="color:var(--gold); margin-right:8px"></i> Coming Soon</a>
+    <a href="maintenance.html"><i class="fa-solid fa-wrench" style="color:var(--gold); margin-right:8px"></i> Maintenance</a>
+    <a href="404.html"><i class="fa-solid fa-triangle-exclamation" style="color:var(--gold); margin-right:8px"></i> 404 Error</a>
+    <a href="contact.html" class="btn btn-primary">Enquire Now</a>
+    <div class="drawer-toggles">
+      <button class="drawer-toggle theme-toggle-btn" id="drawer-theme-toggle" type="button" aria-label="Toggle dark/light mode">
+        <i class="fa-solid fa-moon"></i> <span class="theme-text">Dark Mode</span>
+      </button>
+      <button class="drawer-toggle rtl-toggle-btn" id="drawer-rtl-toggle" type="button" aria-label="Toggle RTL/LTR">
+        <span class="rtl-label">RTL</span> <span class="rtl-text">Right-to-Left</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ════════════ PAGE HERO (UNIFIED 520PX HEIGHT) ════════════ -->
+  <section class="page-hero hero" aria-label="About page hero">
+    <div class="hero-bg-overlay" style="background-image: url('images/hero_about.jpg');"></div>
+    <div class="hero-bg-pattern"></div>
+    <div class="container hero-container">
+      <div class="hero-grid-split">
+        <div class="hero-text-col" data-aos="fade-right">
+          <span class="badge badge-gold uppercase mb-2">
+            <i class="fa-solid fa-wheat-awn"></i> Who We Are
+          </span>
+          <h1>Pasta Made with Hands,<br><em>Heart &amp; Heritage.</em></h1>
+          <p class="hero-desc">A small team of dedicated pastaioli. A relentless standard of quality. A Melbourne kitchen that smells of toasted stoneground semolina and farm eggs every single morning.</p>
+          <div class="hero-actions-wrap">
+            <a href="#our-story" class="btn btn-gold">Our Story</a>
+            <a href="contact.html" class="btn btn-outline-white">Say Hello</a>
+            <a href="products.html" class="btn btn-white">Browse Pasta</a>
+          </div>
+        </div>
+        <div class="hero-media-col" data-aos="fade-left" data-aos-delay="150">
+          <div class="hero-image-card">
+            <img src="images/flour_mound.jpg" alt="Artisan durum semolina flour mound ready for fresh pasta dough">
+            <div class="hero-floating-pill">
+              <i class="fa-solid fa-history"></i>
+              <span>Artisan Roots · Est. 2015</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main>
+
+    <!-- ═══ S1 — ABOUT INTRO (REDESIGNED) ═══ -->
+    <section class="section about-intro-section" id="about-intro" aria-label="About Introduction">
+      <div class="about-intro-inner">
+
+        <!-- LEFT: Dark image column -->
+        <div class="about-intro-visual" data-aos="fade-right">
+          <img src="images/kitchen.jpg" alt="Our artisan pasta kitchen in Melbourne">
+          <!-- Floating top pill -->
+          <div class="about-img-pill">
+            <i class="fa-solid fa-location-dot"></i>
+            <span>Melbourne, VIC</span>
+          </div>
+          <!-- Year badge -->
+          <div class="about-year-badge">
+            <strong>2015</strong>
+            <span>Founded</span>
+          </div>
+        </div>
+
+        <!-- RIGHT: Content column -->
+        <div class="about-intro-content" data-aos="fade-left" data-aos-delay="100">
+          <div class="about-intro-eyebrow">Welcome to PASTA</div>
+
+          <h2>A Local Pasta Shop That<br><em>Actually Makes Pasta.</em></h2>
+
+          <p class="about-intro-lead">We opened our doors in 2015 with one wooden pasta board, one rolling pin, and an unwavering belief that fresh pasta — real fresh pasta — deserved to be in every local kitchen.</p>
+
+          <p class="about-intro-body">Today we make over a dozen pasta shapes and five house sauces every morning, supplying home cooks, neighbourhood restaurants and local markets across Melbourne. Despite our growth, nothing has changed about how we work: by hand, with care, and with the best ingredients we can source.</p>
+
+          <p class="about-intro-body">We are not a factory. We are your local pasta makers — and that distinction means everything.</p>
+
+          <!-- Stat strip -->
+          <div class="about-stat-strip">
+            <div class="about-stat-item">
+              <div class="about-stat-num" data-count="10" data-suffix="+">10+</div>
+              <div class="about-stat-label">Years of Craft</div>
+            </div>
+            <div class="about-stat-item">
+              <div class="about-stat-num" data-count="12" data-suffix="">12</div>
+              <div class="about-stat-label">Pasta Shapes</div>
+            </div>
+            <div class="about-stat-item">
+              <div class="about-stat-num" data-count="500" data-suffix="+">500+</div>
+              <div class="about-stat-label">Loyal Customers</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══ S2 — BRAND STORY ═══ -->
+    <section class="section section-light" id="our-story" aria-label="Brand Story">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <span class="eyebrow">The Journey</span>
+          <h2>Our Brand Story</h2>
+          <p>From a home kitchen experiment to Melbourne's favourite local pasta supplier — a decade of milestones.</p>
+        </div>
+        <div class="brand-story-grid">
+          <div class="timeline" data-aos="fade-right">
+            <div class="timeline-item">
+              <div class="timeline-year">2015 — The Beginning</div>
+              <h4>Started at the Farmers Market</h4>
+              <p>Founder Elena Russo began selling handmade tagliatelle at the Fitzroy Farmers Market with a folding table and a borrowed pasta machine.</p>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-year">2017 — First Kitchen</div>
+              <h4>Opened Our First Commercial Kitchen</h4>
+              <p>Demand grew beyond what a home kitchen could handle. We leased a small commercial space in Collingwood and hired our first team member.</p>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-year">2019 — Wholesale Begins</div>
+              <h4>First Restaurant Partnership</h4>
+              <p>Three local restaurants put PASTA on their menus. The word spread fast — fresh pasta genuinely tasted different.</p>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-year">2021 — New Location</div>
+              <h4>Moved to Our Artisan Quarter Home</h4>
+              <p>We opened our dedicated shop and production kitchen at 14 Pasta Lane — with a tasting window, direct sales, and a small café counter.</p>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-year">2025 — Today</div>
+              <h4>Supplying 50+ Businesses &amp; 500+ Families</h4>
+              <p>Twelve shapes, five sauces, three seasonal specials — still made by hand, every single morning, with the same wooden rolling pin from 2015.</p>
+            </div>
+          </div>
+          <div data-aos="fade-left" data-aos-delay="100">
+            <img src="images/tagliatelle.jpg" alt="Our pasta through the years" style="width:100%; border-radius:var(--radius-lg); box-shadow:var(--shadow-lg); margin-bottom:1.5rem">
+            <blockquote class="brand-story-quote" style="background:var(--cream); border-left:4px solid var(--red-primary); padding:1.5rem 1.8rem; border-radius:0 var(--radius-md) var(--radius-md) 0; font-family:var(--font-serif); font-style:italic; font-size:1.05rem; color:var(--brown-mid); line-height:1.75">
+              "I wanted Australians to experience pasta the way my Nonna made it — not from a box, not from a machine, but from hands that actually cared about what they were making."
+              <footer style="margin-top:.8rem; font-size:.82rem; font-style:normal; color:var(--brown-light); font-family:var(--font-sans)">— Elena Russo, Founder</footer>
+            </blockquote>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ S3 — PHILOSOPHY ═══ -->
+    <section class="section section-cream" id="philosophy" aria-label="Food Philosophy">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <span class="eyebrow">What We Believe</span>
+          <h2>Our Handmade Food Philosophy</h2>
+          <p>Three core beliefs that guide every batch of pasta we make — from the flour we choose to the way we pack and deliver.</p>
+        </div>
+        <div class="philosophy-grid">
+          <div class="philosophy-card" data-aos="fade-up" data-aos-delay="0">
+            <div class="icon"><i class="fa-solid fa-wheat-awn"></i></div>
+            <h4>Ingredients First, Always</h4>
+            <p>Great pasta begins with great flour. We source stone-ground durum semolina and soft-wheat '00' flour from heritage grain mills. Our eggs come from free-range farms we visit personally. If we wouldn't eat it ourselves, we don't serve it to you.</p>
+          </div>
+          <div class="philosophy-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="icon"><i class="fa-solid fa-hand-sparkles"></i></div>
+            <h4>The Human Touch Matters</h4>
+            <p>A machine can replicate shape — but it cannot replicate feeling. Handmade pasta has a slightly rough surface that catches sauce differently, a texture that absorbs flavour more deeply. Those small imperfections are features, not flaws.</p>
+          </div>
+          <div class="philosophy-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="icon"><i class="fa-solid fa-sun"></i></div>
+            <h4>Fresh Means Made Today</h4>
+            <p>We make only what we can sell in 48 hours. No freezing, no preservatives, no extended shelf life tricks. If it wasn't made this morning, it doesn't leave our kitchen. Freshness is not a marketing word here — it is a practice.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ S4 — DOUGH TO DISH ═══ -->
+    <section class="section dough-dish" id="process" aria-label="Preparation Process">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <span class="eyebrow">Step by Step</span>
+          <h2 style="color:#fff">From Dough to Dish</h2>
+          <p style="color:rgba(255,255,255,.7)">Our eight-step preparation process — refined over ten years of daily pasta-making.</p>
+        </div>
+        <div class="dough-steps">
+          <div class="dough-step" data-aos="fade-up" data-aos-delay="0">
+            <div class="step-num">1</div>
+            <div class="dough-step-icon"><i class="fa-solid fa-weight-scale"></i></div>
+            <h4>Mill &amp; Measure</h4>
+            <p>Precision weighing of heritage flour and sea salt for every single batch.</p>
+          </div>
+          <div class="dough-step" data-aos="fade-up" data-aos-delay="80">
+            <div class="step-num">2</div>
+            <div class="dough-step-icon"><i class="fa-solid fa-egg"></i></div>
+            <h4>Crack &amp; Blend</h4>
+            <p>Free-range eggs whisked with a pinch of turmeric for golden colour.</p>
+          </div>
+          <div class="dough-step" data-aos="fade-up" data-aos-delay="160">
+            <div class="step-num">3</div>
+            <div class="dough-step-icon"><i class="fa-solid fa-hands"></i></div>
+            <h4>Knead by Hand</h4>
+            <p>Ten minutes of firm hand-kneading to develop perfect gluten structure.</p>
+          </div>
+          <div class="dough-step" data-aos="fade-up" data-aos-delay="240">
+            <div class="step-num">4</div>
+            <div class="dough-step-icon"><i class="fa-solid fa-clock"></i></div>
+            <h4>Rest &amp; Relax</h4>
+            <p>Wrapped in linen for 30 minutes to let gluten relax and flavour develop.</p>
+          </div>
+          <div class="dough-step" data-aos="fade-up" data-aos-delay="320">
+            <div class="step-num">5</div>
+            <div class="dough-step-icon"><i class="fa-solid fa-arrows-left-right"></i></div>
+            <h4>Roll Thin</h4>
+            <p>Rolled to precise thickness — 2mm for long pasta, 1mm for filled.</p>
+          </div>
+          <div class="dough-step" data-aos="fade-up" data-aos-delay="400">
+            <div class="step-num">6</div>
+            <div class="dough-step-icon"><i class="fa-solid fa-scissors"></i></div>
+            <h4>Cut &amp; Shape</h4>
+            <p>Hand-cut into strips, squares or shaped into pillows — never machine-pressed.</p>
+          </div>
+          <div class="dough-step" data-aos="fade-up" data-aos-delay="480">
+            <div class="step-num">7</div>
+            <div class="dough-step-icon"><i class="fa-solid fa-wind"></i></div>
+            <h4>Rest &amp; Dry Slightly</h4>
+            <p>Short air-dry on wooden racks to set shape and improve texture.</p>
+          </div>
+          <div class="dough-step" data-aos="fade-up" data-aos-delay="560">
+            <div class="step-num">8</div>
+            <div class="dough-step-icon"><i class="fa-solid fa-box-open"></i></div>
+            <h4>Pack &amp; Dispatch</h4>
+            <p>Packed in eco-trays, chilled and dispatched within hours of making.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ S5 — UNIQUE QUALITIES (BENTO REDESIGN) ═══ -->
+    <section class="section qualities-section" id="qualities" aria-label="What Makes Us Unique">
+      <div class="container">
+
+        <div class="qualities-head" data-aos="fade-up">
+          <span class="eyebrow"><i class="fa-solid fa-star" style="margin-right:.4rem"></i>What Sets Us Apart</span>
+          <h2>Six Things That Make<br>PASTA Different</h2>
+          <p>These are not marketing promises. They are the daily standards our team holds themselves to.</p>
+        </div>
+
+        <div class="bento-grid">
+
+          <!-- HERO card: spans 2 cols × 2 rows -->
+          <div class="bento-card bento-hero" data-aos="fade-right">
+            <img src="images/kitchen.jpg" alt="Our artisan pasta kitchen">
+            <div class="bento-hero-overlay">
+              <div class="bento-hero-tag">Our Standard</div>
+              <h3>Handmade with the<br>Same Care, Every Day.</h3>
+              <p>From the first crack of a free-range egg to the moment your pasta leaves our kitchen — nothing is rushed, outsourced or compromised.</p>
+            </div>
+          </div>
+
+          <!-- Card 1: Never Frozen -->
+          <div class="bento-card bento-feature ba-red" data-aos="fade-up" data-aos-delay="50">
+            <div class="bento-num" style="color:rgba(230,57,70,0.7)">01</div>
+            <div class="bento-icon bi-red"><i class="fa-solid fa-temperature-arrow-down"></i></div>
+            <h4>Never Frozen, Ever</h4>
+            <p>From our hands to your kitchen in under 24 hours — always fresh, never frozen.</p>
+          </div>
+
+          <!-- Card 2: Traceable Ingredients -->
+          <div class="bento-card bento-feature ba-gold" data-aos="fade-up" data-aos-delay="100">
+            <div class="bento-num" style="color:rgba(212,165,67,0.7)">02</div>
+            <div class="bento-icon bi-gold"><i class="fa-solid fa-map-location-dot"></i></div>
+            <h4>Traceable Ingredients</h4>
+            <p>We know the name of every farm and mill we source from. Ask us anytime.</p>
+          </div>
+
+          <!-- Card 3: No Preservatives -->
+          <div class="bento-card bento-feature ba-green" data-aos="fade-up" data-aos-delay="150">
+            <div class="bento-num" style="color:rgba(52,183,136,0.7)">03</div>
+            <div class="bento-icon bi-green"><i class="fa-solid fa-leaf"></i></div>
+            <h4>No Artificial Preservatives</h4>
+            <p>Clean label pasta with only ingredients you recognise and can pronounce.</p>
+          </div>
+
+          <!-- Card 4: Eco Packaging -->
+          <div class="bento-card bento-feature ba-blue" data-aos="fade-up" data-aos-delay="200">
+            <div class="bento-num" style="color:rgba(69,123,157,0.7)">04</div>
+            <div class="bento-icon bi-blue"><i class="fa-solid fa-recycle"></i></div>
+            <h4>Eco-Conscious Packaging</h4>
+            <p>Compostable trays, paper labels and recycled cardboard for all orders.</p>
+          </div>
+
+          <!-- Card 5: Custom Orders -->
+          <div class="bento-card bento-feature ba-wine" data-aos="fade-up" data-aos-delay="250">
+            <div class="bento-num" style="color:rgba(164,19,60,0.7)">05</div>
+            <div class="bento-icon bi-wine"><i class="fa-solid fa-sliders"></i></div>
+            <h4>Custom Orders Welcome</h4>
+            <p>Special dietary shapes, bulk custom flavours and event catering packs available.</p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══ S6 — ABOUT CTA ═══ -->
+    <section class="section about-cta" id="about-cta" aria-label="Call to Action">
+      <div class="container" style="position:relative; z-index:1; text-align:center">
+        <div data-aos="fade-up">
+          <span class="badge badge-gold mb-3 uppercase">Ready to Taste?</span>
+          <h2>Come Visit Our Kitchen — or Order Online</h2>
+          <p>We welcome drop-in visits to our shop Tuesday through Saturday. Sample the pasta, meet the team, and take home something delicious.</p>
+          <div class="flex gap-sm" style="justify-content:center; flex-wrap:wrap">
+            <a href="products.html" class="btn btn-white btn-lg"><i class="fa-solid fa-utensils"></i> Browse Products</a>
+            <a href="contact.html" class="btn btn-outline-white">Find Us</a>
+            <a href="wholesale.html" class="btn btn-gold btn-lg">Wholesale Info</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="images/logo.jpg" alt="PASTA Logo">
+          <div class="brand-name">PASTA</div>
+          <p>Handcrafted fresh pasta and homemade noodles made daily in our local kitchen. From our family table to yours — with love, flour, and a little bit of magic.</p>
+          <div class="social-links">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5>Quick Links</h5>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">Our Story</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="wholesale.html">Wholesale</a></li>
+            <li><a href="blog.html">Blog &amp; Recipes</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Our Products</h5>
+          <ul>
+            <li><a href="products.html">Fresh Spaghetti</a></li>
+            <li><a href="products.html">Tagliatelle</a></li>
+            <li><a href="products.html">Fettuccine</a></li>
+            <li><a href="products.html">Ricotta Ravioli</a></li>
+            <li><a href="products.html">Potato Gnocchi</a></li>
+            <li><a href="products.html">Artisan Sauces</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Visit Us</h5>
+          <div class="contact-item"><i class="fa-solid fa-location-dot"></i><span>14 Pasta Lane, Artisan Quarter,<br>Melbourne VIC 3000</span></div>
+          <div class="contact-item"><i class="fa-solid fa-phone"></i><span>+61 3 9000 1234</span></div>
+          <div class="contact-item"><i class="fa-solid fa-envelope"></i><span>hello@pasta.com.au</span></div>
+          <div class="contact-item"><i class="fa-solid fa-clock"></i><span>Tue–Sat: 8am – 5pm<br>Sun: 9am – 2pm</span></div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 PASTA Artisan &amp; Fresh. All rights reserved.</span>
+        <div style="display:flex; gap:1.2rem; flex-wrap:wrap">
+          <a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">Wholesale T&amp;Cs</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-chevron-up"></i></button>
+  <script src="js/main.js"></script>
+</body>
+</html>
